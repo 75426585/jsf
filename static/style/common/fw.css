@@ -1,0 +1,25 @@
+*{padding: 0;margin: 0;}
+body{font-family:"微软雅黑";font-size: 14px;color:#444;}
+body{width: 100%;background-color: #fff;overflow-x:hidden;}
+a{text-decoration: none;}
+/*头部样式*/
+.header{height: 80px;background-color: #ccc;}
+.header dl{height: 30px;padding-top: 50px;padding-left: 200px;}
+.header dd{display: block;float: left;padding-left: 20px;}
+
+/*左侧菜单*/
+.left_menu{background-color: #ddd;float:left;width: 100px;}
+#leftbar{width:100px;}
+#leftbar dd{line-height: 30px;text-align: center;border-bottom: 1px solid #aaa;}
+#leftbar dd:hover{background-color: #999;cursor: pointer;}
+#leftbar dd a{display: block;}
+#leftbar dd a:hover{color: #fff;}
+
+
+/*主体内容*/
+.center{width: 100%;background-color: #fff;}
+.main{float:left;width: 100%;background-color: #fff;overflow: hidden;}
+.main_content{width: 100%;height: 100%;}
+
+.menu{float: left;}
+.menu:hover{cursor: pointer;}
