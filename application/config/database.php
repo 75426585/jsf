@@ -43,7 +43,7 @@
 |
 | The $active_record variables lets you determine whether or not to load
 | the active record class
-*/
+ */
 
 $active_group = 'default';
 $active_record = TRUE;
@@ -53,14 +53,15 @@ $active_record = TRUE;
 //$db['default']['password'] = 'ji702108';
 //$db['default']['database'] = 'qdm116724515_db';
 
-$db['default']['hostname'] = '115.29.50.200';
-$db['default']['username'] = 'qdm116724515';
-$db['default']['password'] = 'ji702108';
-$db['default']['database'] = 'qdm116724515_db';
+$db['default']['hostname'] = SAE_MYSQL_HOST_M;
+$db['default']['username'] = SAE_MYSQL_USER;
+$db['default']['password'] = SAE_MYSQL_PASS;
+$db['default']['database'] = SAE_MYSQL_DB;
+$db['default']['port'] = SAE_MYSQL_PORT;
+$db['default']['pconnect'] = FALSE;
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
