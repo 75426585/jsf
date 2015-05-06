@@ -48,11 +48,6 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-//$db['default']['hostname'] = 'qdm116724515.my3w.com';
-//$db['default']['username'] = 'qdm116724515';
-//$db['default']['password'] = 'ji702108';
-//$db['default']['database'] = 'qdm116724515_db';
-
 $db['default']['hostname'] = SAE_MYSQL_HOST_M;
 $db['default']['username'] = SAE_MYSQL_USER;
 $db['default']['password'] = SAE_MYSQL_PASS;
