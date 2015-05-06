@@ -3,7 +3,7 @@ class MY_Controller extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		session_start();
-		if(!$_SESSION['admin']){
+		if(isset($_SESSION['admin']) && $_SESSION['admin']){
 			header('/admin');
 		}
 
