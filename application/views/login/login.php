@@ -61,6 +61,7 @@ cursor:pointer;
 </div>
 <script>
 $(function(){
+	showMsg('','red');
 	$('.submit').click(function(){
 		var username = $("input[name='username']").val();
 		var password = $("input[name='password']").val();
