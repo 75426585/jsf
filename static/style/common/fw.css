@@ -25,33 +25,3 @@ a{text-decoration: none;}
 .menu{float: left;}
 .menu:hover{cursor: pointer;}
 
-.link_btn {
-	text-decoration: none;
-	float: left;
-	margin-right: 8px;
-	border: 1px solid #c3c3c3;
-	cursor: pointer;
-	height: 14px;
-	line-height: 14px;
-	padding: 6px 8px;
-	background-color: #FAFAFA !important;
-	background-image: linear-gradient(to bottom, #FAFAFA, #EFEFEF) !important;
-	border: 1px solid #c3c3c3;
-	border-radius: 3px 3px 3px 3px;
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-	color: #646464 !important;
-	display: block !important;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important;
-	transition: all 0.3s ease 0s !important;
-	text-align: center;
-	white-space: nowrap;
-}
-h3 {
-	display: block;
-	font-size: 1.17em;
-	-webkit-margin-before: 1em;
-	-webkit-margin-after: 1em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-	font-weight: bold;
-}

@@ -1,0 +1,80 @@
+*{padding: 0;margin: 0;}
+body,input,textarea,select,button{ font: 12px Verdana, Lucida, Helvetica, Arial, sans-serif; color:#222;}
+//body{font-family:"微软雅黑";font-size: 14px;color:#444;}
+body{width: 100%;background-color: #fff;overflow-x:hidden;}
+a{text-decoration: none;}
+
+/*主要内容*/
+.main{
+	width:100%;
+	padding:30px;
+}
+
+/*顶部栏目*/
+.item_title{
+	display:block;
+	line-height:28px;
+	padding:0 10px;
+	height:40px;
+}
+
+/*中间表格*/
+.tabbox{
+	float:none;
+	width:100%;
+}
+
+.tabbox table{
+	border:1px dashed #a00;
+	padding:15px;
+}
+
+.tabbox tr{
+	line-height:30px;
+	padding:10px;
+}
+
+
+/*当前标题样式*/
+.cur-title{
+	padding:0 10px;
+	display:block;
+	float:left;
+	color:#111;
+	font-size:18px;
+	font-weight:10;
+}
+
+/*链接按钮样式*/
+.link_btn {
+	text-decoration: none;
+	float: left;
+	margin-right: 8px;
+	border: 1px solid #c3c3c3;
+	cursor: pointer;
+	height: 14px;
+	line-height: 14px;
+	padding: 6px 8px;
+	background-color: #FAFAFA !important;
+	background-image: linear-gradient(to bottom, #FAFAFA, #EFEFEF) !important;
+	border: 1px solid #c3c3c3;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+	color: #646464 !important;
+	display: block !important;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+	transition: all 0.3s ease 0s !important;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.link_btn:hover {
+	background: none repeat scroll 0% 0% transparent !important;
+	text-decoration: none !important;
+	border-color: rgb(153, 153, 153) !important;
+	color: rgb(68, 68, 68) !important;
+	text-shadow: 0px 1px 0px rgb(255, 255, 255) !important;
+	transition: all 0.3s ease 0s !important;
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.55) !important;
+}
+
