@@ -1,7 +1,7 @@
 *{padding: 0;margin: 0;}
+html{overflow-y:hidden;}
 body,input,textarea,select,button{ font: 12px Verdana, Lucida, Helvetica, Arial, sans-serif; color:#222;}
-body{font-family:"微软雅黑";font-size: 14px;color:#444;}
-body{width: 100%;background-color: #fff;overflow-x:hidden;}
+body{font-family:"微软雅黑";font-size: 14px;color:#444;width: 100%;background-color: #fff;}
 a{text-decoration: none;}
 /*头部样式*/
 .header{height: 80px;background-color: #ccc;}

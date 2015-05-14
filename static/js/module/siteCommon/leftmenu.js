@@ -15,9 +15,7 @@ define(function(require,exports){
 		var w_height = $(window).height();
 		var w_width = $(window).width();
 		$(".left_menu").height(w_height-80);
+		$(".main").width(w_width-100);
 		$(".main").height(w_height-80);
-		$(".main").width(w_width-120);
-		//$(".main_content").height(w_height-85);
-		//$(".main_content").width(w_width-110);
 	}
 })
