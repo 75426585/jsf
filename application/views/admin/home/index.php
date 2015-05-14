@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="/static/style/common/fw.css">
 </head>
 <body>
-	<input type="hidden" Id="moduleId" pagename="aindex"/>
+<input type="hidden" id="page" js="admin/home"/> 
 	<div class="header">
 		<dl>
 			<dd class="menu" ><a href="/admin/">首页</a></dd>
@@ -24,6 +24,6 @@
 	</div>
 
 <?php include ROOT.'application/views/include/template/leftmenu.php';?>	
-<?php include ROOT.'application/views/include/js.php';?>
+<script type="text/javascript" src="/static/js/lib/sea.js"></script>
 </body>
 </html>

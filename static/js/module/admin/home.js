@@ -1,8 +1,9 @@
 define(function(require,exports){
 	var template = require('template');
-	var init = function(){
-		showLeftMenu(0);
-	}
+	$(function(){
+		exports.showLeftMenu(0);
+		exports.initSize();
+	})
 	//显示菜单
 	exports.showLeftMenu = function(index){
 		$.post('/admin/home/getsubmenu',{index:index},function(data){
@@ -18,4 +19,9 @@ define(function(require,exports){
 		$(".main").width(w_width-100);
 		$(".main").height(w_height-80);
 	}
+	$('.menu').click(function(){
+		var index = $(this).attr('index');
+		showLeftMenu(index); 
+	})
+
 })

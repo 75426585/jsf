@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="/static/style/common/base.css" />
+<script type="text/javascript" src="/static/js/lib/sea.js"></script>
 <script src="/static/js/lib/kindeditor.js"></script>
 </head>
 <body>
