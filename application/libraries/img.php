@@ -1,4 +1,5 @@
 <?php
+/*SAE的storage的图床应用*/
 class img{
 	public $domain;//storage的域名地址
 	public $tmpPath = 'temp/';//缓存目录
