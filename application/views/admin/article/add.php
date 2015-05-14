@@ -3,7 +3,9 @@
 <head>
 <link rel="stylesheet" href="/static/style/common/base.css" />
 <script type="text/javascript" src="/static/js/lib/sea.js"></script>
-<script src="/static/js/lib/kindeditor.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/lib/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/lib/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="/static/js/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <div class="main">
@@ -34,6 +36,7 @@
 				</tr>
 				<tr>
 					<td class="td2" style="height: 450px;">文章内容：</td>
+					<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
 					<td><textarea name="content" style="width: 700px; height: 450px; visibility: hidden;"></textarea>
 					</td>
 				</tr>
@@ -45,4 +48,7 @@
 	</div>
 </div>
 </body>
+<script>
+    var ue = UE.getEditor('editor');
+</script>
 </html>
