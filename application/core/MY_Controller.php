@@ -6,9 +6,5 @@ class MY_Controller extends CI_Controller {
 		if(!(isset($_SESSION['admin']) and $_SESSION['admin'])){
 			header('Location:/login');
 		}
-
-	}
-	public function index(){
-		echo '后端首页';
 	}
 }
