@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '123456';
+$db['default']['password'] = '111111';
 $db['default']['database'] = 'fw';
 $db['default']['port'] = '3306';
 $db['default']['pconnect'] = FALSE;
