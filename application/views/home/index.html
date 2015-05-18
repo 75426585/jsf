@@ -1,9 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8" />
+<title>Default Examples</title>
+<link rel="stylesheet" href="/static/js/lib/kind/themes/default/default.css" />
+<script charset="utf-8" src="/static/js/lib/kind/kindeditor-min.js"></script>
+<script charset="utf-8" src="/static/js/lib/kind/lang/zh_CN.js"></script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			uploadJson : '/upload/kind/'
+	});
+});
+</script>
 </head>
 <body>
-{$title}
+<h3>默认模式</h3>
+<form>
+	<textarea name="content" style="width:800px;height:400px;visibility:hidden;">KindEditor</textarea>
+</form>
 </body>
 </html>

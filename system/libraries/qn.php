@@ -76,11 +76,11 @@ class CI_qn{
 		$tmp_name = $_FILES[$file]['tmp_name'];
 		$token = $this->auth->uploadToken($this->bucket,null,3600);
 		$uploadMgr = New UploadManager();
-		list($ret, $err) = $uploadMgr->putFile($token, null,$tmp_name);
-		if ($err !== null) {
+		$upres = $uploadMgr->putFile($token, null,$tmp_name);
+		if (! isset($upres[0]['key'])) {
 			return false;
 		} else {
-			return $ret['key'];
+			return $upres[0]['key'];
 		}
 
 	}

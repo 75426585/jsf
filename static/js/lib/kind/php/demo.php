@@ -1,4 +1,5 @@
 <?php
+exit;
 	$htmlData = '';
 	if (!empty($_POST['content1'])) {
 		if (get_magic_quotes_gpc()) {
