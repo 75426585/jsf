@@ -48,11 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '111111';
+$db['default']['hostname'] = $_SERVER["LOCAL_MYSQL_HOST"];
+$db['default']['username'] = $_SERVER["LOCAL_MYSQL_USER"];
+$db['default']['password'] = $_SERVER["LOCAL_MYSQL_PASSWORD"];
 $db['default']['database'] = 'fw';
-$db['default']['port'] = '3306';
+$db['default']['port'] = $_SERVER["LOCAL_MYSQL_PORT"];
 $db['default']['pconnect'] = FALSE;
 
 $db['default']['dbdriver'] = 'mysql';
