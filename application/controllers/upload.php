@@ -83,9 +83,27 @@ class Upload extends CI_Controller {
 		}
 
 	}
+
 	public function alert($msg){
 		header('Content-type: text/html; charset=UTF-8');
 		echo json_encode(array('error' => 1, 'message' => $msg));
 		exit;
 	}
+
+	//plupload上传接口
+	public function plupload(){
+		var_dump($_FILES);
+
+	}
+
+
+
+
+
+
+
+
+
+
+
 }

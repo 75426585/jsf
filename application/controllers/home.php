@@ -3,4 +3,8 @@ class Home extends CI_Controller {
 	public function index(){
 		$this->load->view('home/index.html');
 	}
+
+	public function plupload(){
+		$this->load->view('upload/plupload.php');
+	}
 }
