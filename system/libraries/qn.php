@@ -11,11 +11,13 @@ class CI_qn{
 	public $res;
 	public $auth;
 	public $bucketMgr;
+	public $token;
 	public function __construct(){
-		//require_once('/'.APPPATH.'/config/qn.php');
-		$this->accessKey = 'Hk4SKX0Ie3fLlSBkRvA5tqphelIZjZaMzqe4--fs';
-		$this->secretKey = 'bqGuZmsfvHKKLhwAcFpC6NNjY71YpVbyS35ugo0G';
-		$this->bucket= 'sanlang';
+		require_once('/'.APPPATH.'/config/qn.php');
+		global $qnconfig;
+		$this->accessKey = $qnconfig['accessKey'];
+		$this->secretKey = $qnconfig['secretKey'];
+		$this->bucket= $qnconfig['bucket'];
 		$this->auth = new Auth($this->accessKey, $this->secretKey);
 		$this->bucketMgr = New BucketManager($this->auth);
 	}
@@ -70,13 +72,19 @@ class CI_qn{
 		}
 	}
 
+	//获取token
+	public function getToken(){
+		$this->token = $this->auth->uploadToken($this->bucket,null,3600);
+		return $this->token;
+	}
+
 	//上传文件
 	public function upload($file){
 		if(!(isset($_FILES[$file]['error']) && $_FILES[$file]['error'] == '0')) return false;
 		$tmp_name = $_FILES[$file]['tmp_name'];
-		$token = $this->auth->uploadToken($this->bucket,null,3600);
+		$this->getToken();
 		$uploadMgr = New UploadManager();
-		$upres = $uploadMgr->putFile($token, null,$tmp_name);
+		$upres = $uploadMgr->putFile($this->token, null,$tmp_name);
 		if (! isset($upres[0]['key'])) {
 			return false;
 		} else {

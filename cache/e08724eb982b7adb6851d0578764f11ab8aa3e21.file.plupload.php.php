@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.18, created on 2015-05-24 09:22:29
+         compiled from "application\views\upload\plupload.php" */ ?>
+<?php /*%%SmartyHeaderCode:227265561106c988e97-13054943%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'e08724eb982b7adb6851d0578764f11ab8aa3e21' => 
+    array (
+      0 => 'application\\views\\upload\\plupload.php',
+      1 => 1432430545,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '227265561106c988e97-13054943',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_5561106c9b7ca0_59768945',
+  'variables' => 
+  array (
+    'token' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5561106c9b7ca0_59768945')) {function content_5561106c9b7ca0_59768945($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -40,7 +65,8 @@ var uploader = new plupload.Uploader({ //实例化一个plupload上传对象
 	flash_swf_url : '/stastic/js/lib/plupload/Moxie.swf',
 	silverlight_xap_url : '/stastic/js/lib/plupload/Moxie.xap',
 	multipart_params: {
-		'token': '{$token}', 
+		'token': '<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+', 
 	},
 });
 
@@ -74,3 +100,4 @@ $('#upload-btn').click(function(){
 </script>
 </body>
 </html>
+<?php }} ?>

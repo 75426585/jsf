@@ -4,7 +4,20 @@ class Home extends CI_Controller {
 		$this->load->view('home/index.html');
 	}
 
+	public function upload(){
+		$this->load->library('qn');
+		$data['token'] = $this->qn->getToken();
+		$this->sm->assign($data);
+		$this->sm->view('index.php');
+	}
+
+
+
+	//plupload上传接口
 	public function plupload(){
-		$this->load->view('upload/plupload.php');
+		$this->load->library('qn');
+		$data['token'] = $this->qn->getToken();
+		$this->sm->assign($data);
+		$this->sm->view('common/plupload.php');
 	}
 }

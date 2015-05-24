@@ -92,8 +92,10 @@ class Upload extends CI_Controller {
 
 	//plupload上传接口
 	public function plupload(){
-		var_dump($_FILES);
-
+		$this->load->library('qn');
+		$data['token'] = $this->qn->getToken();
+		$this->sm->assign($data);
+		$this->sm->view('common/plupload.php');
 	}
 
 
