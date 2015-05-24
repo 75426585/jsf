@@ -12,13 +12,38 @@
 .file-list li{ margin-bottom: 10px;}
 .process{background-color:#65aecc;height:48px;margin-top:-48px;width:0%;}
 .btn-wraper{ text-align: center;}
-.btn-wraper input{ margin: 0 10px;}
+.btn-wraper input{ margin:6px;}
 .file-name{ width:370px;line-height: 45px;}
 .thumb-img{ width:60px;text-align:center;}
-.cancel-img{ width:40px;cursor:pointer;}
+.cancel-img{ width:40px;cursor:pointer;background:url('/static/images/plupload/cancel.png') no-repeat center;}
+.cancel-img:hover{ background:url('/static/images/plupload/cancel-h.png') no-repeat center;}
 .progress{ height: 4px; font-size: 0; line-height: 4px; background: orange; width: 0;}
 .tip1{ text-align: center; font-size:14px; padding-top:10px;}
 .tip2{ text-align: center; font-size:12px; padding-top:10px; color:#b00}
 .catalogue{ position: fixed; _position:absolute; _width:200px; left: 0; top: 0; border: 1px solid #ccc;padding: 10px; background: #eee}
 .catalogue a{ line-height: 30px; color: #0c0}
 .catalogue li{ padding: 0; margin: 0; list-style: none;}
+
+.btn {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% '微软雅黑', Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.btn:hover {
+	text-decoration: none;
+}
+.btn:active {
+	position: relative;
+	top: 1px;
+}

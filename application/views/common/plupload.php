@@ -7,8 +7,9 @@
 		</table>
 	</div>
 	<div class="btn-wraper">
-		<input type="button" value="选择文件..." id="browse" />
-		<input type="button" value="开始上传" id="upload-btn" />
+		<input type="button" class="btn" value="选择文件..." id="browse" />
+		<input type="button" class="btn" value="开始上传" id="upload-btn" />
+		<input type="button" class="btn" value="确认插入" id="do-insert"/>
 	</div>
 </div>
 <script>
@@ -32,6 +33,9 @@ uploader.bind('FilesAdded',function(uploader,files){
 		var html = '<tr id="tr-'+ files[i].id +'"><td class="thumb-img"></td><td><span class="file-name">' + file_name + '</span><div class="process"></div></td><td class="cancel-img"></td></tr>';
 		$('.file-list').append(html)
 	}
+	$('.cancel-img').click(function(){
+		$(this).parent().remove();
+	});
 });
 
 //绑定文件上传进度事件
@@ -49,5 +53,13 @@ uploader.bind('FileUploaded',function(uploader,file,responseObject){
 //上传按钮
 $('#upload-btn').click(function(){
 	uploader.start(); //开始上传
+});
+//上传按钮
+$('#do-insert').click(function(){
+	var ids = new Array();
+	$('.file-list tr').each(function(i){
+		ids[i] = $(this).attr('id');
+	})
+		alert(ids)
 });
 </script>
