@@ -21,7 +21,7 @@ define(function(require,exports){
 	}
 	$('.menu').click(function(){
 		var index = $(this).attr('index');
-		showLeftMenu(index); 
+		exports.showLeftMenu(index); 
 	})
 
 })
