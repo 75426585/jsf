@@ -1,4 +1,29 @@
-<script src="/static/js/lib/jquery.min.js"></script>
+<?php /* Smarty version Smarty-3.1.18, created on 2015-05-25 15:44:48
+         compiled from "application\views\common\plupload.php" */ ?>
+<?php /*%%SmartyHeaderCode:4199556288344916d4-78819607%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'e7dbb7484feb726396c0f14df7295e7c4504f735' => 
+    array (
+      0 => 'application\\views\\common\\plupload.php',
+      1 => 1432539886,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '4199556288344916d4-78819607',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_55628834541389_94010167',
+  'variables' => 
+  array (
+    'token' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_55628834541389_94010167')) {function content_55628834541389_94010167($_smarty_tpl) {?><script src="/static/js/lib/jquery.min.js"></script>
 <script src="/static/js/lib/plupload/plupload.full.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/style/common/plupload.css" />
 <div class="both-path">
@@ -19,7 +44,8 @@ var uploader = new plupload.Uploader({ //实例化一个plupload上传对象
 		flash_swf_url : '/stastic/js/lib/plupload/Moxie.swf',
 		silverlight_xap_url : '/stastic/js/lib/plupload/Moxie.xap',
 		multipart_params: {
-			'token': '{$token}', 
+			'token': '<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+', 
 		},
 });
 
@@ -63,3 +89,4 @@ $('#do-insert').click(function(){
 		alert(ids)
 });
 </script>
+<?php }} ?>
