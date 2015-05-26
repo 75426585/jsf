@@ -12,6 +12,7 @@ a{text-decoration: none;}
 .tabbox{ width:100%; }
 .tabbox table{ width:100%; border-collapse:collapse; }
 .tabbox table tr{ line-height:34px; text-indent:30px;}
+.tabbox table tr:hover{ background-color:#ddd; }
 .tabbox table tr td,th{ border:1px dashed #ccc; }
 
 /*当前标题样式*/
@@ -103,6 +104,8 @@ a{text-decoration: none;}
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
 }
 
-.center{
-	text-align:center;
-}
+.center{ text-align:center; }
+
+.dlg-form{ display:none; }
+.dlg-form table tr{ line-height:35px; }
+.info-red{ font-color:red; font-size:12px; }

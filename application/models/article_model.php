@@ -11,5 +11,9 @@ class Article_model extends CI_model{
 		}
 		return $this->db->query($sql)->result_array();
 	}
-
+	
+	//插入数据
+	public function insert($data){
+		return $this->db->insert('article_cat',$data);
+	}
 }
