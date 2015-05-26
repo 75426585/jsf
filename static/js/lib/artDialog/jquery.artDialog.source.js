@@ -93,7 +93,7 @@ artDialog.fn = artDialog.prototype = {
 		var that = this, DOM,
 			icon = config.icon,
 			iconBg = icon && (_isIE6 ? {png: 'icons/' + icon + '.png'}
-			: {backgroundImage: 'url(\'' + staticPath  + '/images/dialog/icons/' + icon + '.png\')'});
+			: {backgroundImage: 'url(\'' + config.path + '/skins/icons/' + icon + '.png\')'});
 		
         that.closed = false;
 		that.config = config;
@@ -1025,17 +1025,17 @@ artDialog.defaults = {
 	content: '<div class="aui_loading"><span>loading..</span></div>',
 	title: '\u6d88\u606f',		// 标题. 默认'消息'
 	button: null,				// 自定义按钮
-	ok: true,					// 确定按钮回调函数
-	cancel: true,				// 取消按钮回调函数
+	ok: null,					// 确定按钮回调函数
+	cancel: null,				// 取消按钮回调函数
 	init: null,					// 对话框初始化后执行的函数
 	close: null,				// 对话框关闭前执行的函数
 	okVal: '\u786E\u5B9A',		// 确定按钮文本. 默认'确定'
 	cancelVal: '\u53D6\u6D88',	// 取消按钮文本. 默认'取消'
-	width: 420,				// 内容宽度
-	height: 80,				// 内容高度
+	width: 'auto',				// 内容宽度
+	height: 'auto',				// 内容高度
 	minWidth: 96,				// 最小宽度限制
 	minHeight: 32,				// 最小高度限制
-	padding: '20px',		// 内容与边界填充距离
+	padding: '20px 25px',		// 内容与边界填充距离
 	skin: '',					// 皮肤名(预留接口,尚未实现)
 	icon: null,					// 消息图标名称
 	time: null,					// 自动关闭时间
@@ -1044,9 +1044,9 @@ artDialog.defaults = {
 	show: true,					// 初始化后是否显示对话框
 	follow: null,				// 跟随某元素(即让对话框在元素附近弹出)
 	path: _path,				// artDialog路径
-	lock: true,				// 是否锁屏
+	lock: false,				// 是否锁屏
 	background: '#000',			// 遮罩颜色
-	opacity: .35,				// 遮罩透明度
+	opacity: .7,				// 遮罩透明度
 	duration: 300,				// 遮罩透明度渐变动画速度
 	fixed: false,				// 是否静止定位
 	left: '50%',				// X轴坐标

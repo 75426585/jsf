@@ -1,52 +1,24 @@
 *{padding: 0;margin: 0;}
-body,input,textarea,select,button{ font: 12px Verdana, Lucida, Helvetica, Arial, sans-serif; color:#222;}
-//body{font-family:"微软雅黑";font-size: 14px;color:#444;}
-body{width: 100%;background-color: #fff;overflow-x:hidden;}
+body,input,textarea,select,button{ font: 14px Verdana, Lucida, Helvetica, Arial, sans-serif; color:#222;}
+body{width: 100%;background-color: #eee;overflow-x:hidden;}
 a{text-decoration: none;}
 
 /*主要内容*/
-.main{
-	width:100%;
-	padding:30px;
-}
+.main-content{ margin:30px; }
 
 /*顶部栏目*/
-.item_title{
-	display:block;
-	line-height:28px;
-	padding:0 10px;
-	height:40px;
-}
+.item_title{ display:block; line-height:28px; height:40px; }
 
-/*中间表格*/
-.tabbox{
-	float:none;
-	width:100%;
-}
-
-.tabbox table{
-	border:1px dashed #a00;
-	padding:15px;
-}
-
-.tabbox tr{
-	line-height:30px;
-	padding:10px;
-}
-
+.tabbox{ width:100%; }
+.tabbox table{ width:100%; border-collapse:collapse; }
+.tabbox table tr{ line-height:34px; text-indent:30px;}
+.tabbox table tr td,th{ border:1px dashed #ccc; }
 
 /*当前标题样式*/
-.cur-title{
-	padding:0 10px;
-	display:block;
-	float:left;
-	color:#111;
-	font-size:18px;
-	font-weight:10;
-}
+.cur-title{ padding:0 10px; display:block; float:left; color:#111; font-size:18px; font-weight:10; }
 
 /*链接按钮样式*/
-.link_btn {
+.link-btn {
 	text-decoration: none;
 	float: left;
 	margin-right: 8px;
@@ -68,7 +40,7 @@ a{text-decoration: none;}
 	white-space: nowrap;
 }
 
-.link_btn:hover {
+.link-btn:hover {
 	background: none repeat scroll 0% 0% transparent !important;
 	text-decoration: none !important;
 	border-color: rgb(153, 153, 153) !important;

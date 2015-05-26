@@ -4,7 +4,7 @@ class MY_Controller extends CI_Controller {
 		parent::__construct();
 		session_start();
 		if(!(isset($_SESSION['admin']) and $_SESSION['admin'])){
-			header('Location:/login');
+			header('Location:/common/login');
 		}
 	}
 }

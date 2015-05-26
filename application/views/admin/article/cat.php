@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/static/style/common/base.css" />
-<script type="text/javascript" src="/static/js/lib/sea.js"></script>
+	<link rel="stylesheet" href="/static/style/common/base.css" />
+	<script type="text/javascript" src="/static/js/lib/sea.js"></script>
 </head>
 <body>
-<div class="main">
+<input type="hidden" id="page" js="admin/article"/> 
+<div class="main-content">
 	<div class="item_title">
-		<div class="cur-title">添加分类</div>
+		<div class="cur-title">文章分类</div>
+		<div class="link-btn add-cat">添加分类</div>
+		<div class="link-btn art-list">文章列表</div>
 	</div>
 	<div class="tabbox">
-		<form method="post" action="/admin/article/cat/add">
-			<table>
-				<tr>
-					<td class="td2">文章分类：</td>
-					<td><input type="text" name="capital" /><span class="info_red">　　*必须填写(4-20)个字符</span></td>
-				</tr>
-				<tr>
-					<td class="td2">父级分类：</td>
-					<td>
-						<select name="cid">
-							<option value="0">顶级菜单</option>
-						</select>
-						<span class="info_red">　　　*必须选择</span>
-					</td>
-				</tr>
-				<tr>
-					<td></td><td><div class="button blue center">提交</div></td>
-				</tr>
-			</table>
-		</form>
+		<table>
+			<tr>
+				<th>分类ID</th><th>名称</th><th>父级名称</th><th>修改</th><th>排序</th>
+			</tr>
+			{foreach $all_cat as $v}
+			<tr>
+				<td>{$v.id}</td><td>{$v.cat_name}</td><td>{$v.parent_name}</td><td>修改</td><td>{$v.ord}</td>
+			</tr>
+			{/foreach}
+		</table>
 	</div>
 </div>
 </body>

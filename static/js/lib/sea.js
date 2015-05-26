@@ -6,7 +6,8 @@ seajs.config({
 	base:'/static/js/',
 	alias:{
 		'jquery':'/static/js/lib/jquery.min',
-		'template':'/static/js/lib/template'
+		'template':'/static/js/lib/template',
+		'dlg':'/static/js/lib/artDialog/jquery.artDialog.js?skin=blue'
 	}
 })
 seajs.use('jquery',function(){

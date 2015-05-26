@@ -33,7 +33,7 @@ cursor:pointer;
 <div style="background-image:url(/static/images/login/admin_login.png); width:500px; height:200px; margin-top:130px;">
   <form>
 	<table width="500" border="0" cellpadding="0" cellspacing="0">
-		<input type="hidden" class="postsrc" src="/login/ajaxpost/" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" />
+		<input type="hidden" class="postsrc" src="/common/login/ajaxpost/" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" />
 	  <tr>
 		<td width="250">&nbsp;</td>
 		<td colspan="2">&nbsp;</td>
@@ -49,7 +49,7 @@ cursor:pointer;
 	  <tr>
 		<td height="35"><div align="right" class="STYLE1">验证码：</div></td>
 		<td width="100" height="35"><input type="text" name="checkcode" style="height:25px; width:85px; font-size:15pt; font-weight:bold;" /></td>
-		<td width="150"><img id="refresh" src="/login/createcode"/></td>
+		<td width="150"><img id="refresh" src="/common/login/createcode"/></td>
 	  </tr>
 	  <tr>
 		<td height="35">&nbsp;</td>
@@ -89,7 +89,7 @@ $(function(){
 				window.location.href="/admin/";
 			}else{
 				showMsg(data.msg,'red');
-				$('#refresh').attr('src',"/login/createcode?"+Math.random(1000,9999));
+				$('#refresh').attr('src',"/common/login/createcode?"+Math.random(1000,9999));
 			}
 		},'json')
 	})
@@ -100,7 +100,7 @@ $(function(){
 	}
 
 	$('#refresh').click(function(){
-		$(this).attr('src',"/login/createcode?"+Math.random(1000,9999))
+		$(this).attr('src',"/common/login/createcode?"+Math.random(1000,9999))
 
 	})
 })

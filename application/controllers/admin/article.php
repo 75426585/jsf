@@ -23,6 +23,11 @@ class Article extends MY_Controller{
 		if($function == 'add'){
 
 		}else{
+			$this->load->model('article_model');
+			$top_cat = $this->article_model->get_cat('0');
+			$all_cat = $this->article_model->get_cat('all');
+			$data = get_defined_vars();
+			$this->sm->assign($data);
 			$this->sm->view('admin/article/cat.php');
 		}
 	}
