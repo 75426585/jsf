@@ -57,8 +57,8 @@ $('#upload-btn').click(function(){
 //上传按钮
 $('#do-insert').click(function(){
 	var ids = new Array();
-	$('.file-list tr').each(function(i){
-		ids[i] = $(this).attr('id');
+	$('.file-list tr').find('.cancel-img').each(function(i){
+		ids[i] = $(this).attr('key');
 	})
 		alert(ids)
 });
