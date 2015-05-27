@@ -56,8 +56,6 @@ class tool extends CI_Controller{
 		closedir($handle); 
 	}
 	public function dump(){
-		global $cfg;
-		$this->lib('db');
 		$tables = $this->db->query("show tables from ".$cfg['dbname']);
 		while(($tab = mysql_fetch_row($tables)) !== false){
 			$this->str .= "drop table if exists `$tab[0]`;$this->cr";
