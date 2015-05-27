@@ -104,3 +104,5 @@
 .dlg-form{ display:none; }
 .dlg-form table tr{ line-height:35px; }
 .info-red{ font-color:red; font-size:12px; }
+
+.edit-span,.del-span{ cursor:pointer; }

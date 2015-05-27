@@ -14,11 +14,11 @@
 	<div class="tabbox">
 		<table>
 			<tr>
-				<th>分类ID</th><th>名称</th><th>父级名称</th><th>文章数</th><th>操作</th><th>排序</th>
+				<th>分类ID</th><th>名称</th><th>父级名称</th><th>操作</th><th>排序</th>
 			</tr>
 			{foreach $all_cat as $v}
-			<tr cid="{$v.id}">
-				<td>{$v.id}</td><td>{$v.cat_name}</td><td>{$v.parent_name}</td><td><a href="/admin/article/lists?cid={$v.id}">{$v.art_num}</a></td><td><span class="edit-span">修改</span>　　<span class="del-span">删除</span></td><td>{$v.ord}</td>
+			<tr>
+				<td>{$v.id}</td><td>{$v.cat_name}</td><td>{$v.parent_name}</td><td>修改　　删除</td><td>{$v.ord}</td>
 			</tr>
 			{/foreach}
 		</table>
