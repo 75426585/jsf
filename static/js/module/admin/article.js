@@ -1,5 +1,4 @@
 define(function(require,exports){
-
 	//添加分类对话框显示
 	$('.add-cat').click(function(){
 		var dlg = require('dlg');
@@ -19,6 +18,7 @@ define(function(require,exports){
 			art.dialog({
 				title:'提示信息',
 				content:data.msg,
+				icon:'succeed',
 				ok:function(){
 					location.reload();
 				}

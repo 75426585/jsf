@@ -6,6 +6,10 @@ class Article extends MY_Controller{
 		$this->load->model('article_model');
 	}
 
+	public function index(){
+		$this->cat();
+	}
+
 	public function add($function=''){
 		if($function == 'doadd'){
 			$data = $this->input->post();
@@ -16,7 +20,7 @@ class Article extends MY_Controller{
 	}
 
 	public function lists(){
-		$this->load->view('admin/article/lists');
+		$this->sm->view('admin/article/lists.php');
 	}
 
 	public function cat($function=''){

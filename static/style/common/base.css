@@ -1,8 +1,3 @@
-*{padding: 0;margin: 0;}
-body,input,textarea,select,button{ font: 14px Verdana, Lucida, Helvetica, Arial, sans-serif; color:#222;}
-body{width: 100%;background-color: #eee;overflow-x:hidden;}
-a{text-decoration: none;}
-
 /*主要内容*/
 .main-content{ margin:30px; }
 
@@ -13,7 +8,7 @@ a{text-decoration: none;}
 .tabbox table{ width:100%; border-collapse:collapse; }
 .tabbox table tr{ line-height:34px; text-indent:30px;}
 .tabbox table tr:hover{ background-color:#ddd; }
-.tabbox table tr td,th{ border:1px dashed #ccc; }
+.tabbox table tr td,th{ border:1px dashed #ccc;float:none; }
 
 /*当前标题样式*/
 .cur-title{ padding:0 10px; display:block; float:left; color:#111; font-size:18px; font-weight:10; }

@@ -12,6 +12,7 @@ seajs.config({
 })
 seajs.use('jquery',function(){
 	//加载全站都需要的入口
+	seajs.use("module/siteCommon/init");
 	var _page=$("#page").attr("js");
 	if(!_page){return false};
 	seajs.use("module/"+_page);

@@ -7,8 +7,7 @@ class Home extends MY_Controller{
 	}
 
 	public function index(){
-		$data['menu'] = $this->config->item('menu');
-		$this->load->view('/admin/home/index',$data);
+		$this->sm->view('admin/home/index.php');
 	}
 
 	/**

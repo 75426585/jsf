@@ -7,21 +7,18 @@ a{text-decoration: none;}
 .header{height: 80px;background-color: #ccc;}
 .header dl{height: 30px;padding-top: 50px;padding-left: 200px;}
 .header dd{display: block;float: left;padding-left: 20px;}
-
-/*左侧菜单*/
-.left_menu{background-color: #ddd;float:left;width: 100px;}
-#leftbar{width:100px;}
-#leftbar dd{line-height: 30px;text-align: center;border-bottom: 1px solid #aaa;}
-#leftbar dd:hover{background-color: #999;cursor: pointer;}
-#leftbar dd a{display: block;}
-#leftbar dd a:hover{color: #fff;}
-
-
-/*主体内容*/
-.center{width: 100%;background-color: #fff;}
-.main{float:left;width: 100%;background-color: #fff;overflow: hidden;}
-.main_content{width: 100%;height: 100%;}
-
 .menu{float: left;}
 .menu:hover{cursor: pointer;}
-
+/*主体内容*/
+.center-body{width: 100%;background-color: #fff;}
+/*左侧菜单*/
+.center-body table{ width:100%;border-collapse:collapse;}
+.center-body table td{ float:left; }
+.left-bar{background-color: #ddd;}
+.left-bar dl{padding:18px;}
+.left-bar dl dd {line-height:24px;border-bottom: 1px solid #aaa;text-align:center;}
+.left-bar dl dd a{display:block;}
+.left-bar dl dd a:active{font-color:#ccc;}
+.left-bar dl dd:hover{background-color: #999;cursor: pointer;font-color:#fff;}
+/*右侧内容*/
+.main-div{background-color: #eee;overflow-y:scroll;}
