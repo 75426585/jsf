@@ -16,7 +16,7 @@ class Article_model extends CI_model{
 	}
 
 	//插入数据
-	public function insert($data){
+	public function cat_insert($data){
 		return $this->db->insert('article_cat',$data);
 	}
 
@@ -34,8 +34,8 @@ class Article_model extends CI_model{
 		return $res?true:false;
 	}
 
-	//删除文章
-	public function del_cat($cid){
+	//删除文章分类
+	public function cat_del($cid){
 		if($this->exist_son($cid) == false && $this->exist_art($cid) == false){
 			$sql = "delete from article_cat where id = $cid";
 			$res = $this->db->query($sql);
@@ -43,9 +43,13 @@ class Article_model extends CI_model{
 		}else{
 			return false;
 		}
-
 	}
 
+	//修改文章分类
+	public function cat_edit($data,$cid){
+		$this->db->where('id', $cid);
+		return $this->db->update('article_cat', $data); 
+	}
 
 
 

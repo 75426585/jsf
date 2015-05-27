@@ -42,9 +42,6 @@
 				<span class="info_red">　　　*必须选择</span>
 			</td>
 		</tr>
-		<tr>
-			<td></td><td><div class="button blue center sub-btn">添加</div></td>
-		</tr>
 	</table>
 </form>
 {/block}
