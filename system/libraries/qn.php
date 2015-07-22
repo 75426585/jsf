@@ -13,7 +13,7 @@ class CI_qn{
 	public $bucketMgr;
 	public $token;
 	public function __construct(){
-		require_once('/'.APPPATH.'/config/qn.php');
+		require_once(ROOT.APPPATH.'config/qn.php');
 		global $qnconfig;
 		$this->accessKey = $qnconfig['accessKey'];
 		$this->secretKey = $qnconfig['secretKey'];
