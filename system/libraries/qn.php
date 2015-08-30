@@ -13,11 +13,9 @@ class CI_qn{
 	public $bucketMgr;
 	public $token;
 	public function __construct(){
-		require_once(ROOT.APPPATH.'config/qn.php');
-		global $qnconfig;
-		$this->accessKey = $qnconfig['accessKey'];
-		$this->secretKey = $qnconfig['secretKey'];
-		$this->bucket= $qnconfig['bucket'];
+		$this->accessKey = $_SERVER['QN_AK'];
+		$this->secretKey = $_SERVER['QN_SK'];
+		$this->bucket= $_SERVER['QN_BK'];
 		$this->auth = new Auth($this->accessKey, $this->secretKey);
 		$this->bucketMgr = New BucketManager($this->auth);
 	}
