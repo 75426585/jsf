@@ -22,6 +22,7 @@ class Oauth{
     
 
     function __construct(){
+		session_start();
         $this->recorder = new Recorder();
         $this->urlUtils = new URL();
         $this->error = new ErrorCase();
@@ -34,7 +35,8 @@ class Oauth{
 
         //-------生成唯一随机串防CSRF攻击
         $state = md5(uniqid(rand(), TRUE));
-        $this->recorder->write('state',$state);
+        //$this->recorder->write('state',$state);
+		$_SESSION['state'] = $state;
 
         //-------构造请求参数列表
         $keysArr = array(
@@ -51,7 +53,7 @@ class Oauth{
     }
 
     public function qq_callback(){
-        $state = $this->recorder->read("state");
+        $state = $_SESSION['state'];
 
         //--------验证state防止CSRF攻击
         if($_GET['state'] != $state){
@@ -87,6 +89,7 @@ class Oauth{
         parse_str($response, $params);
 
         $this->recorder->write("access_token", $params["access_token"]);
+		$_SESSION['access_token'] =  $params["access_token"];
         return $params["access_token"];
 
     }

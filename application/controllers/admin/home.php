@@ -7,6 +7,7 @@ class Home extends MY_Controller{
 	}
 
 	public function index(){
+		var_dump($_SESSION);exit;
 		$this->sm->view('admin/home/index.php');
 	}
 
