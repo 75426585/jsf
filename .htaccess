@@ -1,5 +1,13 @@
-RewriteEngine On
+SetEnv DB_FW_HOST  'qdm182967448.my3w.com'
+SetEnv DB_FW_PORT  '3306'
+SetEnv DB_FW_USER  'qdm182967448'
+SetEnv DB_FW_PASS  'ji702108'
+SetEnv DB_FW_NAME  'qdm182967448_db'
 
+SetEnv QN_AK  '5yI0TyZ8nYcLRYwaWk6A8TYPioK6n70QPyrE9ra3'
+SetEnv QN_SK  '5S54TT4G04nEEpZbmZTNYi-eLnT-fpFzj8uBL4eu'
+SetEnv QN_BK  'sanlang'
 
-RewriteCond $1 !^(index\.php|static|cache)
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|robots\.txt|static)
+RewriteRule ^(.*)$ /index.php/$1 [L]

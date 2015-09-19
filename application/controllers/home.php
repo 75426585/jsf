@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 		}
 	}
 	public function index(){
-		$data['openid'] = $_SESSION['openid'];
+		$data['openid'] = isset($_SESSION['openid'])?$_SESSION['openid']:'';
 		$this->sm->assign($data);
 		$this->sm->view('home/index.html');
 	}
