@@ -7,18 +7,5 @@ class Home extends CI_Controller {
 		$this->sm->view('home/index.html');
 	}
 
-	public function kind(){
-		$this->load->library('qn');
-		$data['token'] = $this->qn->getToken();
-		$this->sm->assign($data);
-		$this->sm->view('test/kind.php');
-	}
-
-	public function upload(){
-		$this->load->library('qn');
-		$data['token'] = $this->qn->getToken();
-		$this->sm->assign($data);
-		$this->sm->view('index.php');
-	}
 
 }

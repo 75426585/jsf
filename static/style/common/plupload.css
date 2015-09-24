@@ -11,7 +11,7 @@
 .file-list tr td{ border:2px dashed #ddd;}
 .file-list li{ margin-bottom: 10px;}
 .process{background-color:#65aecc;height:48px;margin-top:-48px;width:0%;}
-.btn-wraper{ text-align: center;}
+.btn-wraper{ text-align: center; padding-top:10px;}
 .btn-wraper input{ margin:6px;}
 .file-name{ width:370px;line-height: 45px;}
 .thumb-img{ width:60px;text-align:center;}

@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Upload extends CI_Controller {
+class Upload extends MY_Controller {
 	public $url_prefix = 'http://img.je4.cn/';//图片域名前缀
 	public function index(){
 		$this->sm->view('upload/index.php');
