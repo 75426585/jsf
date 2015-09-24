@@ -48,6 +48,7 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 
+		session_start();
 		$this->load->initialize();
 		$this->load->library('sm');
 		

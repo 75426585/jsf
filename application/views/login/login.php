@@ -29,7 +29,10 @@ cursor:pointer;
 </style>
 <script src="/static/js/lib/jquery.min.js"></script>
 </head>
+<!--
 <body style="background-image:url(/static/images/login/admin_login_bg.gif); margin:0 auto; width:500px;">
+-->
+<body style="background-color:#eee;margin:0 auto; width:500px;">
 <div style="background-image:url(/static/images/login/admin_login.png); width:500px; height:200px; margin-top:130px;">
   <form>
 	<table width="500" border="0" cellpadding="0" cellspacing="0">

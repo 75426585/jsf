@@ -1,17 +1,21 @@
+<!DOCTYPE html>
+<head>
+<meta property="qc:admins" content="7102427066254636" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+</head>
+<body>
 <a href="/home/kind">kindeditor</a>
 <a href="/home/upload">pluplaod</a>
-{if $openid}QQ已登录{else}<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>{/if}
+{if isset($smarty.session.userid) && $smarty.session.userid }
+	用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
+{else}
+	<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>
+{/if}
+</body>
 <script type="text/javascript">
-var childWindow;
 function toQzoneLogin()
 {
-	childWindow = window.open("/common/qqlogin/auth","TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+	location.href='/common/qqlogin/auth';
 
 } 
-
-function closeChildWindow()
-{
-	childWindow.close();
-
-}
 </script>

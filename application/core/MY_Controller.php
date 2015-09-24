@@ -2,8 +2,7 @@
 class MY_Controller extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-		session_start();
-		if(!(isset($_SESSION['admin']) and $_SESSION['admin'])){
+		if(!(isset($_SESSION['userid']) and $_SESSION['userid'])){
 			header('Location:/common/login');
 		}
 	}

@@ -1,6 +1,5 @@
 <?php
 if (! defined ( 'ROOT' )) die ( 'Access denied.' );
-session_start();
 class chkcode{
 	//图片对象、宽度、高度、验证码长度
 	private $im;

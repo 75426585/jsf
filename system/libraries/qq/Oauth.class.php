@@ -22,7 +22,6 @@ class Oauth{
     
 
     function __construct(){
-		session_start();
         $this->recorder = new Recorder();
         $this->urlUtils = new URL();
         $this->error = new ErrorCase();
