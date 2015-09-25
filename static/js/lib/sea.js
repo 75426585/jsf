@@ -5,9 +5,10 @@
 seajs.config({
 	base:'/static/js/',
 	alias:{
-		'jquery':'/static/js/lib/jquery.min',
-		'template':'/static/js/lib/template',
-		'dlg':'/static/js/lib/artDialog/jquery.artDialog.js?skin=blue'
+		'jquery':'lib/jquery.min',
+		'template':'lib/template',
+		'dlg':'lib/artDialog/jquery.artDialog.js?skin=blue'
+		'ztree':'lib/ztree/jquery.ztree.all-3.5.min.js'
 	}
 })
 seajs.use('jquery',function(){

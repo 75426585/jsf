@@ -1,0 +1,69 @@
+<!doctype html>
+<HTML>
+<HEAD>
+<TITLE> ZTREE DEMO - Simple Data</TITLE>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="/static/js/lib/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/js/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script src="/static/js/lib/ztree/jquery.ztree.all-3.5.min.js"></script>
+<SCRIPT type="text/javascript">
+<!--
+var setting = {
+	data: {
+		simpleData: {
+			enable: true
+		}
+	},
+	edit:{
+		enable:true,
+	},
+	callback: {
+		beforeDrag: beforeDrag,
+		beforeDrop: beforeDrop
+	}
+};
+
+var zNodes =[
+{ id:1, pId:0, name:"父级菜单1", open:true,drag:false},
+{ id:2, pId:1, name:"子级菜单1.1",dragInner:false},
+{ id:3, pId:1, name:"子级菜单1.2"},
+{ id:4, pId:1, name:"子级菜单1.3"},
+{ id:5, pId:1, name:"子级菜单1.4"},
+{ id:6, pId:1, name:"子级菜单1.5"},
+{ id:7, pId:0, name:"父级菜单2", open:true,isParent:true,drag:false},
+{ id:8, pId:7, name:"子级菜单2.1"},
+{ id:9, pId:7, name:"子级菜单2.2"},
+{ id:10, pId:7, name:"子级菜单2.3"},
+{ id:11, pId:7, name:"子级菜单2.4"},
+{ id:12, pId:7, name:"子级菜单2.5"},
+];
+
+$(document).ready(function(){
+	$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+	var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+	var nodes = treeObj.getNodes();
+	$('#btn').click(function(){
+	})
+});
+function beforeDrag(treeId, treeNodes) {
+	for (var i=0,l=treeNodes.length; i<l; i++) {
+		if (treeNodes[i].drag === false) {
+			return false;
+		}
+
+	}
+	return true;
+
+}
+function beforeDrop(treeId, treeNodes, targetNode, moveType) {
+	console.log(moveType)
+	return targetNode ? targetNode.drop !== false : true;
+
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<ul id="treeDemo" class="ztree"></ul>
+<div style="width:20px;height:20px;background-color:#aaa;" id="btn"></div>
+</BODY>
+</HTML>

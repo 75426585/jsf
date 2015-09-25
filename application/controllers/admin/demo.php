@@ -19,4 +19,9 @@ class demo extends MY_Controller{
 		$this->sm->assign($data);
 		$this->sm->view('demo/qn.html');
 	}
+
+	//ztree：树形目录
+	public function ztree(){
+		$this->sm->view('demo/ztree.html');
+	}
 }

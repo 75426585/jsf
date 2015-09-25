@@ -4,13 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 </head>
 <body>
-<a href="/admin/demo/kind">kindeditor</a>
-<a href="/admin/demo/qn">pupload上传七牛</a>
 {if isset($smarty.session.userid) && $smarty.session.userid }
 	用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
 {else}
 	<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>
 {/if}
+<br/>
+<a href="/admin/demo/kind">kindeditor编辑器</a><br/>
+<a href="/admin/demo/qn">pupload上传七牛</a><br/>
+<a href="/admin/demo/ztree">ztree树形目录</a><br/>
 </body>
 <script type="text/javascript">
 function toQzoneLogin()

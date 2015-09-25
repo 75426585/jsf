@@ -52,7 +52,7 @@ class Oauth{
     }
 
     public function qq_callback(){
-        $state = $_SESSION['state'];
+        $state = isset($_SESSION['state'])?$_SESSION['state']:'';
 
         //--------验证state防止CSRF攻击
         if($_GET['state'] != $state){
