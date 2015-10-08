@@ -7,7 +7,7 @@ seajs.config({
 	alias:{
 		'jquery':'lib/jquery.min',
 		'template':'lib/template',
-		'dlg':'lib/artDialog/jquery.artDialog.js?skin=blue'
+		'dlg':'lib/artDialog/jquery.artDialog.js?skin=blue',
 		'ztree':'lib/ztree/jquery.ztree.all-3.5.min.js'
 	}
 })

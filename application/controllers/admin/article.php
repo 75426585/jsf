@@ -15,12 +15,12 @@ class Article extends MY_Controller{
 			$data = $this->input->post();
 			var_dump($data);exit;
 		}else{
-			$this->sm->view('admin/article/add.php');
+			$this->sm->view('admin/article/add.html');
 		}
 	}
 
 	public function lists(){
-		$this->sm->view('admin/article/lists.php');
+		$this->sm->view('admin/article/lists.html');
 	}
 
 	public function cat($function=''){
