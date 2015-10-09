@@ -16,6 +16,12 @@ var setting = {
 	},
 	edit:{
 		enable:true,
+	    drag: {
+			autoExpandTrigger: true,
+			prev: dropPrev,
+			inner: dropInner,
+			next: dropNext
+	    },
 	},
 	callback: {
 		beforeDrag: beforeDrag,
@@ -24,46 +30,126 @@ var setting = {
 };
 
 var zNodes =[
-{ id:1, pId:0, name:"父级菜单1", open:true,drag:false},
-{ id:2, pId:1, name:"子级菜单1.1",dragInner:false},
-{ id:3, pId:1, name:"子级菜单1.2"},
-{ id:4, pId:1, name:"子级菜单1.3"},
-{ id:5, pId:1, name:"子级菜单1.4"},
-{ id:6, pId:1, name:"子级菜单1.5"},
-{ id:7, pId:0, name:"父级菜单2", open:true,isParent:true,drag:false},
-{ id:8, pId:7, name:"子级菜单2.1"},
-{ id:9, pId:7, name:"子级菜单2.2"},
-{ id:10, pId:7, name:"子级菜单2.3"},
-{ id:11, pId:7, name:"子级菜单2.4"},
-{ id:12, pId:7, name:"子级菜单2.5"},
+{ id:1, pId:0, name:"父级菜单1", open:true},
+{ id:2, pId:1, name:"子级菜单1.1",dropInner:false},
+{ id:3, pId:1, name:"子级菜单1.2",dropInner:false},
+{ id:4, pId:1, name:"子级菜单1.3",dropInner:false},
+{ id:5, pId:1, name:"子级菜单1.4",dropInner:false},
+{ id:6, pId:1, name:"子级菜单1.5",dropInner:false},
+{ id:7, pId:0, name:"父级菜单2", open:true,isParent:true,drag:true},
+{ id:8, pId:7, name:"子级菜单2.1",dropInner:false},
+{ id:9, pId:7, name:"子级菜单2.2",dropInner:false},
+{ id:10, pId:7, name:"子级菜单2.3",dropInner:false},
+{ id:11, pId:7, name:"子级菜单2.4",dropInner:false},
+{ id:12, pId:7, name:"子级菜单2.5",dropInner:false},
+{ id:13, pId:0, name:"父级菜单3", open:true,isParent:true,drag:true},
+{ id:14, pId:13, name:"子级菜单3.1",dropInner:false},
+{ id:15, pId:13, name:"子级菜单3.2",dropInner:false},
+{ id:16, pId:13, name:"子级菜单3.3",dropInner:false},
+{ id:17, pId:13, name:"子级菜单3.4",dropInner:false},
+{ id:18, pId:13, name:"子级菜单3.5",dropInner:false},
 ];
 
 $(document).ready(function(){
 	$.fn.zTree.init($("#treeDemo"), setting, zNodes);
 	var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
 	var nodes = treeObj.getNodes();
-	$('#btn').click(function(){
-	})
 });
+
+//拖动触发前
 function beforeDrag(treeId, treeNodes) {
 	for (var i=0,l=treeNodes.length; i<l; i++) {
 		if (treeNodes[i].drag === false) {
 			return false;
 		}
-
 	}
 	return true;
-
 }
+//放置触发前
 function beforeDrop(treeId, treeNodes, targetNode, moveType) {
 	console.log(moveType)
 	return targetNode ? targetNode.drop !== false : true;
+}
 
+var log, className = "dark", curDragNodes, autoExpandNode;
+
+//放置到节点前面触发
+function dropPrev(treeId, nodes, targetNode) {
+	var pNode = targetNode.getParentNode();
+	if (pNode && pNode.dropInner === false) {
+		return false;
+	} else {
+		for (var i=0,l=curDragNodes.length; i<l; i++) {
+			var curPNode = curDragNodes[i].getParentNode();
+				if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+					return false;
+				}
+		}
+	}
+	var curDragPId = curDragNodes[0].pId;
+	if(!curDragPId && targetNode.pId){
+		return false;
+	}
+	return true;
+}
+
+//放置到节点内部触发
+function dropInner(treeId, nodes, targetNode) {
+	if (targetNode && targetNode.dropInner === false) {
+		return false;
+	} else {
+		for (var i=0,l=curDragNodes.length; i<l; i++) {
+			if (!targetNode && curDragNodes[i].dropRoot === false) {
+				return false;
+			} else if (curDragNodes[i].parentTId && curDragNodes[i].getParentNode() !== targetNode && curDragNodes[i].getParentNode().childOuter === false) {
+				return false;
+			}
+		}
+	}
+	var curDragPId = curDragNodes[0].pId;
+	if(!curDragPId && !targetNode.pId){
+		return false;
+	}
+	return true;
+}
+
+//放置到节点下面触发
+function dropNext(treeId, nodes, targetNode) {
+	var pNode = targetNode.getParentNode();
+		if (pNode && pNode.dropInner === false) {
+			return false;
+		} else {
+			for (var i=0,l=curDragNodes.length; i<l; i++) {
+				var curPNode = curDragNodes[i].getParentNode();
+				if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+					return false;
+				}
+			}
+		}
+		var curDragPId = curDragNodes[0].pId;
+		if(!curDragPId && targetNode.pId){
+			return false;
+		}
+	return true;
+}
+//拖拽移动前给当前节点赋值
+function beforeDrag(treeId, treeNodes) {
+	className = (className === "dark" ? "":"dark");
+			for (var i=0,l=treeNodes.length; i<l; i++) {
+				if (treeNodes[i].drag === false) {
+					curDragNodes = null;
+					return false;
+				} else if (treeNodes[i].parentTId && treeNodes[i].getParentNode().childDrag === false) {
+					curDragNodes = null;
+					return false;
+				}
+			}
+		curDragNodes = treeNodes;
+		return true;
 }
 </SCRIPT>
 </HEAD>
 <BODY>
 <ul id="treeDemo" class="ztree"></ul>
-<div style="width:20px;height:20px;background-color:#aaa;" id="btn"></div>
 </BODY>
 </HTML>
