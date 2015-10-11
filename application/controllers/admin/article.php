@@ -6,59 +6,42 @@ class Article extends MY_Controller{
 		$this->load->model('article_model');
 	}
 
-	public function index(){
-		$this->cat();
-	}
-
-	public function add($function=''){
-		if($function == 'doadd'){
-			$data = $this->input->post();
-			var_dump($data);exit;
-		}else{
-			$this->sm->view('admin/article/add.html');
-		}
-	}
-
-	public function lists(){
-		$this->sm->view('admin/article/lists.html');
-	}
-
 	public function cat($function=''){
+		$post = $this->input->post();
+		$get = $this->input->get();
+		$cid = intval(isset($get['cid'])?$get['cid']:0);
 		if($function == 'add'){
-			$data = $this->input->post();
-			$res = $this->article_model->cat_insert($data);
+			$this->sm->view('admin/article/cat_add.html');
+		}elseif($function=='doadd'){
+			$name = trim($post['name']);
+			$res = $this->article_model->cat_add($name);
 			if($res){
-				echojson('1',$res,'添加成功！');
+				echojson('1','','添加成功');
 			}else{
-				echojson('0',$res,'添加失败');
+				echojson('1','','添加失败');
 			}
-		}elseif($function=='del'){
-			$cid =(int) $this->input->get('cid');
+		}elseif($function=='dodel'){
 			$res = $this->article_model->cat_del($cid);
 			if($res){
 				echojson('1','','删除成功！');
 			}else{
 				echojson('0','','删除失败！请确认是否有子目录或者目录下有文章！');
 			}
-		}elseif($function == 'edit'){
-			$cid =(int) $this->input->get('cid');
-			$catName = $this->db->get_where('article_cat',array('id'=>$cid))->result_array()[0]['cat_name'];
-			echojson('1',$catName);
+		}elseif($function=='get_catname'){
+			$cat_name = $this->db->get_where('article_cat',array('id'=>$cid))->row_array();
+			echojson('1',$cat_name['name']);
 		}elseif($function == 'doedit'){
-			$cid =(int) $this->input->get('cid');
-			$data = $this->input->post();
-			$res = $this->article_model->cat_edit($data,$cid);
+			$res = $this->db->update('article_cat',array('name'=>$post['name']),array('id'=>$cid));
 			if($res){
 				echojson('1',$res,'修改成功！');
 			}else{
 				echojson('0',$res,'修改失败');
 			}
 		}else{
-			$top_cat = $this->article_model->get_cat('0');
-			$all_cat = $this->article_model->get_cat('all');
+			$cat = $this->db->get('article_cat')->result_array();
 			$data = get_defined_vars();
 			$this->sm->assign($data);
-			$this->sm->view('admin/article/cat.php');
+			$this->sm->view('admin/article/cat_list.html');
 		}
 	}
 }

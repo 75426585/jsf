@@ -47,11 +47,18 @@
 
 $active_group = 'default';
 $active_record = TRUE;
+if ($_SERVER['SERVER_NAME'] == 'loc.je4.cn'){
+	$db['default']['hostname'] = $_SERVER['DB_LOC_HOST'];
+	$db['default']['username'] = $_SERVER['DB_LOC_USER'];
+	$db['default']['password'] = $_SERVER['DB_LOC_PASS'];
+	$db['default']['database'] = $_SERVER['DB_LOC_NAME'];
+}else{
+	$db['default']['hostname'] = $_SERVER['DB_FW_HOST'];
+	$db['default']['username'] = $_SERVER['DB_FW_USER'];
+	$db['default']['password'] = $_SERVER['DB_FW_PASS'];
+	$db['default']['database'] = $_SERVER['DB_FW_NAME'];
+}
 
-$db['default']['hostname'] = $_SERVER['DB_FW_HOST'];
-$db['default']['username'] = $_SERVER['DB_FW_USER'];
-$db['default']['password'] = $_SERVER['DB_FW_PASS'];
-$db['default']['database'] = $_SERVER['DB_FW_NAME'];
 $db['default']['port'] = '3306';
 $db['default']['pconnect'] = FALSE;
 

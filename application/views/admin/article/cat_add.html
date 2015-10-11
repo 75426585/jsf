@@ -1,0 +1,35 @@
+{extends file="../template.html"}
+{block name="main-wrap"}
+<ul class="breadcrumb">当前位置：
+	<a href="#">文章</a> <span class="divider">/</span>
+	<a href="#">文章分类</a> <span class="divider">/</span>
+	添加文章分类
+</ul>
+<div class="title_right">
+	<strong>添加文章分类</strong>
+</div>
+<div style="width:600px; margin:auto">
+	<table class="table table-bordered table-hover table-striped">
+		<tbody>
+			<tr align="center">
+				<td width="15%"><strong>分类ID</strong></td>
+				<td width="35%"><strong>分类名称</strong></td>
+				<td width="25%"><strong>文章数</strong></td>
+				<td width="25%"><strong>操作</strong></td>
+			</tr>
+			{foreach $cat as $v}
+			<tr align="center">
+				<td>{$v.id}</td>
+				<td>{$v.name}</td>
+				<td>1</td>
+				<td><a id="" href="">修改</a> <a id="" href="">删除</a> <a id="" href="">向上</a> <a id="" href="">向下</a></td>
+			</tr>
+			{foreachelse}
+			<tr>
+				<td colspan="4">咱无分类</td>
+			</tr>
+			{/foreach}
+		</tbody>
+	</table>
+</div>
+{/block}
