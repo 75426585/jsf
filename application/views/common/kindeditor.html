@@ -2,12 +2,18 @@
 <script charset="utf-8" src="/static/js/lib/kind/kindeditor-min.js"></script>
 <script charset="utf-8" src="/static/js/lib/kind/lang/zh_CN.js"></script>
 <script>
-var editor;
-KindEditor.ready(function(K) {
+	var editor;
+	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
-			uploadJson : '/common/upload/kind/'
+			uploadJson : '/common/upload/kind/',
+			afterCreate : function() {
+				this.sync();
+			},
+			afterBlur : function() {
+				this.sync();
+			}
+		});
 	});
-});
 </script>
 <!--
 <textarea name="content" style="width:800px;height:400px;visibility:hidden;">KindEditor</textarea>

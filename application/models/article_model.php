@@ -19,4 +19,16 @@ class Article_model extends CI_model{
 		if($has_article) return false;
 		return $this->db->delete('article_cat',array('id'=>$cid));
 	}
+
+	//添加文章
+	public function add($data){
+		$res = $this->db->insert('article',$data);
+		if($res){
+			$id = $this->db->insert_id();
+			$this->db->update('article',array('sort'=>$id),array('id'=>$id));
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

@@ -1,0 +1,16 @@
+{extends file="../template.html"}
+{block name="main-wrap"}
+<link rel="stylesheet" href="/static/js/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<input type="hidden" id="page" js="admin/article_tree"/>
+<ul class="breadcrumb">当前位置：
+	<a href="#">文章</a> <span class="divider">/</span>
+	树结构	
+</ul>
+<div class="title_right">
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/article/add" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加文章</a></span>
+	<strong>树结构</strong>
+</div>
+<div style="width:600px; margin:auto">
+	<ul id="tree" class="ztree"></ul>
+</div>
+{/block}

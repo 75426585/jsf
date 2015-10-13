@@ -1,60 +1,40 @@
 {extends file="../template.html"}
 {block name="main-wrap"}
+<input type="hidden" id="page" js="admin/article"/>
 <ul class="breadcrumb">当前位置：
-	<a href="#">首页</a> <span class="divider">/</span>
 	<a href="#">文章</a> <span class="divider">/</span>
 	文章列表
 </ul>
-<div class="title_right"><strong>客户投诉</strong></div>
-<div style="width:900px; margin:auto">
-	<table class="table table-bordered" >
-		<tr>
-			<td width="12%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">票号：</td>
-			<td width="38%"><input type="text" name="input" id="input" class="span1-1"  /></td>
-			<td width="12%" align="right" bgcolor="#f1f1f1">发货日期：</td>
-			<td><input type="text"  class="laydate-icon span1-1" id="Calendar" value="2015-08-25"  /></td>
-		</tr>
-		<tr>
-			<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">客户姓名：</td>
-			<td><input type="text" name="input3" id="input3" class="span1-1"  /></td>
-			<td align="right" bgcolor="#f1f1f1">客户电话：</td>
-			<td><input type="text" name="input4" id="input4" class="span1-1"  /></td>
-		</tr>
-		<tr>
-			<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">运费：</td>
-			<td><input type="text" name="input2" id="input2" class="span1-1"  /></td>
-			<td align="right" bgcolor="#f1f1f1">货款：</td>
-			<td><input type="text" name="input5" id="input5" class="span1-1"  /></td>
-		</tr>
-		<tr>
-			<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">投诉内容：</td>
-			<td colspan="3"><textarea name="input9" id="input9" class="span10"></textarea></td>
-		</tr>
-		<tr>
-			<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">客户要求：</td>
-			<td colspan="3"><textarea name="input11" id="input11" class="span10"></textarea></td>
-		</tr>
-		<tr>
-			<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">客户建议：</td>
-			<td colspan="3"><textarea name="input12" id="input12" class="span10"></textarea></td>
-		</tr>
-		<tr>
-			<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">被投诉部门：</td>
-			<td><input type="text" name="input6" id="input6" class="span1-1" /></td>
-			<td align="right" bgcolor="#f1f1f1">被投诉人：</td>
-			<td><input type="text" name="input8" id="input8" class="span1-1" /></td>
-		</tr>
-		<tr>
-			<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">受理人：</td>
-			<td><input type="text" name="input7" id="input7" class="span1-1" /></td>
-			<td align="right" bgcolor="#f1f1f1">受理日期：</td>
-			<td><input type="text"  class="laydate-icon span1-1" id="Calendar2" value="2015-08-25"  /></td>
-		</tr>
+<div class="title_right">
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/article/add" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加文章</a></span>
+	<strong>文章列表</strong>
+</div>
+<div style="width:600px; margin:auto">
+	<table class="table table-bordered table-hover table-striped">
+		<tbody>
+			<tr align="center">
+				<td width="15%"><strong>分类ID</strong></td>
+				<td width="35%"><strong>标题</strong></td>
+				<td width="25%"><strong>分类名</strong></td>
+				<td width="25%"><strong>操作</strong></td>
+			</tr>
+			{foreach $art as $v}
+			<tr align="center">
+				<td>{$v.id}</td>
+				<td>{$v.title}</td>
+				<td>{$v.cat_name}</td>
+				<td cat_id="{$v.id}"><a href="#" class="edit-link">修改</a> <a href="#" class="del-link">删除</a> <a href="#" class="up-link">向上</a> <a href="#" class="down-link">向下</a></td>
+			</tr>
+			{foreachelse}
+			<tr>
+				<td colspan="4">暂无分类</td>
+			</tr>
+			{/foreach}
+		</tbody>
 	</table>
-	<table  class="margin-bottom-20 table  no-border" >
-		<tr>
-			<td class="text-center"><input type="button" value="确定" class="btn btn-info " style="width:80px;" /></td>
-		</tr>
-	</table>
-</div> 
+</div>
+<!--添加弹出框-->
+<form id="add-form" style="display:none" action="/admin/article/cat/doadd">
+	<strong>分类名称：　</strong><input type="text" name="name"/>
+</form>
 {/block}
