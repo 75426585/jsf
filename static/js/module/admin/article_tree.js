@@ -2,6 +2,10 @@ define(function(require, exports) {
 	require('ztree');
 	//ztree 配置
 	var setting = {
+		view: {
+			addHoverDom: addHoverDom,
+			removeHoverDom: removeHoverDom
+		},
 		data: {
 			simpleData: {
 				enable: true
@@ -18,14 +22,18 @@ define(function(require, exports) {
 		},
 		callback: {
 			beforeDrag: beforeDrag,
-			beforeDrop: beforeDrop
+			beforeDrop: beforeDrop,
+			onRemove: onRemove,
+			onRename: onRename,
+			beforeRemove: beforeRemove
 		}
 	};
 
 	$(function() {
 		$.get('/admin/article/tree_json', function(data) {
-			$.fn.zTree.init($("#tree"), setting,data.data);
-		},'json')
+			$.fn.zTree.init($("#tree"), setting, data.data);
+		},
+		'json')
 	})
 
 	//拖动触发前
@@ -120,6 +128,66 @@ define(function(require, exports) {
 		curDragNodes = treeNodes;
 		return true;
 	}
+
+	//对节点进行删除
+	function onRemove(treeId, treeNodes) {
+	}
+
+	function beforeRemove(treeId, treeNode){
+		$.post('/admin/article/tree/remove', {
+			id: treeNode.id
+		},
+		function(data) {
+			location.reload();
+		},
+		'json')
+	}
+
+	//对节点进行重命名
+	function onRename(event, treeId, treeNode, isCancel) {
+		var new_name = treeNode.name;
+		var id = treeNode.id;
+		$.post('/admin/article/tree/rename', {
+			id: id,
+			name: new_name
+		},
+		function(data) {},
+		'json')
+	}
+
+	//增加节点显示
+	var newCount = 1;
+	function addHoverDom(treeId, treeNode) {
+		var sObj = $("#" + treeNode.tId + "_span");
+		if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0 || treeNode.add == false) return;
+		var addStr = "<span class='button add' id='addBtn_" + treeNode.tId + "' title='add node' onfocus='this.blur();'></span>";
+		sObj.after(addStr);
+		var btn = $("#addBtn_" + treeNode.tId);
+		if (btn) btn.bind("click", function() {
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			$.post('/admin/article/tree/add_node', {
+				cat_id: treeNode.id
+			},
+			function(data) {
+				location.reload();
+			},
+			'json')
+			/*
+			zTree.addNodes(treeNode, {
+				id: (100 + newCount),
+				pId: treeNode.id,
+				name: "新建" + (newCount++)
+			});
+			*/
+			return false;
+		});
+	};
+
+	//增加节点隐藏
+	function removeHoverDom(treeId, treeNode) {
+		$("#addBtn_" + treeNode.tId).unbind().remove();
+
+	};
 
 })
 

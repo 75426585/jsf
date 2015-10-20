@@ -110,8 +110,17 @@ class Article extends MY_Controller{
 	}
 
 	//树形结构
-	public function tree(){
-		$this->sm->view('admin/article/tree.html');
+	public function tree($func=''){
+		$post = $this->input->post();
+		if($func=='rename'){
+			$this->db->update('article',array('title'=>$post['name']),array('id'=>$post['id']));
+		}elseif($func=='add_node'){
+			$this->article_model->add(array('title'=>'新建文章','cat_id'=>$post['cat_id']));
+		}elseif($func=='remove'){
+			$this->db->delete('article',array('id'=>intval($post['id'])));
+		}else{
+			$this->sm->view('admin/article/tree.html');
+		}
 	}
 
 	//获取树节点单json
@@ -125,6 +134,7 @@ class Article extends MY_Controller{
 			$temp['name'] = $v['title'] ;
 			$temp['open'] = true ;
 			$temp['dropInner'] = true;
+			$temp['add'] = true;
 			$tree_nodes[] = $temp;
 			$this->db->order_by('sort asc');
 			$art = $this->db->get_where('article',array('cat_id'=>$v['id']))->result_array();
@@ -133,6 +143,7 @@ class Article extends MY_Controller{
 				$temp1['pId'] = $v['id'] ;
 				$temp1['name'] = $v1['title'] ;
 				$temp1['dropInner'] = false;
+				$temp1['add'] = false;
 				$tree_nodes[] = $temp1;
 			}
 

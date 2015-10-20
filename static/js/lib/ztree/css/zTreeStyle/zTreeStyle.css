@@ -95,3 +95,4 @@ ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height
 	padding:0;
 	background:none;
 }*/
+.ztree li span.button.add {margin-left:2px; margin-right: -1px; background-position:-144px 0; vertical-align:top; *vertical-align:middle}

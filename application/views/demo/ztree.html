@@ -67,7 +67,7 @@ function beforeDrag(treeId, treeNodes) {
 }
 //放置触发前
 function beforeDrop(treeId, treeNodes, targetNode, moveType) {
-	console.log(moveType)
+	console.log(zNodes)
 	return targetNode ? targetNode.drop !== false : true;
 }
 
