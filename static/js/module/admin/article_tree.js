@@ -47,8 +47,25 @@ define(function(require, exports) {
 	}
 	//放置触发前
 	function beforeDrop(treeId, treeNodes, targetNode, moveType) {
-		console.log(moveType)
-		return targetNode ? targetNode.drop !== false: true;
+		//一级不能成为二级
+		if (!targetNode || targetNode.drop == false) {
+			return false;
+		}
+		//二级不能成为1级
+		if (treeNodes[0].pId != '0' && moveType != 'inner' && targetNode.pId == null ) {
+			return false;
+		}
+		$.post('/admin/article/tree/change_order', {
+			id_one: treeNodes[0].id,
+			id_two: targetNode.id,
+			type: moveType,
+			pid: targetNode.pId
+		},
+		function(data) {
+			return false;
+		},
+		'json');
+
 	}
 
 	var log, className = "dark",
@@ -130,10 +147,9 @@ define(function(require, exports) {
 	}
 
 	//对节点进行删除
-	function onRemove(treeId, treeNodes) {
-	}
+	function onRemove(treeId, treeNodes) {}
 
-	function beforeRemove(treeId, treeNode){
+	function beforeRemove(treeId, treeNode) {
 		$.post('/admin/article/tree/remove', {
 			id: treeNode.id
 		},
@@ -172,13 +188,6 @@ define(function(require, exports) {
 				location.reload();
 			},
 			'json')
-			/*
-			zTree.addNodes(treeNode, {
-				id: (100 + newCount),
-				pId: treeNode.id,
-				name: "新建" + (newCount++)
-			});
-			*/
 			return false;
 		});
 	};

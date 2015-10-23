@@ -118,6 +118,12 @@ class Article extends MY_Controller{
 			$this->article_model->add(array('title'=>'新建文章','cat_id'=>$post['cat_id']));
 		}elseif($func=='remove'){
 			$this->db->delete('article',array('id'=>intval($post['id'])));
+		}elseif($func=='change_order'){
+			$id1 = intval($post['id_one']);
+			$id2 = intval($post['id_two']);
+			$type = trim($post['type']);
+			$pid = trim($post['pid']);
+			$this->article_model->change_order($id1,$id2,$type,$pid);
 		}else{
 			$this->sm->view('admin/article/tree.html');
 		}
