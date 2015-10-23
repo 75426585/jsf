@@ -52,7 +52,7 @@ define(function(require, exports) {
 			return false;
 		}
 		//二级不能成为1级
-		if (treeNodes[0].pId != '0' && moveType != 'inner' && targetNode.pId == null ) {
+		if (treeNodes[0].pId != '0' && moveType != 'inner' && targetNode.pId == null) {
 			return false;
 		}
 		$.post('/admin/article/tree/change_order', {
@@ -197,6 +197,18 @@ define(function(require, exports) {
 		$("#addBtn_" + treeNode.tId).unbind().remove();
 
 	};
+
+	//添加分类
+	$('.cat_add').click(function() {
+		$.post('/admin/article/tree/add_node', {
+			cat_id:0
+		},
+		function(data) {
+			location.reload();
+		},
+		'json')
+
+	})
 
 })
 

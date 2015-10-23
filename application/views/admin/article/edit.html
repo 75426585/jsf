@@ -4,29 +4,29 @@
 <ul class="breadcrumb">当前位置：
 	<a href="#">首页</a> <span class="divider">/</span>
 	<a href="#">文章</a> <span class="divider">/</span>
-	添加文章
+	修改文章
 </ul>
-<div class="title_right"><strong>添加文章</strong></div>
+<div class="title_right"><strong>修改文章</strong></div>
 <div style="width:900px; margin:auto">
 	<table class="table table-bordered" >
-		<form action="/admin/article/add" method="post" id="add-form">
+		<form action="/admin/article/edit/{$art.id}/doedit" method="post" id="add-form">
 			<tr>
 				<td width="12%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">标题：</td>
-				<td width="38%"><input type="text" name="title" id="input" style="width:200px;" class="span1-1" value=""  /></td>
+				<td width="38%"><input type="text" name="title" id="input" style="width:200px;" class="span1-1" value="{$art.title|default:''}"  /></td>
 				<td width="12%" align="right" bgcolor="#f1f1f1">分类：</td>
 				<td>
-					{html_options name="cat_id" options=$cat_options}
+					{html_options name="cat_id" options=$cat_options selected="{$art.cat_id|default:''}"}
 				</td>
 			</tr>
 			<tr>
 				<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">文章内容：</td>
-				<td colspan="3" align="center"><textarea name="content" style="width:800px;height:600px;visibility:hidden;"></textarea></td>
+				<td colspan="3" align="center"><textarea name="content" style="width:800px;height:600px;visibility:hidden;">{$art.content|default:''}</textarea></td>
 			</tr>
 		</form>
 	</table>
 	<table  class="margin-bottom-20 table  no-border" >
 		<tr>
-			<td class="text-center"><input type="button" value="添加" class="btn btn-info sub" style="width:80px;" /></td>
+			<td class="text-center"><input type="button" value="修改" class="btn btn-info sub" style="width:80px;" /></td>
 		</tr>
 	</table>
 </div> 
