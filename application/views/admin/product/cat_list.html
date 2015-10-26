@@ -1,0 +1,40 @@
+{extends file="../template.html"}
+{block name="main-wrap"}
+<input type="hidden" id="page" js="admin/product_cat"/>
+<ul class="breadcrumb">当前位置：
+	<a href="#">产品</a> <span class="divider">/</span>
+	产品分类
+</ul>
+<div class="title_right">
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small cat_add" href="#" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加产品分类</a></span>
+	<strong>产品产品列表</strong>
+</div>
+<div style="width:600px; margin:auto">
+	<table class="table table-bordered table-hover table-striped">
+		<tbody>
+			<tr align="center">
+				<td width="15%"><strong>分类ID</strong></td>
+				<td width="35%"><strong>分类名称</strong></td>
+				<td width="25%"><strong>产品数</strong></td>
+				<td width="25%"><strong>操作</strong></td>
+			</tr>
+			{foreach $cat as $v}
+			<tr align="center">
+				<td>{$v.p_id}</td>
+				<td>{$v.title}</td>
+				<td>1</td>
+				<td cat_id="{$v.p_id}"><a href="javascript:;" class="edit-link">修改</a> <a href="javascript:;" class="del-link">删除</a></td>
+			</tr>
+			{foreachelse}
+			<tr>
+				<td colspan="4">暂无分类</td>
+			</tr>
+			{/foreach}
+		</tbody>
+	</table>
+</div>
+<!--添加弹出框-->
+<form id="add-form" style="display:none" action="/admin/product/cat/doadd">
+	<strong>分类名称：　</strong><input type="text" name="name"/>
+</form>
+{/block}
