@@ -1,0 +1,64 @@
+{extends file="../template.html"}
+{block name="main-wrap"}
+<link rel="stylesheet" href="/static/js/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<input type="hidden" id="page" js="admin/system/menu_tree"/>
+<ul class="breadcrumb">当前位置：
+	<a href="javascript:;">系统</a> <span class="divider">/</span>
+	导航菜单	
+</ul>
+<div class="title_right">
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/system/tree/add" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加主菜单</a></span>
+	<strong>菜单结构</strong>
+</div>
+<a  class="btn btn-info btn-small cat_add" href="javascript:;" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加主菜单</a>
+<div style="width:600px; margin:auto">
+	<ul id="tree" class="ztree"></ul>
+</div>
+<style type="text/css">
+div #rMenu { position:absolute; visibility:hidden; top:0; background-color: #555;text-align: left;padding: 2px;}
+div #rMenu ul{
+	margin: 1px 0;
+}
+div #rMenu ul li{
+	margin: 1px 0;
+	padding: 0 5px;
+	cursor: pointer;
+	list-style: none outside none;
+	background-color: #DFDFDF;
+
+}
+#menu_edit_div dd{
+	line-height:40px;
+}
+
+#content_id{
+	display:none;
+}
+</style>
+<!--右键菜单-->
+<div id="rMenu" m_id="">
+	<ul>
+		<li id="m_edit">修改菜单</li>
+	</ul>
+</div>
+<!--菜单修改-->
+<div id="menu_edit_div" style="display:none;">
+	<form action="/admin/system/menu/edit_url" method="post">
+		<dl>
+			<dd><span>菜单名称：</span><input type="text" id="title" value=""/></dd>
+			<dd><span>菜单类型：</span>
+			<select id="menu_type">
+				{html_options options=$site_config.menu_type}
+			</select>
+			</dd>
+			<dd id="content_id">
+			<span>菜单显示：</span>
+			<select id="content_select">
+			</select>
+			</dd>
+			<dd><span>菜单地址：</span><input type="text" name="url" id="url" disabled="disabled" value=""></dd>
+			</ur>
+		</form>
+	</div>
+
+	{/block}
