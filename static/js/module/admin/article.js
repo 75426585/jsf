@@ -33,29 +33,5 @@ define(function(require, exports) {
 		})
 	})
 
-	//添加文章
-	$('.sub').click(function() {
-		var url = $('#add-form').attr('action');
-		$.post(url, $('#add-form').serialize(), function(data) {
-			if (data.status == '1') {
-				art.dialog({
-					title: '提示信息',
-					content: data.msg,
-					icon: 'succeed',
-					ok: function() {
-						location.href='/admin/article/lists';
-					}
-				})
-			} else {
-				art.dialog({
-					title: '提示信息',
-					content: data.msg,
-					icon: 'error',
-					ok: true
-				})
-			}
-		},
-		'json')
-	})
 })
 

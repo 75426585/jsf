@@ -1,0 +1,35 @@
+{extends file="../template.html"}
+{block name="main-wrap"}
+<link rel="stylesheet" type="text/css" href="/static/js/lib/fancybox/jquery.fancybox.css" />
+<input type="hidden" id="page" js="admin/system/single"/>
+<ul class="breadcrumb">当前位置：
+	<a href="#">单页</a> <span class="divider">/</span>
+	单页列表
+</ul>
+<div class="title_right">
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small fancybox fancybox.iframe" href="/admin/system/single/add" role="button"><i class="icon-plus icon-white"></i>添加单页</a></span>
+	<strong>单页列表</strong>
+</div>
+<div style="width:600px; margin:auto">
+	<table class="table table-bordered table-hover table-striped">
+		<tbody>
+		<tr align="center">
+			<td width="15%"><strong>单页ID</strong></td>
+			<td width="35%"><strong>标题</strong></td>
+			<td width="25%"><strong>操作</strong></td>
+		</tr>
+		{foreach $single as $v}
+		<tr align="center">
+			<td>{$v.id}</td>
+			<td>{$v.title}</td>
+			<td><a href="/admin/system/single/edit/{$v.id}" class="fancybox fancybox.iframe">修改</a> <a href="/admin/system/single/dodel/{$v.id}" class="del-link">删除</a></td>
+		</tr>
+		{foreachelse}
+		<tr>
+			<td colspan="4">暂无分类</td>
+		</tr>
+		{/foreach}
+		</tbody>
+	</table>
+</div>
+{/block}

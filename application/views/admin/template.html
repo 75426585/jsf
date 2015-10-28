@@ -1,67 +1,68 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>系统管理后台</title>
-		<link rel="stylesheet" href="/static/style/common/bootstrap.css" />
-		<link rel="stylesheet" href="/static/style/admin/base.css" />
-		<script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
-		<script type="text/javascript" src="/static/js/lib/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/static/js/lib/sdmenu.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>系统管理后台</title>
+<link rel="stylesheet" href="/static/style/common/bootstrap.css" />
+<link rel="stylesheet" href="/static/style/admin/base.css" />
+<script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/lib/sdmenu.js"></script>
 
-	</head>
-	<body>
-		<div class="header">
-			<div class="logo"><img  src="" /></div>
-			<div class="header-right">
-				<i class="icon-question-sign icon-white"></i> <a href="javascript:;">帮助</a> <i class="icon-off icon-white"></i> <a id="modal-973558" href="#modal-container-973558" role="button" data-toggle="modal">注销</a> <i class="icon-user icon-white"></i> <a href="">{$smarty.session.userid}</a> <i class="icon-envelope icon-white"></i> <a href=""></a>
-				<div id="modal-container-973558" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:300px; margin-left:-150px; top:30%">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel">
-							注销系统
-						</h3>
-					</div>
-					<div class="modal-body">
-						<p>
-						您确定要注销退出系统吗？
-						</p>
-					</div>
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> <a class="btn btn-primary" style="line-height:20px;" href="登录.html" >确定退出</a>
-					</div>
-				</div>
+</head>
+<body>
+<div class="header">
+	<div class="logo"><img  src="" /></div>
+	<div class="header-right">
+		<i class="icon-question-sign icon-white"></i> <a href="javascript:;">帮助</a> <i class="icon-off icon-white"></i> <a id="modal-973558" href="#modal-container-973558" role="button" data-toggle="modal">注销</a> <i class="icon-user icon-white"></i> <a href="">{$smarty.session.userid}</a> <i class="icon-envelope icon-white"></i> <a href=""></a>
+		<div id="modal-container-973558" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:300px; margin-left:-150px; top:30%">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">
+					注销系统
+				</h3>
+			</div>
+			<div class="modal-body">
+				<p>
+				您确定要注销退出系统吗？
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> <a class="btn btn-primary" style="line-height:20px;" href="登录.html" >确定退出</a>
 			</div>
 		</div>
-		<!-- 顶部 -->     
-
-		<div id="middle">
-			<div class="left">
-				<script type="text/javascript">
-					var myMenu;
-					window.onload = function() {
-						myMenu = new SDMenu("my_menu");
-						myMenu.init();
-					};
-				</script>
-				{include file='admin/menu.html'}
-			</div>
-			<div class="Switch"></div>
-			<script type="text/javascript">
-				$(document).ready(function(e) {
-						$(".Switch").click(function(){
-							$(".left").toggle();
-							});
-
-						});
-</script>
-<div class="right"  id="mainFrame">
-	<div class="right_cont">
-		{block name="main-wrap"}{/block}
-	</div>     
-<!-- 底部 -->
+	</div>
 </div>
-	<div id="footer">版权所有：北田环宇&copy; 2015&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.bjbtss.com/" target="_blank">北田遮阳</a></div> 
+<!-- 顶部 -->     
+
+<div id="middle">
+	<div class="left">
+		<script type="text/javascript">
+var myMenu;
+window.onload = function() {
+	myMenu = new SDMenu("my_menu");
+	myMenu.init();
+};
+		</script>
+		{include file='admin/menu.html'}
+	</div>
+	<div class="Switch"></div>
+	<script type="text/javascript">
+$(document).ready(function(e) {
+		$(".Switch").click(function(){
+				$(".left").toggle();
+				});
+
+		});
+	</script>
+	<div class="right"  id="mainFrame">
+		<div class="right_cont">
+			{block name="main-wrap"}{/block}
+		</div>     
+		<!-- 底部 -->
+		<div id="footer">版权所有：北田环宇&copy; 2015&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.bjbtss.com/" target="_blank">北田遮阳</a></div> 
+	</div>
+</div>
 </body>
 <script type="text/javascript" src="/static/js/lib/sea.js"></script>
 </html>

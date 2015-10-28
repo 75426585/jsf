@@ -13,7 +13,7 @@ class System extends MY_Controller{
 			echojson('1',$menu_info);
 		}elseif($func == 'get_content_options'){//获取可供选择的菜单选项
 			if(intval($get['type']) == '1'){
-				$art_cat = $this->db->get('single_art')->result_array();
+				$art_cat = $this->db->get('single')->result_array();
 			}else{
 				$art_cat = $this->db->get_where('article',array('cat_id'=>0))->result_array();
 			}
@@ -87,5 +87,43 @@ class System extends MY_Controller{
 		}
 		//var_dump($tree_nodes);exit;
 		echojson(1,$tree_nodes);
+	}
+
+	//单页管理
+	public function single($func = '',$sin_id=0){
+		$post = $this->input->post();
+		$sin_id = intval($sin_id); 
+		if($func == 'add'){
+			$this->sm->display('admin/system/single_add.html');
+		}elseif($func == 'doadd'){
+			$res = $this->db->insert('single',$post);
+			if($res){
+				echojson('1',$res,'添加成功');
+			}else{
+				echojson('0',$res,'添加失败');
+			}
+		}elseif($func == 'edit'){
+			$sin_info = $this->db->get_where('single',array('id'=>$sin_id))->row_array();
+			$this->sm->assign('sin_info',$sin_info);
+			$this->sm->display('admin/system/single_edit.html');
+		}elseif($func == 'doedit'){
+			$res = $this->db->update('single',$post,array('id'=>$sin_id));
+			if($res){
+				echojson('1',$res,'修改成功');
+			}else{
+				echojson('0',$res,'修改失败');
+			}
+		}elseif($func == 'dodel'){
+			$res = $this->db->delete('single',array('id'=>$sin_id));
+			if($res){
+				echojson('1',$res,'删除成功');
+			}else{
+				echojson('0',$res,'删除失败');
+			}
+		}else{
+			$single = $this->db->get('single')->result_array();
+			$this->sm->assign('single',$single);
+			$this->sm->display('admin/system/single.html');
+		}
 	}
 }
