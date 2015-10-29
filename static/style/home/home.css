@@ -1,0 +1,39 @@
+.Nav{
+	width: 990px;
+	margin: 3px auto 0 auto;
+	height: 39px;
+	background: url(/static/images/home/nav_bg.jpg) repeat-x;
+}
+.NavL{
+	width:  4px;
+	height: 39px;
+	float: left;
+	background: url(/static/images/home/bg.png)  0px -39px;
+}
+.NavR{
+	width:  4px;
+	height: 39px;
+	float:right;
+	background: url(/static/images/home/bg.png)  -5px -39px;
+}
+.NavC a{
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	width: 81px;
+	height: 39px;
+	line-height: 39px;
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	float: left;
+	width:  4px;
+	height: 39px;
+	float:right;
+}
+.NavC .cur{
+	width:  4px;
+	height: 39px;
+	float:right;
+	background: url(/static/images/home/bg.png)  -5px -39px;
+}

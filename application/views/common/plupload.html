@@ -54,12 +54,4 @@ uploader.bind('FileUploaded',function(uploader,file,responseObject){
 $('#upload-btn').click(function(){
 	uploader.start(); //开始上传
 });
-//上传按钮
-$('#do-insert').click(function(){
-	var ids = new Array();
-	$('.file-list tr').find('.cancel-img').each(function(i){
-		ids[i] = $(this).attr('key');
-	})
-		alert(ids)
-});
 </script>

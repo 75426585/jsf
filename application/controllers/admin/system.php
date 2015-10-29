@@ -127,6 +127,25 @@ class System extends MY_Controller{
 		}
 	}
 
+	//首页动画
+	public function nav_img($func=''){
+		if($func == 'insert'){
+			$url_arr = $this->input->post('urls');
+			foreach($url_arr as $v){
+				$this->db->insert('nav_img',array('url'=>$v));
+			}
+			echojson('1','','添加成功');
+		}elseif($func== 'edit'){
+
+		}else{
+			$data['imgs'] = $this->db->get('nav_img')->result_array();
+			$this->load->library('qn');
+			$data['token'] = $this->qn->getToken();
+			$this->sm->assign($data);
+			$this->sm->display('admin/system/nav_img.html');
+		}
+	}
+
 	//环境信息
 	public function evn(){
 		phpinfo();
