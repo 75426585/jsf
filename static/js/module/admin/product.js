@@ -1,5 +1,7 @@
 define(function(require, exports) {
 	var dlg = require('dlg');
+	require('fancybox');
+	$('.fancybox').fancybox({width:920});
 	//删除产品
 	$('.del-link').click(function() {
 		var art_id = $(this).parent().attr('art_id');
@@ -57,5 +59,6 @@ define(function(require, exports) {
 		},
 		'json')
 	})
+
 })
 

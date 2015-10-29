@@ -1,6 +1,7 @@
 {extends file="../template.html"}
 {block name="main-wrap"}
 <input type="hidden" id="page" js="admin/product"/>
+<link rel="stylesheet" type="text/css" href="/static/js/lib/fancybox/jquery.fancybox.css" />
 <ul class="breadcrumb">当前位置：
 	<a href="#">产品</a> <span class="divider">/</span>
 	产品列表
@@ -13,7 +14,7 @@
 	<table class="table table-bordered table-hover table-striped">
 		<tbody>
 			<tr align="center">
-				<td width="15%"><strong>分类ID</strong></td>
+				<td width="15%"><strong>产品ID</strong></td>
 				<td width="35%"><strong>标题</strong></td>
 				<td width="25%"><strong>分类名</strong></td>
 				<td width="25%"><strong>操作</strong></td>
@@ -23,7 +24,7 @@
 				<td>{$v.p_id}</td>
 				<td>{$v.title}</td>
 				<td>{$v.cat_name}</td>
-				<td art_id="{$v.p_id}"><a href="/admin/product/edit/{$v.p_id}" class="edit-link">修改</a> <a href="javascript:;" class="del-link">删除</a></td>
+				<td><a href="/admin/product/edit/{$v.p_id}" class="fancybox fancybox.iframe">修改</a> <a href="javascript:;" class="del-link">删除</a></td>
 			</tr>
 			{foreachelse}
 			<tr>

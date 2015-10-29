@@ -126,4 +126,9 @@ class System extends MY_Controller{
 			$this->sm->display('admin/system/single.html');
 		}
 	}
+
+	//环境信息
+	public function evn(){
+		phpinfo();
+	}
 }

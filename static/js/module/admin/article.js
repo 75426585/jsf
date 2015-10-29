@@ -1,5 +1,7 @@
 define(function(require, exports) {
 	var dlg = require('dlg');
+	require('fancybox');
+	$('.fancybox').fancybox({width:920});
 	//删除文章
 	$('.del-link').click(function() {
 		var art_id = $(this).parent().attr('art_id');
