@@ -5,6 +5,7 @@ class CI_sm extends Smarty{
 		parent::__construct();
 		$this->compile_dir = APPPATH .'../cache';
 		$this->template_dir = APPPATH . "views";
+		$this->config_dir= APPPATH . "config";
 		$this->left_delimiter = "{"; //左定界符 
 		$this->right_delimiter = "}"; //右定界符 
 		if(ENVIRONMENT == 'development'){

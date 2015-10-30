@@ -48,6 +48,8 @@ class  Product extends MY_Controller{
 	//添加产品
 	public function add($function=''){
 		if($function==''){
+			$this->load->library('qn');
+			$token = $this->qn->getToken();
 			$cat = $this->db->get_where('product',array('cat_id'=>0))->result_array();
 			$cat_options = array();
 			if($cat){
@@ -66,6 +68,13 @@ class  Product extends MY_Controller{
 			}else{
 				echojson('1','','添加失败');
 			}
+		}elseif($function == 'img'){
+			$url_arr = $this->input->post('urls');
+			foreach($url_arr as $v){
+				$this->db->insert('pro_img',array('url'=>$v,'pro_id'=>-1));
+			}
+			$imgs = $this->db->get_where('pro_img',array('pro_id'=>'-1'))->result_array();
+			echojson('1',$imgs,'添加成功');
 		}
 	}
 

@@ -11,11 +11,14 @@
 	<strong>首页动画</strong>
 </div>
 <div style="width:500px; margin:auto">
-{include file="../../common/plupload.html"}
+	{include file="../../common/plupload.html"}
 </div>
-<div style="width:800px; margin:auto">
+<div style="width:700px; margin:auto">
 	{foreach $imgs as $v}
-	<img src="http://img.je4.cn/{$v.url}?imageView2/2/h/150"/>
+	<div class="nav_img" id="{$v.id}">
+		<a href="javascript:;" class="close-btn"></a>
+		<img src="{#IMG_DOMAIN#}/{$v.url}?imageView2/1/w/120/h/120"/>
+	</div>
 	{foreachelse}
 	暂无图片
 	{/foreach}

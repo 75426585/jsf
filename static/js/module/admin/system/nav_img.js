@@ -16,5 +16,19 @@ define(function(require, exports) {
 		},
 		'json');
 	});
+
+	//删除已添加图片
+	$('.nav_img .close-btn').click(function() {
+		var id = $(this).parent().attr('id');
+		$.post('/admin/system/nav_img/del', {
+			id: id
+		},
+		function(data) {
+			if (data.status == '1') {
+				location.reload();
+			}
+		},
+		'json');
+	})
 })
 

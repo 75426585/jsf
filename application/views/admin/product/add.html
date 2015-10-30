@@ -22,6 +22,16 @@
 				<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">产品内容：</td>
 				<td colspan="3" align="center"><textarea name="content" style="width:800px;height:600px;visibility:hidden;"></textarea></td>
 			</tr>
+			<tr>
+				<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">副图片：</td>
+				<td colspan="3" align="center">
+					<div style="width:500px; margin:auto" id="upload_div">
+					</div>
+					<div><a  class="btn btn-info btn-small add-img" href="javascript:;" role="button"><i class="icon-plus icon-white"></i>添加图片</a></div>
+					<div style="width:700px; margin:auto" id="show_photo_div">
+					</div>
+				</td>
+			</tr>
 		</form>
 	</table>
 	<table  class="margin-bottom-20 table  no-border" >
@@ -31,4 +41,15 @@
 	</table>
 </div> 
 {include file="../../common/kindeditor.html"}
+{include file="../../common/plupload.html"}
+{literal}
+<script id="pro_img" type="text/html">
+{{each data as v i}}
+<div class="nav_img" id="{{ v.id }}">
+	<a href="javascript:;" class="close-btn"></a>
+	<img src="http://img.je4.cn/{{ v.url }}?imageView2/1/w/120/h/120"/>
+</div>
+{{/each}}
+</script>
+{/literal}
 {/block}

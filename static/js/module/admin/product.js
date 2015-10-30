@@ -1,7 +1,10 @@
 define(function(require, exports) {
 	var dlg = require('dlg');
+	var tpl = require('template');
 	require('fancybox');
-	$('.fancybox').fancybox({width:920});
+	$('.fancybox').fancybox({
+		width: 920
+	});
 	//删除产品
 	$('.del-link').click(function() {
 		var art_id = $(this).parent().attr('art_id');
@@ -36,6 +39,7 @@ define(function(require, exports) {
 	})
 
 	//添加产品
+	/*
 	$('.sub').click(function() {
 		var url = $('#add-form').attr('action');
 		$.post(url, $('#add-form').serialize(), function(data) {
@@ -58,6 +62,38 @@ define(function(require, exports) {
 			}
 		},
 		'json')
+	})
+	*/
+	$('.add-img').click(function() {
+		art.dialog({
+			title: '添加组图片',
+			content: document.getElementById('upload_main_div'),
+			cancel: false,
+		})
+		$('.aui_close').show();
+	})
+
+	//确认插入
+	$('#do-insert').click(function() {
+		var ids = new Array();
+		$('.file-list tr').find('.cancel-img').each(function(i) {
+			ids[i] = $(this).attr('key');
+		})
+		$.post('/admin/product/add/img', {
+			urls: ids
+		},
+		function(data) {
+			if (data.status == '1') {
+				var list = art.dialog.list;
+				for (var i in list) {
+					list[i].close();
+				};
+				var html = tpl('pro_img',data);
+				$('#show_photo_div').html(html)
+			}
+		},
+		'json');
+
 	})
 
 })

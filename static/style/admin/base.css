@@ -98,26 +98,29 @@ div.sdmenu div a.current:hover{background:#38A3D5 url(../img/171.png) no-repeat 
 
 /* button 
 ---------------------------------------------- */
+/* zoom and *display = ie7 hack for display:inline-block */
 .button {
 	display: inline-block;
-	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
-		  *display: inline;
-		  vertical-align: baseline;
-		  margin: 0 2px;
-		  outline: none;
-		  cursor: pointer;
-		  text-align: center;
-		  text-decoration: none;
-		  font: 14px/100% Arial, Helvetica, sans-serif;
-		  padding: .5em 2em .55em;
-		  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-		  -webkit-border-radius: .5em; 
-		  -moz-border-radius: .5em;
-		  border-radius: .5em;
-		  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-		  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-		  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	zoom: 1; 
+	display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
+
+
 .button:hover {
 	text-decoration: none;
 }
@@ -155,3 +158,21 @@ div.sdmenu div a.current:hover{background:#38A3D5 url(../img/171.png) no-repeat 
 .info-red{ font-color:red; font-size:12px; }
 
 .edit-span,.del-span{ cursor:pointer; }
+/*首页动画*/
+.nav_img{
+	padding:10px;
+	position: relative;
+	float: left;
+	width: 120px;
+	height: 120px;
+	margin-top: 8px;
+}
+.nav_img .close-btn{
+	position: absolute;
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	right: 2px;
+	top: 2px;
+	background: url("/static/images/admin/close-ico.png") no-repeat;
+}

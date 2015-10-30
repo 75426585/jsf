@@ -135,8 +135,12 @@ class System extends MY_Controller{
 				$this->db->insert('nav_img',array('url'=>$v));
 			}
 			echojson('1','','添加成功');
-		}elseif($func== 'edit'){
-
+		}elseif($func== 'del'){
+			$id = $this->input->post('id');
+			$res = $this->db->delete('nav_img',array('id'=>$id));
+			if($res){
+				echojson('1','','删除成功');
+			}
 		}else{
 			$data['imgs'] = $this->db->get('nav_img')->result_array();
 			$this->load->library('qn');
