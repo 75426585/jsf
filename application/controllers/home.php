@@ -7,5 +7,4 @@ class Home extends CI_Controller {
 		$this->sm->view('home/index.html');
 	}
 
-
 }

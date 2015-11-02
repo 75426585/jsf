@@ -77,12 +77,17 @@ class CI_qn{
 	}
 
 	//上传文件
-	public function upload($file){
+	public function upload($file,$new_name = ''){
 		if(!(isset($_FILES[$file]['error']) && $_FILES[$file]['error'] == '0')) return false;
 		$tmp_name = $_FILES[$file]['tmp_name'];
+		$file_info = pathinfo($_FILES[$file]['name']);
+		if($new_name == ''){
+			$data_str = date('YmdHis');
+			$new_name = $data_str.'_'.rand(10000,99999).'.'.$file_info['extension'];
+		}
 		$this->getToken();
 		$uploadMgr = New UploadManager();
-		$upres = $uploadMgr->putFile($this->token, null,$tmp_name);
+		$upres = $uploadMgr->putFile($this->token,$new_name,$tmp_name);
 		if (! isset($upres[0]['key'])) {
 			return false;
 		} else {

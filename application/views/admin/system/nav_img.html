@@ -7,12 +7,10 @@
 	首页动画
 </ul>
 <div class="title_right">
-	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small fancybox fancybox.iframe" href="/admin/system/single/add" role="button"><i class="icon-plus icon-white"></i>添加单页</a></span>
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small add-img" href="javascript:;" role="button"><i class="icon-plus icon-white"></i>添加动画</a></span>
 	<strong>首页动画</strong>
 </div>
-<div style="width:500px; margin:auto">
-	{include file="../../common/plupload.html"}
-</div>
+{include file="../../common/plupload.html"}
 <div style="width:700px; margin:auto">
 	{foreach $imgs as $v}
 	<div class="nav_img" id="{$v.id}">

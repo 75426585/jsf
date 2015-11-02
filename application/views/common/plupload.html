@@ -15,11 +15,13 @@
 <script>
 var uploader = new plupload.Uploader({ //实例化一个plupload上传对象
 	browse_button : 'browse',
-		url : 'http://up.qiniu.com/',
+		//url : 'http://up.qiniu.com/',
+		url : '/common/upload/qn',
 		flash_swf_url : '/stastic/js/lib/plupload/Moxie.swf',
 		silverlight_xap_url : '/stastic/js/lib/plupload/Moxie.xap',
 		multipart_params: {
 			'token': '{$token}', 
+			//'key':'xxxxxx.jpg',
 		},
 });
 

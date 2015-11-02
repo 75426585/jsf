@@ -30,5 +30,15 @@ define(function(require, exports) {
 		},
 		'json');
 	})
+
+	//上传图片
+	$('.add-img').click(function() {
+		art.dialog({
+			title: '添加组图片',
+			content: document.getElementById('upload_main_div'),
+			cancel: false,
+		})
+		$('.aui_close').show();
+	})
 })
 

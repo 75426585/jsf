@@ -24,4 +24,12 @@ class demo extends MY_Controller{
 	public function ztree(){
 		$this->sm->view('demo/ztree.html');
 	}
+
+	//nav_img 图片轮播器
+	public function nav_img(){
+		$nav_img = $this->db->get('nav_img')->result_array();
+		$this->sm->assign('nav_img',$nav_img);
+		$this->sm->view('demo/nav_img.html');
+	}
+	
 }

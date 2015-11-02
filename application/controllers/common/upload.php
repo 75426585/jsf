@@ -91,11 +91,10 @@ class Upload extends MY_Controller {
 	}
 
 	//plupload上传接口
-	public function plupload(){
+	public function qn($file='file'){
 		$this->load->library('qn');
-		$data['token'] = $this->qn->getToken();
-		$this->sm->assign($data);
-		$this->sm->view('common/plupload.php');
+		$data['key'] = $this->qn->upload($file);
+		echo json_encode($data);
 	}
 
 
