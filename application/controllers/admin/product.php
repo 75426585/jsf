@@ -101,6 +101,8 @@ class  Product extends MY_Controller{
 				echojson('1','','修改失败');
 			}
 		}else{
+			$this->load->library('qn');
+			$token = $this->qn->getToken();
 			$cat = $this->db->get_where('product',array('cat_id'=>0))->result_array();
 			$cat_options = array();
 			if($cat){

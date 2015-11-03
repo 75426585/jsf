@@ -4,8 +4,18 @@
 
 seajs.config({
 	base:'/static/js/',
+	/*
 	alias:{
 		'jquery':'lib/jquery.min',
+		'template':'lib/template',
+		'dlg':'lib/artDialog/jquery.artDialog.js?skin=blue',
+		'ztree':'lib/ztree/jquery.ztree.all-3.5.min.js',
+		'fancybox':'lib/fancybox/jquery.fancybox.pack.js',
+		'jssor':'lib/jssor.slider.mini.js',
+	}
+	*/
+	alias:{
+		'jquery':'http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js',
 		'template':'lib/template',
 		'dlg':'lib/artDialog/jquery.artDialog.js?skin=blue',
 		'ztree':'lib/ztree/jquery.ztree.all-3.5.min.js',

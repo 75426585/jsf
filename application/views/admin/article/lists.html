@@ -7,14 +7,14 @@
 	文章列表
 </ul>
 <div class="title_right">
-	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/article/add" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加文章</a></span>
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small fancybox fancybox.iframe" href="/admin/article/add"><i class="icon-plus icon-white"></i>添加文章</a></span>
 	<strong>文章列表</strong>
 </div>
 <div style="width:600px; margin:auto">
 	<table class="table table-bordered table-hover table-striped">
 		<tbody>
 			<tr align="center">
-				<td width="15%"><strong>分类ID</strong></td>
+				<td width="15%"><strong>文章ID</strong></td>
 				<td width="35%"><strong>标题</strong></td>
 				<td width="25%"><strong>分类名</strong></td>
 				<td width="25%"><strong>操作</strong></td>
@@ -24,7 +24,7 @@
 				<td>{$v.id}</td>
 				<td>{$v.title}</td>
 				<td>{$v.cat_name}</td>
-				<td art_id="{$v.id}"><a href="/admin/article/edit/{$v.id}" class="fancybox fancybox.iframe">修改</a> <a href="javascript:;" class="del-link">删除</a></td>
+				<td art_id="{$v.id}"><a href="/admin/article/edit/{$v.id}" class="fancybox fancybox.iframe">修改</a> <a href="/admin/article/dodel/{$v.id}" class="del-link">删除</a></td>
 			</tr>
 			{foreachelse}
 			<tr>

@@ -52,30 +52,37 @@ define(function(require, exports) {
 	})
 
 	//删除链接
-	$('.del-link').click(function(e){
+	$('.del-link').click(function(e) {
 		e.preventDefault();
 		var url = $(this).attr('href');
-		$.get(url, function(data) {
-			if (data.status == '1') {
-				art.dialog({
-					title: '提示信息',
-					content: data.msg,
-					icon: 'succeed',
-					ok: function() {
-						location.reload();
+		art.dialog({
+			title: '确认信息',
+			content: '确定要删除吗？',
+			icon: 'question',
+			cancel: true,
+			ok: function() {
+				$.get(url, function(data) {
+					if (data.status == '1') {
+						art.dialog({
+							title: '提示信息',
+							content: data.msg,
+							icon: 'succeed',
+							ok: function() {
+								location.reload();
+							}
+						})
+					} else {
+						art.dialog({
+							title: '提示信息',
+							content: data.msg,
+							icon: 'error',
+							ok: true
+						})
 					}
-				})
-			} else {
-				art.dialog({
-					title: '提示信息',
-					content: data.msg,
-					icon: 'error',
-					ok: true
-				})
+				},
+				'json')
 			}
-		},
-		'json')
-		
+		})
 	})
 })
 

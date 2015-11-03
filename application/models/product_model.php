@@ -1,7 +1,7 @@
 <?php
 class Product_model extends CI_model{
 
-	//添加文章分类
+	//添加产品分类
 	public function cat_add($name){
 		$res = $this->db->insert('product',array('title'=>$name));
 		if($res){
@@ -13,19 +13,28 @@ class Product_model extends CI_model{
 		}
 	}
 
-	//删除文章分类
+	//删除产品分类
 	public function cat_del($cid){
 		$has_product = $this->db->get_where('product',array('cat_id'=>$cid))->result_array();
 		if($has_product) return false;
 		return $this->db->delete('product',array('p_id'=>$cid));
 	}
 
-	//添加文章
+	//添加产品
 	public function add($data){
-		$res = $this->db->insert('product',$data);
+		$pro_data['title'] = $data['title'];
+		$pro_data['cat_id'] = (int)$data['cat_id'];
+		$pro_data['content'] = $data['content'];
+		$imgs_str = strval($data['imgs']);
+		$imgs_arr = explode(',',$imgs_str);
+		$imgs_arr = array_filter($imgs_arr);
+		$res = $this->db->insert('product',$pro_data);
 		if($res){
 			$id = $this->db->insert_id();
-			$this->db->update('product',array('sort'=>$id),array('id'=>$id));
+			$this->db->update('product',array('sort'=>$id),array('p_id'=>$id));
+			foreach($imgs_arr as $v){
+				$this->db->update('pro_img',array('pro_id'=>$id),array('id'=>$v));
+			}
 			return true;
 		}else{
 			return false;

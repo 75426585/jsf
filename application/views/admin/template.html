@@ -4,13 +4,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>系统管理后台</title>
-<link rel="stylesheet" href="/static/style/common/bootstrap.css" />
 <link rel="stylesheet" href="/static/style/admin/base.css" />
-<script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
-<script type="text/javascript" src="/static/js/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/static/js/lib/sdmenu.js"></script>
+<link href="/static/style/common/bootstrap.css" rel="stylesheet">
 </head>
 <body>
+<input type="hidden" id="template" value="main"/>
 <div class="header">
 	<div class="logo"><img  src="" /></div>
 	<div class="header-right">
@@ -37,24 +35,9 @@
 
 <div id="middle">
 	<div class="left">
-		<script type="text/javascript">
-var myMenu;
-window.onload = function() {
-	myMenu = new SDMenu("my_menu");
-	myMenu.init();
-};
-		</script>
 		{include file='admin/menu.html'}
 	</div>
 	<div class="Switch"></div>
-	<script type="text/javascript">
-$(document).ready(function(e) {
-		$(".Switch").click(function(){
-				$(".left").toggle();
-				});
-
-		});
-	</script>
 	<div class="right"  id="mainFrame">
 		<div class="right_cont">
 			{block name="main-wrap"}{/block}
@@ -66,5 +49,6 @@ $(document).ready(function(e) {
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="/static/js/lib/sea.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/seajs/2.3.0/sea.js"></script>
+<script type="text/javascript" src="/static/js/sea.config.js"></script>
 </html>

@@ -111,6 +111,7 @@ class Article extends MY_Controller{
 		$post = $this->input->post();
 		$get = $this->input->get();
 		$aid = intval(isset($get['aid'])?$get['aid']:0);
+		$this->db->order_by('sort asc');
 		$cat = $this->db->get_where('article',array('cat_id'=>0))->result_array();
 		if($function=='dodel'){
 			$res = $this->article_model->cat_del($cid);

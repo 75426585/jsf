@@ -7,9 +7,9 @@
 		</table>
 	</div>
 	<div class="btn-wraper">
-		<input type="button" class="btn gray" value="选择文件..." id="browse" />
-		<input type="button" class="btn gray" value="开始上传" id="upload-btn" />
-		<input type="button" class="btn gray" value="确认插入" id="do-insert"/>
+		<input type="button" class="btn btn-info" value="选择文件..." id="browse" />
+		<input type="button" class="btn btn-info" disabled="true" value="开始上传" id="upload-btn" />
+		<input type="button" class="btn btn-info" disabled="true" value="确认插入" id="do-insert"/>
 	</div>
 </div>
 <script>
@@ -35,6 +35,7 @@ uploader.bind('FilesAdded',function(uploader,files){
 		var html = '<tr id="tr-'+ files[i].id +'"><td class="thumb-img"></td><td><span class="file-name">' + file_name + '</span><div class="process"></div></td><td class="cancel-img"></td></tr>';
 		$('.file-list').append(html)
 	}
+	$('#upload-btn').removeAttr('disabled');
 	$('.cancel-img').click(function(){
 		$(this).parent().remove();
 	});
@@ -51,6 +52,7 @@ uploader.bind('FileUploaded',function(uploader,file,responseObject){
 		$('#tr-'+file.id).find('.thumb-img').append('<img src="http://img.je4.cn/' + rpjson.key + '?imageView2/2/h/44" />');
 		$('#tr-'+file.id).find('.cancel-img').attr('key',rpjson.key);
 	}
+	$('#do-insert').removeAttr('disabled');
 });
 //上传按钮
 $('#upload-btn').click(function(){
