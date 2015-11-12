@@ -154,7 +154,12 @@ class Article extends MY_Controller{
 			$this->db->update('article',array('title'=>$post['name']),array('id'=>$post['id']));
 		}elseif($func=='add_node'){
 			$title = $post['cat_id']?'新建文章':'新建分类';
-			$this->article_model->add(array('title'=>$title,'cat_id'=>$post['cat_id']));
+			$res = $this->article_model->add(array('title'=>$title,'cat_id'=>$post['cat_id']));
+			if($res){
+				echojson('1','');
+			}else{
+				echojson('0','');
+			}
 		}elseif($func=='remove'){
 			$this->db->delete('article',array('id'=>intval($post['id'])));
 		}elseif($func=='change_order'){

@@ -24,8 +24,8 @@ class Product_model extends CI_model{
 	public function add($data){
 		$pro_data['title'] = $data['title'];
 		$pro_data['cat_id'] = (int)$data['cat_id'];
-		$pro_data['content'] = $data['content'];
-		$imgs_str = strval($data['imgs']);
+		$pro_data['content'] = isset($data['content'])?$data['content']:'';
+		$imgs_str = strval(isset($data['imgs'])?$data['imgs']:'');
 		$imgs_arr = explode(',',$imgs_str);
 		$imgs_arr = array_filter($imgs_arr);
 		$res = $this->db->insert('product',$pro_data);

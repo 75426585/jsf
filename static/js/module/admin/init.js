@@ -84,5 +84,13 @@ define(function(require, exports) {
 			}
 		})
 	})
+
+	//fancybox的弹窗
+	if($('.fancybox').length){
+		require('fancybox');
+		$('.fancybox').fancybox({
+			width: 920
+		});
+	}
 })
 

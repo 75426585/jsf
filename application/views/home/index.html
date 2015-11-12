@@ -6,27 +6,9 @@
 <script type="text/javascript" src="/static/js/lib/sea.js"></script>
 </head>
 <body>
-{if isset($smarty.session.userid) && $smarty.session.userid }
-	用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
-{else}
-	<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>
-{/if}
-<br/>
-<!--
-<a href="/admin/demo/kind">kindeditor编辑器</a><br/>
-<a href="/admin/demo/qn">pupload上传七牛</a><br/>
-<a href="/admin/demo/ztree">ztree树形目录</a><br/>
--->
 <div class="Nav">
 	<div class="NavL"></div>
 	<div class="NavC"></div>
 	<div class="NavR"></div>
 </div>
 </body>
-<script type="text/javascript">
-function toQzoneLogin()
-{
-	location.href='/common/qqlogin/auth';
-
-} 
-</script>

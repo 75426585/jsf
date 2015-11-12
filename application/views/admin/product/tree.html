@@ -1,13 +1,14 @@
 {extends file="../template.html"}
 {block name="main-wrap"}
 <link rel="stylesheet" href="/static/js/lib/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="/static/js/lib/fancybox/jquery.fancybox.css" />
 <input type="hidden" id="page" js="admin/product_tree"/>
 <ul class="breadcrumb">当前位置：
 	<a href="javascript:;">产品</a> <span class="divider">/</span>
 	树结构	
 </ul>
 <div class="title_right">
-	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/product/add" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加产品</a></span>
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small fancybox fancybox.iframe" href="/admin/product/add" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加产品</a></span>
 	<strong>树结构</strong>
 </div>
 <a  class="btn btn-info btn-small cat_add" href="javascript:;" role="button" data-toggle="modal"><i class="icon-plus icon-white"></i>添加分类</a>

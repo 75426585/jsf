@@ -1,10 +1,6 @@
 define(function(require, exports) {
 	var dlg = require('dlg');
 	var tpl = require('template');
-	require('fancybox');
-	$('.fancybox').fancybox({
-		width: 920
-	});
 
 	$('.add-img').click(function() {
 		art.dialog({

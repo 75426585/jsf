@@ -25,43 +25,51 @@ cursor:pointer;
 #refresh{
 	cursor:pointer;
 }
-}
 </style>
 <script src="/static/js/lib/jquery.min.js"></script>
 </head>
-<!--
-<body style="background-image:url(/static/images/login/admin_login_bg.gif); margin:0 auto; width:500px;">
--->
 <body style="background-color:#eee;margin:0 auto; width:500px;">
+{if isset($smarty.session.userid) && $smarty.session.userid }
+	用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
+{else}
+	<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>
+{/if}
+<script type="text/javascript">
+function toQzoneLogin()
+{
+	location.href='/common/qqlogin/auth';
+
+} 
+</script>
 <div style="background-image:url(/static/images/login/admin_login.png); width:500px; height:200px; margin-top:130px;">
-  <form>
-	<table width="500" border="0" cellpadding="0" cellspacing="0">
-		<input type="hidden" class="postsrc" src="/common/login/ajaxpost/" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" />
-	  <tr>
-		<td width="250">&nbsp;</td>
-		<td colspan="2">&nbsp;</td>
-	  </tr>
-	  <tr>
-		<td height="35"><div align="right" class="STYLE1">用户名：</div></td>
-		<td height="35" colspan="2"><input type="text" name="username" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" /></td>
-	  </tr>
-	  <tr>
-		<td height="35"><div align="right" class="STYLE1">密　码：</div></td>
-		<td height="35" colspan="2"><input type="password" name="password" class="password" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" /></td>
-	  </tr>
-	  <tr>
-		<td height="35"><div align="right" class="STYLE1">验证码：</div></td>
-		<td width="100" height="35"><input type="text" name="checkcode" style="height:25px; width:85px; font-size:15pt; font-weight:bold;" /></td>
-		<td width="150"><img id="refresh" src="/common/login/createcode"/></td>
-	  </tr>
-	  <tr>
-		<td height="35">&nbsp;</td>
-		<td height="35" colspan="2"><div class="submit" style="width:130px; height:30px; background-image:url(/static/images/login/admin_login_button.png); border:0; background-color: transparent; "/><div></td>
-	  </tr>
-		<tr><td></td><td colspan="2"><span class="msg"></span></td></tr>
+<form>
+<table width="500" border="0" cellpadding="0" cellspacing="0">
+	<input type="hidden" class="postsrc" src="/common/login/ajaxpost/" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" />
+	<tr>
+	<td width="250">&nbsp;</td>
+	<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+	<td height="35"><div align="right" class="STYLE1">用户名：</div></td>
+	<td height="35" colspan="2"><input type="text" name="username" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" /></td>
+	</tr>
+	<tr>
+	<td height="35"><div align="right" class="STYLE1">密　码：</div></td>
+	<td height="35" colspan="2"><input type="password" name="password" class="password" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" /></td>
+	</tr>
+	<tr>
+	<td height="35"><div align="right" class="STYLE1">验证码：</div></td>
+	<td width="100" height="35"><input type="text" name="checkcode" style="height:25px; width:85px; font-size:15pt; font-weight:bold;" /></td>
+	<td width="150"><img id="refresh" src="/common/login/createcode"/></td>
+	</tr>
+	<tr>
+	<td height="35">&nbsp;</td>
+	<td height="35" colspan="2"><div class="submit" style="width:130px; height:30px; background-image:url(/static/images/login/admin_login_button.png); border:0; background-color: transparent; "/><div></td>
+	</tr>
+	<tr><td></td><td colspan="2"><span class="msg"></span></td></tr>
 	</table>
-  </form>
-</div>
+	</form>
+	</div>
 <script>
 $(function(){
 	showMsg('','red');
@@ -84,8 +92,8 @@ $(function(){
 		var src = $('.postsrc').attr('src');
 		$.post(src,{
 			username:username,
-			password:password,
-			checkcode:checkcode
+				password:password,
+				checkcode:checkcode
 		},function(data){
 			if(data.status == '1'){
 				showMsg(data.msg,'green');
@@ -107,6 +115,6 @@ $(function(){
 
 	})
 })
-	</script>
+</script>
 </body>
 </html>
