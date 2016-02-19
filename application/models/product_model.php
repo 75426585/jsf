@@ -44,30 +44,32 @@ class Product_model extends CI_model{
 	//调换顺序$id1为被拖动的id，$id2为放置位置的id,$pid为放置的父id
 	public function change_order($id1,$id2,$type,$pid){
 		$this->load->model('log_model');
-		$info1 = $this->db->get_where('product',array('id'=>$id1))->row_array();
-		$info2 = $this->db->get_where('product',array('id'=>$id2))->row_array();
+		$info1 = $this->db->get_where('product',array('p_id'=>$id1))->row_array();
+		$is_top = $info1['cat_id'] == 0 ? true : false;
+		$info2 = $this->db->get_where('product',array('p_id'=>$id2))->row_array();
 		$sort1 = $info1['sort'];
 		$sort2 = $info2['sort'];
 		$this->db->trans_start();
+		if((! $is_top) && $type != 'inner') $this->db->query("update product set cat_id = {$pid} where p_id = $id1");
 		if($sort1  > $sort2){//往前挪
 			if($type=='prev'){
 				$this->db->query("update product set sort = sort + 1 where sort between {$sort2} and $sort1");
-				$this->db->query("update product set sort = {$info2['sort']},cat_id = {$pid} where id = $id1");
+				$this->db->query("update product set sort = {$info2['sort']} where p_id = $id1");
 			}elseif($type=='next'){
 				$this->db->query("update product set sort = sort + 1 where sort between ".($sort2+1)." and $sort1");
-				$this->db->query('update product set sort = '.($info2['sort']+1).",cat_id = {$pid} where id = $id1");
+				$this->db->query('update product set sort = '.($info2['sort']+1)." where p_id = $id1");
 			}elseif($type =='inner'){
-				$this->db->query("update product set cat_id = {$id2} where id = $id1");
+				$this->db->query("update product set cat_id = {$id2} where p_id = $id1");
 			}
 		}else{//往后挪
 			if($type=='prev'){
 				$this->db->query("update product set sort = sort - 1 where sort between ".$sort1 ." and ".($sort2-1));
-				$this->db->query("update product set sort = ".($sort2-1).",cat_id = {$pid} where id = $id1");
+				$this->db->query("update product set sort = ".($sort2-1)." where p_id = $id1");
 			}elseif($type=='next'){
 				$this->db->query("update product set sort = sort - 1 where sort between $sort1 and $sort2" );
-				$this->db->query("update product set sort = {$info2['sort']},cat_id = {$pid} where id = $id1");
+				$this->db->query("update product set sort = {$info2['sort']} where p_id = $id1");
 			}elseif($type =='inner'){
-				$this->db->query("update product set cat_id = {$id2} where id = $id1");
+				$this->db->query("update product set cat_id = {$id2} where p_id = $id1");
 			}
 		}
 		$this->db->trans_complete(); 

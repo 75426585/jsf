@@ -47,12 +47,15 @@ define(function(require, exports) {
 	}
 	//放置触发前
 	function beforeDrop(treeId, treeNodes, targetNode, moveType) {
+		console.log('将'+treeNodes[0].id+'放置到'+targetNode.id+moveType);
 		//一级不能成为二级
 		if (!targetNode || targetNode.drop == false) {
+			console.log('一级不能成为二级')
 			return false;
 		}
 		//二级不能成为1级
-		if (treeNodes[0].pId != '0' && moveType != 'inner' && targetNode.pId == null) {
+		if (treeNodes[0].pId > 0 && moveType != 'inner' && targetNode.pId == null) {
+			console.log('二级不能成为一级')
 			return false;
 		}
 		$.post('/admin/article/tree/change_order', {

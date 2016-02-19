@@ -52,7 +52,7 @@ define(function(require, exports) {
 			return false;
 		}
 		//二级不能成为1级
-		if (treeNodes[0].pId != '0' && moveType != 'inner' && targetNode.pId == null) {
+		if (treeNodes[0].pId > 0 && moveType != 'inner' && targetNode.pId == null) {
 			return false;
 		}
 		$.post('/admin/product/tree/change_order', {
