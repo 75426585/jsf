@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta property="qc:admins" content="71024277366254636"/>
+<meta charset="UTF-8">
+<link href="/static/style/home/home.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="contain">
+	<!--顶部标题-->
+	<div id="header">
+		<div id="logo">
+			<div id="title">
+				<h3>够意思笔记</h3>
+				<h5>仅为点滴记录</h5>
+			</div>
+		</div>
+	</div>
+	<!--顶部菜单-->
+	<div id="navigation_area">
+		<ul id="menu">
+			<li><a href="/">首页</a></li>
+			<li><a href="/">PHP</a></li>
+			<li><a href="/">前端笔记</a></li>
+			<li><a href="/">LINUX笔记</a></li>
+			<li><a href="/admin">登陆</a></li>
+		</ul>
+	</div>
+	<!--内容区域-->
+	<div id="content_area">
+		<div id="content_area_content">
+			<!--左侧内容-->
+			<div id="content_left">
+				{for $i=0;$i<5;$i++}
+				<!--博客内容-->
+				<div class="fullbox">
+					<h3>IT人家</h3>
+					<div class="fullbox_content">
+						<h1><a href="/">为什么静下心来阅读会是一种奢侈？</a></h1>
+						<span class="vicetitle">并非人人都有条件静阅</span>
+						<div class="post_info">
+							<div class="post_info_left">
+								<div class="nmtags" style="position: relative;">
+									<a href="" rel="nofollow">阅读</a>
+									<a href="" rel="nofollow">奢侈</a>
+								</div>
+								<span>在 2016年01月25日 那天写的</span></div>
+							<div class="post_info_right">
+								<span> 1,969 views</span>
+							</div>
+							<div class="post_content">
+								因为你读的时候，得有这个经济，智力的资本，世界上百分之九十的人，基本上是没有这两个条件的。而你读过以后，知识就是你轻易获取利润的雄厚资本，基本上，很多没有读书的人，也是没有这个资源的。毕竟呀，大多数人花了多少物质资源，付出多大代价，经过多少优胜劣汰，耗费多少代人的努力，才能把少数人送到那个可以让我们的视野达到极限的智慧的高塔，好多人终其一生，都只是在塔底苟延残喘，浑浑噩噩，完成了基因的传递，其生命基本就再无法实现任何价值。 
+								<p class="morelink"><a href="" class="more-link">阅读全文 &gt;&gt;</a></p> 
+							</div>
+						</div>
+						<div class="fullbox_footer"></div>
+					</div>
+				</div>
+				{/for}
+				<div id="post-navigator">
+					<div class="wp-pagenavi">
+						<span class="pages">1 /  138</span>
+						<span class="pages">首页</span>
+						<span class="pages">&lt; Prev</span>
+						<span class="pages current_page">1</span>
+						<a href="/" title="第2页">2</a>
+						<a href="/" title="第3页">3</a>
+						<a href="/" title="第4页">4</a>
+						<a href="/" title="第5页">5</a>
+						<a href="/" title="下一页">Next &gt;</a>
+						<a href="/" title="尾页">尾页</a>
+						页码：<input class="page_input" type="text" value="1" onkeydown="javascript: if(event.keyCode==13){ location='/'+this.value+'';return false; }" title="输入您想要到达的页码">
+						<div class="page_clear"></div>
+					</div>
+				</div>
+			</div>
+			<!--右侧内容-->
+			<div id="sidebar">
+				<div id="sidebar_top">
+					<div class="box">
+						<h3>光阴寸金</h3>
+						<div class="box_content">
+							<div style="overflow:hidden; height:67px;">
+								<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="100%" height="100%" id="xt_home_map" align="middle">
+									<param name="allowScriptAccess" value="sameDomain">
+									<param name="allowFullScreen" value="false">
+									<param name="movie" value="/static/images/home/clock.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">
+									<param name="wmode" value="transparent">
+									<embed src="/static/images/home/clock.swf" quality="high" bgcolor="#ffffff" width="100%" height="100%" wmode="transparent" name="xt_home_map" align="middle" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer_cn">
+									</object>
+								</div>
+							</div>
+							<div class="box_bottom"></div>
+						</div>
+					</div>
+					<div id="sidebar_left"></div>
+					<div id="sidebar_right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--底部信息列表-->
+	<!--<div id="footer_area">-->
+		<!--<div id="logo">-->
+			<!--<div id="title">-->
+				<!--<h3>够意思笔记</h3>-->
+				<!--<h5>仅为点滴记录</h5>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<div id="footer_bottom">
+		<div id="footer_bottom_content">
+			<p><a target="_blank" href="http://ysf.je4.cn">够意思博客</a> &nbsp;&nbsp;Copyright © 2016. All rights reserved.</p>
+			<p>Powered by <a target="_blank" href="https://github.com/75426585/jsf">jsf</a></p>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="/static/js/lib/sea.js"></script>
+</html>

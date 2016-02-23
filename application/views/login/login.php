@@ -29,11 +29,6 @@ cursor:pointer;
 <script src="/static/js/lib/jquery.min.js"></script>
 </head>
 <body style="background-color:#eee;margin:0 auto; width:500px;">
-{if isset($smarty.session.userid) && $smarty.session.userid }
-	用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
-{else}
-	<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>
-{/if}
 <script type="text/javascript">
 function toQzoneLogin()
 {
@@ -41,6 +36,11 @@ function toQzoneLogin()
 
 } 
 </script>
+{if isset($smarty.session.userid) && $smarty.session.userid }
+	用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
+{else}
+	<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>
+{/if}
 <div style="background-image:url(/static/images/login/admin_login.png); width:500px; height:200px; margin-top:130px;">
 <form>
 <table width="500" border="0" cellpadding="0" cellspacing="0">

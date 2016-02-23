@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta property="qc:admins" content="71024277366254636"/>
+<meta charset="UTF-8">
+<link href="/static/style/home/home.css" rel="stylesheet" type="text/css">
+<title>够意思笔记-{block name="title"}{/block}</title>
+</head>
+<body>
+<div id="contain">
+	<!--顶部标题-->
+	<div id="header">
+		<div id="logo">
+			<div id="title">
+				<h3>够意思笔记</h3>
+				<h5>仅为点滴记录</h5>
+			</div>
+		</div>
+	</div>
+	<!--顶部菜单-->
+	<div id="navigation_area">
+		<ul id="menu">
+			<li><a href="/">首页</a></li>
+			<li><a href="/">PHP</a></li>
+			<li><a href="/">前端笔记</a></li>
+			<li><a href="/">LINUX笔记</a></li>
+			<li><a href="/admin">登陆</a></li>
+		</ul>
+	</div>
+	<div id="content_area">
+		<div id="content_area_content">
+			<!--左侧内容-->
+			<div id="content_left">
+				{block name="content_left"}{/block}
+			</div>
+			<!--右侧内容-->
+			<div id="sidebar">
+				<div id="sidebar_top">
+					{block name="sidebar_top"}{/block}
+				</div>
+				<div id="sidebar_left"></div>
+				<div id="sidebar_right"></div>
+			</div>
+		</div>
+	</div>
+	<div id="footer_bottom">
+		<div id="footer_bottom_content">
+			<p><a target="_blank" href="http://jsf.je4.cn">够意思笔记</a> &nbsp;&nbsp;Copyright © 2016. All rights reserved.</p>
+			<p>Powered by <a target="_blank" href="https://github.com/75426585/jsf">jsf</a></p>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="/static/js/lib/sea.js"></script>
+</html>
