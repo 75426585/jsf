@@ -52,14 +52,15 @@ if ($_SERVER['SERVER_NAME'] == 'loc.je4.cn'){
 	$db['default']['username'] = $_SERVER['DB_LOC_USER'];
 	$db['default']['password'] = $_SERVER['DB_LOC_PASS'];
 	$db['default']['database'] = $_SERVER['DB_LOC_NAME'];
+	$db['default']['port'] = '3306';
 }else{
-	$db['default']['hostname'] = $_SERVER['DB_FW_HOST'];
-	$db['default']['username'] = $_SERVER['DB_FW_USER'];
-	$db['default']['password'] = $_SERVER['DB_FW_PASS'];
-	$db['default']['database'] = $_SERVER['DB_FW_NAME'];
+	$db['default']['hostname'] = 'sqld.duapp.com';
+	$db['default']['username'] = 'f73d6d57a9b5436c8b707e9e8fe5d517';
+	$db['default']['password'] = 'cf2e3f160bed4e769659bea0642442e1';
+	$db['default']['database'] = 'daWQgOhPnFtKkhLMRrlI';
+	$db['default']['port'] = '4050';
 }
 
-$db['default']['port'] = '3306';
 $db['default']['pconnect'] = FALSE;
 
 $db['default']['dbdriver'] = 'mysql';
