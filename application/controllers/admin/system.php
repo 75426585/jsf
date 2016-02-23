@@ -48,7 +48,15 @@ class System extends MY_Controller{
 				echojson('0','');
 			}
 		}elseif($func=='remove'){
-			$this->db->delete('menu',array('car_id'=>intval($post['id'])));
+			//查询是否有子菜单
+			$has_son = $this->db->get_where('menu',array('cat_id'=>intval($post['id'])))->result_array();
+			if($has_son) echojson('0','','请先删除子菜单');
+			$res = $this->db->delete('menu',array('id'=>intval($post['id'])));
+			if($res){
+				echojson('1','','');
+			}else{
+				echojson('0','','删除失败');
+			}
 		}elseif($func=='change_order'){
 			$id1 = intval($post['id_one']);
 			$id2 = intval($post['id_two']);

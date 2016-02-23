@@ -156,14 +156,20 @@ define(function(require, exports) {
 	}
 
 	//对节点进行删除
-	function onRemove(treeId, treeNodes) {}
+	function onRemove(treeId, treeNodes) {
+	}
 
 	function beforeRemove(treeId, treeNode) {
 		$.post('/admin/system/tree/remove', {
 			id: treeNode.id
 		},
 		function(data) {
-			location.reload();
+			if(data.status == '1'){
+				alert(data.status)
+			}else{
+				alert(data.msg);
+				return false;
+			}
 		},
 		'json')
 	}
