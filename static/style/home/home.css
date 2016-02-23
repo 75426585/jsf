@@ -34,3 +34,25 @@ body{margin:0;padding:0;border:0;height:100%;font-family: Verdana, Arial, Helvet
 .fullbox .post_content {display: block; font-size: 12px; margin: 0px;line-height: 150%; color: #333;float:left;padding-top:5px;}
 .fullbox .post_content .morelink { display:block; line-height: 100%;text-indent: 2em; letter-spacing: 1px;width:100%;text-align:right;} 
 .fullbox .post_content .morelink a:hover{color:#f85e0b;} 
+
+/*页码*/
+#post-navigator{color: #666666; margin: 10px 5px 3px 5px; padding: 0px; float: left; font-size: 12px;}
+#post-navigator .pages{background:#ffffff;padding: 2px 6px;margin: 0px 5px 0px 0px; text-decoration: none; border: 1px solid #B9B9B9; color: #666666; -moz-border-radius: 5px; -webkit-border-radius: 5px; display: inline; float: left;}
+#post-navigator .current_page{ color: red !important;}
+#post-navigator .page_input{width: 25px; height: 14px; }
+#post-navigator a {background: #ffffff; padding: 2px 6px; margin: 0px 5px 0px 0px; text-decoration: none; border: 1px solid #B9B9B9; color: #666666; -moz-border-radius: 5px; -webkit-border-radius: 5px; display: inline; float: left;}
+
+#sidebar{float: right; width: 336px;}
+#sidebar_top{float: left; width: 336px; margin-bottom: -5px;}
+#sidebar_top .box{margin: 10px 5px 5px 5px; background: url(/static/images/home/sidebar_box_bg_top.png) repeat-y; background-color: #FFFFFF; overflow: hidden;}
+#sidebar_top .box h3{background: url(/static/images/home/sidebar_box_header_top.png) no-repeat left top; margin: 0px; overflow: hidden; height: 23px; font-size: 12px; text-transform: uppercase; padding: 7px 10px 0px 10px;}
+#sidebar_top .box .box_content {font-size: 12px; padding: 10px 10px 5px 10px; overflow: hidden; color: #666;} 
+#sidebar_top .box .box_bottom {margin: 0px; padding: 0px; background: url(/static/images/home/sidebar_box_footer_top.png) no-repeat left bottom; height: 5px !important; height: 1px;} 
+
+/*底部*/
+#footer_area{background: url(/static/images/home/botsl-bg.gif) repeat-x left top #333333; color: #999999; border-bottom: 1px solid #040404; overflow: hidden; min-height: 180px;}
+#footer_bottom{padding: 5px 0 10px; clear: both; background: #040404; border-top: 1px solid #4B4B48; height:auto;}
+#footer_bottom_content{width: 950px; margin: 0 auto; padding-top: 5px; clear: both; color: #ccc; font-size: 12px; text-align:center;}
+#footer_bottom_content a{color:#eee;}
+#footer_bottom_content a:visited{color:#eee;}
+
