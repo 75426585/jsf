@@ -1,29 +1,37 @@
-{extends file="../fancybox.html"}
+{extends file="../template.html"}
 {block name="main-wrap"}
 <input type="hidden" id="page" js="admin/article"/>
-<div class="title_right"><strong>添加文章</strong></div>
-<div style="width:900px; margin:auto">
-	<form action="/admin/article/add/do" method="post" id="add-form">
-		<table class="table table-bordered" >
-			<tr>
-				<td width="12%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">标题：</td>
-				<td width="38%"><input type="text" name="title" id="input" style="width:200px;" class="span1-1" value=""  /></td>
-				<td width="12%" align="right" bgcolor="#f1f1f1">分类：</td>
-				<td>
-					{html_options name="cat_id" options=$cat_options}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">文章内容：</td>
-				<td colspan="3" align="center"><textarea name="content" style="width:800px;height:600px;visibility:hidden;"></textarea></td>
-			</tr>
-		</table>
-		<table  class="margin-bottom-20 table  no-border" >
-			<tr>
-				<td class="text-center"><input type="button" value="添加" class="btn btn-info fancy_sub" style="width:80px;" /></td>
-			</tr>
-		</table>
-	</form>
-</div> 
-{include file="../../common/kindeditor.html"}
+<link rel="stylesheet" type="text/css" href="/static/js/lib/fancybox/jquery.fancybox.css" />
+<ul class="breadcrumb">当前位置：
+	<a href="#">文章</a> <span class="divider">/</span>
+	添加文章
+</ul>
+<div class="title_right">
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/article/add"><i class="icon-plus icon-white"></i>添加文章</a></span>
+	<strong>添加文章</strong>
+</div>
+<div style="width:50%;float:left;">
+	<table class="table table-bordered table-hover table-striped">
+		<tbody>
+		<tr align="center">
+			<td width="15%"><strong>主标题</strong></td>
+			<td width="85%"><input style="width:80%;margin:3px auto;" type="text" name="title" /></td>
+		</tr>
+		<tr align="center">
+			<td width="15%"><strong>副标题</strong></td>
+			<td width="85%"><input style="width:70%;margin:3px auto;" type="text" name="vicetitle" /></td>
+		</tr>
+		<tr align="center">
+			<td width="15%"><strong>内容</strong></td>
+			<td width="85%"><input type="text" name="vicetitle" /></td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<div style="width:50%;float:left;">
+</div>
+<!--添加弹出框-->
+<form id="add-form" style="display:none" action="/admin/article/cat/doadd">
+	<strong>分类名称：　</strong><input type="text" name="name"/>
+</form>
 {/block}

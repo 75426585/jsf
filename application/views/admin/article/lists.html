@@ -7,23 +7,23 @@
 	文章列表
 </ul>
 <div class="title_right">
-	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small fancybox fancybox.iframe" href="/admin/article/add"><i class="icon-plus icon-white"></i>添加文章</a></span>
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/article/add"><i class="icon-plus icon-white"></i>添加文章</a></span>
 	<strong>文章列表</strong>
 </div>
-<div style="width:600px; margin:auto">
+<div style="width:100%;float:left;">
 	<table class="table table-bordered table-hover table-striped">
 		<tbody>
 			<tr align="center">
 				<td width="15%"><strong>文章ID</strong></td>
 				<td width="35%"><strong>标题</strong></td>
-				<td width="25%"><strong>分类名</strong></td>
+				<td width="25%"><strong>创建时间</strong></td>
 				<td width="25%"><strong>操作</strong></td>
 			</tr>
-			{foreach $art as $v}
+			{foreach $posts as $v}
 			<tr align="center">
 				<td>{$v.id}</td>
 				<td>{$v.title}</td>
-				<td>{$v.cat_name}</td>
+				<td>{$v.create_time|date_format:'%Y-%m-%d %H:%M'}</td>
 				<td art_id="{$v.id}"><a href="/admin/article/edit/{$v.id}" class="fancybox fancybox.iframe">修改</a> <a href="/admin/article/dodel/{$v.id}" class="del-link">删除</a></td>
 			</tr>
 			{foreachelse}

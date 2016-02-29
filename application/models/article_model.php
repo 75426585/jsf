@@ -1,9 +1,23 @@
 <?php
 class Article_model extends CI_model{
 
+	public static $cat_tree;
+	//获取文章分类树
+	public function get_cat_tree($parent_id = 0,$level = 0){
+		$this->db->where('parent',$parent_id);
+		$cat = $this->db->get('js_post_cat')->result_array();
+		if(! $cat) return false;
+		$level++;
+		foreach($cat as $v){
+			self::$cat_tree[] = array('id'=>$v['cat_id'],'name'=>$v['cat_name'],'level'=>$level,'pId'=>$v['parent']);
+			$this->get_cat_tree($v['cat_id'],$level);
+		}
+		return self::$cat_tree;
+	}
+
 	//添加文章分类
 	public function cat_add($name){
-		$res = $this->db->insert('article',array('title'=>$name));
+		$res = $this->db->insert('js_post_cat',array('title'=>$name));
 		if($res){
 			$id = $this->db->insert_id();
 			$this->db->update('article',array('sort'=>$id),array('id'=>$id));
@@ -22,7 +36,7 @@ class Article_model extends CI_model{
 
 	//添加文章
 	public function add($data){
-		$res = $this->db->insert('article',$data);
+		$res = $this->db->insert('js_posts',$data);
 		if($res){
 			$id = $this->db->insert_id();
 			$this->db->update('article',array('sort'=>$id),array('id'=>$id));

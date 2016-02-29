@@ -6,11 +6,23 @@ class Article extends MY_Controller{
 		$this->load->model('article_model');
 	}
 
+	//所有文章
+	public function index(){
+		$get = $this->input->get();
+		$page = (int) max(1,$get['page']);
+		$this->db->order_by('create_time');
+		$posts = $this->db->get('js_posts')->result_array();
+		$data = get_defined_vars();
+		$this->sm->assign($data);
+		$this->sm->view('admin/article/lists.html');
+	}
+
+
 	//文章分类
 	public function cat($function=''){
-		$cat = $this->db->get_where('article',array('cat_id'=>0))->result_array();
 		$post = $this->input->post();
 		$get = $this->input->get();
+		$cat_tree = $this->article_model->get_cat_tree();
 		$cid = intval(isset($get['cid'])?$get['cid']:0);
 		if($function == 'add'){
 			$this->sm->view('admin/article/cat_add.html');
@@ -48,13 +60,6 @@ class Article extends MY_Controller{
 	//添加文章
 	public function add($function=''){
 		if($function==''){
-			$cat = $this->db->get_where('article',array('cat_id'=>0))->result_array();
-			$cat_options = array();
-			if($cat){
-				foreach($cat as $v){
-					$cat_options[$v['id']] = $v['title'];
-				}
-			}
 			$data = get_defined_vars();
 			$this->sm->assign($data);
 			$this->sm->view('admin/article/add.html');
@@ -103,7 +108,7 @@ class Article extends MY_Controller{
 			$this->sm->assign($data);
 			$this->sm->view('admin/article/edit.html');
 		}
-		
+
 	}
 
 	//文章列表
@@ -111,8 +116,8 @@ class Article extends MY_Controller{
 		$post = $this->input->post();
 		$get = $this->input->get();
 		$aid = intval(isset($get['aid'])?$get['aid']:0);
-		$this->db->order_by('sort asc');
-		$cat = $this->db->get_where('article',array('cat_id'=>0))->result_array();
+		$this->db->order_by('create_time desc');
+		$cat = $this->db->get_where('js_posts')->result_array();
 		if($function=='dodel'){
 			$res = $this->article_model->cat_del($cid);
 			if($res){
@@ -138,7 +143,7 @@ class Article extends MY_Controller{
 				}
 			}
 			$this->db->select('id,cat_id,title,sort');
-			$art = $this->db->get_where('article','cat_id !=0')->result_array();
+			$art = $this->db->get_where('ji_posts','cat_id !=0')->result_array();
 			foreach($art as $k => $v){
 				$art[$k]['cat_name'] = $cat_res[$v['cat_id']];
 			}
@@ -175,30 +180,14 @@ class Article extends MY_Controller{
 
 	//获取树节点单json
 	public function tree_json($pid=0){
-		$tree_nodes = array();
-		$this->db->order_by('sort asc');
-		$cat = $this->db->get_where('article',array('cat_id'=>0))->result_array();
-		foreach($cat as $v){
-			$temp['id'] = $v['id'] ;
-			$temp['pId'] = 0 ;
-			$temp['name'] = $v['title'] ;
-			$temp['open'] = true ;
-			$temp['dropInner'] = true;
-			$temp['add'] = true;
-			$tree_nodes[] = $temp;
-			$this->db->order_by('sort asc');
-			$art = $this->db->get_where('article',array('cat_id'=>$v['id']))->result_array();
-			foreach($art as $v1){
-				$temp1['id'] = $v1['id'] ;
-				$temp1['pId'] = $v['id'] ;
-				$temp1['name'] = $v1['title'] ;
-				$temp1['dropInner'] = false;
-				$temp1['add'] = false;
-				$tree_nodes[] = $temp1;
+		$cat_tree = $this->article_model->get_cat_tree();
+		foreach($cat_tree as $k => $v){
+			if($v['level'] > 1){
+				$cat_tree[$k]['dropInner'] = false;
+			}else{
+				$cat_tree[$k]['dropInner'] = true;
 			}
-
 		}
-		//var_dump($tree_nodes);exit;
-		echojson(1,$tree_nodes);
+		echojson(1,$cat_tree);
 	}
 }

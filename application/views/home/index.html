@@ -1,7 +1,6 @@
 {extends file="../struct_content.html"}
 {block name="title"}首页{/block}
 {block name="content_left"}
-{for $i=0;$i<5;$i++}
 <!--博客内容-->
 <div class="fullbox">
 	<h3>IT人家</h3>
@@ -26,7 +25,34 @@
 		<div class="fullbox_footer"></div>
 	</div>
 </div>
-{/for}
+{foreach $articles as $v}
+<div class="fullbox">
+	<h3>{$v.cat_id}</h3>
+	<div class="fullbox_content">
+		<h1><a href="/article">{$v.title}</a></h1>
+		<span class="vicetitle">{$v.vicetitle}</span>
+		<div class="post_info">
+			<div class="post_info_left">
+				<div class="nmtags" style="position: relative;">
+					<a href="" rel="nofollow">阅读</a>
+					<a href="" rel="nofollow">奢侈</a>
+				</div>
+				<span>在 2016年01月25日 那天写的</span></div>
+			<div class="post_info_right">
+				<span> 0 views</span>
+			</div>
+		</div>
+		<div class="post_content">
+			{$v.content}
+			<p class="morelink"><a href="/article" class="more-link">阅读全文 &gt;&gt;</a></p> 
+		</div>
+		<div class="fullbox_footer"></div>
+	</div>
+</div>
+{foreachelse}
+暂无博文
+{/foreach}
+
 <div id="post-navigator">
 	<div class="wp-pagenavi">
 		<span class="pages">1 /  138</span>
