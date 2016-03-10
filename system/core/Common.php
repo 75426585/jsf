@@ -644,7 +644,7 @@ if(!function_exists('checkTel'))
 
 if(!function_exists('echojson'))
 {
-    function echojson($status,$data,$msg="") {
+    function echojson($status,$data="",$msg="") {
         echo "{".'"status":'.intval($status).",".'"data"'.":".json_encode($data).",".'"msg"'.":".json_encode($msg)."}";exit;
     }
 }

@@ -1,6 +1,10 @@
 define(function(require, exports) {
 	var dlg = require('dlg');
+	var tpl = require('template');
+	tpl.config('openTag','{ ');
+	tpl.config('closeTag',' }');
 	var base_url = window.location.origin
+	var article_id = $('#article_id').val();
 
 	//当标题失去焦点，则添加新文章
 	$('input[name="title"]').focusout(function() {
@@ -28,7 +32,7 @@ define(function(require, exports) {
 		var content = $('textarea[name="content"]').val();
 		var type = $(this).attr('result');
 		var tags = new Array();
-		$('.tag_form .tags_box').each(function() {
+		$('.tags_box').each(function() {
 			if ($(this)[0].checked == true) {
 				tags.push($(this).val());
 			}
@@ -48,25 +52,6 @@ define(function(require, exports) {
 		'json')
 	})
 
-	exports.show_cat = function() {
-		$.get('/admin/article/json_cat', function() {
-
-		},
-		'json');
-	}
-
-	//初始化加载
-	$(function() {
-		exports.show_cat();
-		if($('#article_id').val() > 0){
-			var url = base_url+'/article/'+$('#article_id').val();
-			$('.link_box i').html('<a href="' + url + '" target="_blank">'+url+'</a>');
-			$('.link_box').show();
-		}else{
-			$('.link_box').hide();
-		}
-	})
-
 	//添加分类
 	$('.add_cat').click(function() {
 		var cat_name = $('input[name="cat_name"]').val();
@@ -79,7 +64,10 @@ define(function(require, exports) {
 			cat_name: cat_name,
 			parent_id: parent_id
 		},
-		function() {},
+		function(data) {
+			exports.show_tag(article_id);
+			$('input[name="cat_name"]').val('');
+		},
 		'json')
 	})
 	//添加标签
@@ -92,8 +80,34 @@ define(function(require, exports) {
 		$.post('/admin/article/add_article_tag', {
 			tag_name: tag_name,
 		},
-		function() {},
+		function(data) {
+			exports.show_tag(article_id);
+			$('input[name="tag_name"]').val('');
+		},
 		'json')
+	})
+
+	//生成分类的模板
+	exports.show_tag = function(article_id){
+		$.get('/admin/article/json_tag/'+article_id,function(data){
+			var cat_tree_html = tpl('cat_tree', data.data);
+			$('#cat_tree_ul').html(cat_tree_html);
+			var tags_html = tpl('tags_li', data.data);
+			$('#tags_ul').html(tags_html);
+		},'json')
+	}
+	//初始化加载
+	$(function() {
+		var article_id = $('#article_id').val();
+		if( article_id > 0){
+			var url = base_url+'/article/'+article_id;
+			$('.link_box i').html('<a href="' + url + '" target="_blank">'+url+'</a>');
+			$('.link_box').show();
+		}else{
+			article_id = 0;
+			$('.link_box').hide();
+		}
+		exports.show_tag(article_id);
 	})
 })
 

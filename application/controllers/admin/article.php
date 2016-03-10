@@ -23,24 +23,25 @@ class Article extends MY_Controller{
 		$tag_data['tag_name']= $post['cat_name'];
 		$tag_data['tag_parent']= $post['parent_id'];
 		$tag_data['tag_type']= 2;
-		$this->db->insert('js_tags',$tag_data);
-	}
-
-	//添加文章分类
-	public function add_article_tag(){
-		$tag_data['tag_name'] = $this->input->post('tag_name');
-		$tag_data['tag_type']= 1;
-		$this->db->insert('js_tags',$tag_data);
-	}
-
-	//文章分类和标签的修改
-	public function tags($func=''){
-		if($func == 'edit'){
-			$post = $this->input->post();
-			var_dump($post);exit;
+		$res = $this->db->insert('js_tags',$tag_data);
+		if($res){
+			echojson('1');
+		}else{
+			echojson('0');
 		}
 	}
 
+	//添加文章标签
+	public function add_article_tag(){
+		$tag_data['tag_name'] = $this->input->post('tag_name');
+		$tag_data['tag_type']= 1;
+		$res = $this->db->insert('js_tags',$tag_data);
+		if($res){
+			echojson('1');
+		}else{
+			echojson('0');
+		}
+	}
 
 	//文章分类
 	public function cat($function=''){
@@ -84,12 +85,6 @@ class Article extends MY_Controller{
 	//添加文章
 	public function add($function=''){
 		if($function==''){
-			$this->load->model('tags_model');
-			$cat_tree = $this->article_model->get_cat_tree();
-			$all_tags = $this->tags_model->get_post_tags(1);
-			$article_id = 0;
-			$data = get_defined_vars();
-			$this->sm->assign($data);
 			$this->sm->view('admin/article/add.html');
 		}elseif($function == 'do'){
 			$post = $this->input->post();
@@ -229,7 +224,27 @@ class Article extends MY_Controller{
 	}
 
 	//获取某文章的分类情况
-	public function json_cat($article_id=-1){
+	public function json_tag($article_id=0){
+		$this->load->model('tags_model');
 		$cat_tree = $this->article_model->get_cat_tree();
+		$all_tags = $this->tags_model->get_all_tags(1);
+		$select_tags = $this->tags_model->get_post_tags($article_id);
+		foreach($cat_tree as $k => $v){
+			if(in_array($v['id'],$select_tags)){
+				$cat_tree[$k]['is_selected'] = true;
+			}else{
+				$cat_tree[$k]['is_selected'] = false;
+			}
+		}
+		foreach($all_tags as $k => $v){
+			if(in_array($v['tag_id'],$select_tags)){
+				$all_tags[$k]['is_selected'] = true;
+			}else{
+				$all_tags[$k]['is_selected'] = false;
+			}
+		}
+		$data['cat_tree'] = $cat_tree;
+		$data['all_tags'] = $all_tags;
+		echojson(1,$data);
 	}
 }

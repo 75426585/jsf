@@ -41,46 +41,44 @@
 	</div>
 </form>
 <div class="right_content" style="width:350px;float:right;">
-	<form class="tag_form" action="/admin/article/tags/edit" method="post">
-		<div class="box">
-			<h3>分类</h3>
-			<ul class="cat_tree_ul box_content">
+	<div class="box">
+		<h3>分类</h3>
+		<ul class="cat_tree_ul box_content" id="cat_tree_ul">
+		</ul>
+		<div style="width:240px;margin:0 auto;line-height:30px;">
+			新增分类：
+			<input type="text" name="cat_name"/></br>
+			上级目录：
+			<select class="form-control" name="parent_id">
+				<option value="0">顶级分类</option>
 				{foreach $cat_tree as $v}
-				{if $v.level == 1}
-				<li><label>|-<input type="checkbox" class="tags_box" name="cat_id[]" value="{$v.id}"/>{$v.name}</label></li>
-				{else}
-				<li><label>|-----<input type="checkbox" class="tags_box" name="cat_id[]" value="{$v.id}"/>{$v.name}</label></li>
-				{/if}
+				{if $v.level == 1}<option value="{$v.id}">{$v.name}</option>{/if}
 				{/foreach}
-			</ul>
-			<div style="width:240px;margin:0 auto;line-height:30px;">
-				新增分类：
-				<input type="text" name="cat_name"/></br>
-				上级目录：
-				<select class="form-control" name="parent_id">
-					<option value="0">顶级分类</option>
-					{foreach $cat_tree as $v}
-					{if $v.level == 1}<option value="{$v.id}">{$v.name}</option>{/if}
-					{/foreach}
-				</select></br>
-				<button class="btn add_cat" style="margin-left:80px;">添加分类</button></br>
-			</div>
-			<div class="box_bottom"></div>
+			</select></br>
+			<button class="btn add_cat" style="margin-left:80px;">添加分类</button></br>
 		</div>
-		<div class="box">
-			<h3>tags</h3>
-			<ul class="tags_ul box_content">
-				{foreach $all_tags as $v}
-				<li><label><input type="checkbox" class="tags_box" name="tag_id[]" value="{$v.tag_id}"/>{$v.tag_name}</label></li>
-				{/foreach}
-			</ul>
-			<div style="width:260px;margin:0 auto;line-height:30px;">
-				<input type="text" name="tag_name"/>
-				<button class="btn add_tag">添加标签</button>
-			</div>
-			<div class="box_bottom"></div>
+		<div class="box_bottom"></div>
+	</div>
+	<div class="box">
+		<h3>tags</h3>
+		<ul class="tags_ul box_content" id="tags_ul">
+		</ul>
+		<div style="width:260px;margin:0 auto;line-height:30px;">
+			<input type="text" name="tag_name"/>
+			<button class="btn add_tag">添加标签</button>
 		</div>
-	</form>
+		<div class="box_bottom"></div>
+	</div>
 </div>
+<script id="cat_tree" type="text/html">
+{ each cat_tree }
+	<li><label>{ if $value.pId == 0 }|-{ else }|-----{ /if }<input type="checkbox" { if $value.is_selected } checked="checked" { /if } class="tags_box" name="cat_id[]" value="{ $value.id  }"/>{ $value.name }</label></li>
+{ /each }
+</script>
+<script id="tags_li" type="text/html">
+{ each all_tags }
+		<li><label><input type="checkbox" class="tags_box" name="tag_id[]"  { if $value.is_selected } checked="checked" { /if } value="{ $value.tag_id }"/>{ $value.tag_name }</label></li>
+{ /each }
+</script>
 {include file="../../common/kindeditor.html"}
 {/block}

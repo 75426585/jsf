@@ -12,7 +12,7 @@ class Tags_model extends CI_model{
 	//查找某个文章tag标签
 	public function get_post_tags($post_id=0){
 		$this->db->from('js_post_tag');
-		if($post_id) $this->db->where('post_id',$post_id);
+		$this->db->where('post_id',$post_id);
 		$res = $this->db->get()->result_array();
 		$tags = array();
 		if($res){
