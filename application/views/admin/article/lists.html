@@ -24,7 +24,7 @@
 				<td>{$v.id}</td>
 				<td>{$v.title}</td>
 				<td>{$v.create_time|date_format:'%Y-%m-%d %H:%M'}</td>
-				<td art_id="{$v.id}"><a href="/admin/article/edit/{$v.id}" class="fancybox fancybox.iframe">修改</a> <a href="/admin/article/dodel/{$v.id}" class="del-link">删除</a></td>
+				<td art_id="{$v.id}"><a href="/admin/article/edit/{$v.id}">修改</a> <a href="/admin/article/dodel/{$v.id}" class="del-link">删除</a></td>
 			</tr>
 			{foreachelse}
 			<tr>

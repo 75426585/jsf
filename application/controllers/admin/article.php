@@ -17,6 +17,30 @@ class Article extends MY_Controller{
 		$this->sm->view('admin/article/lists.html');
 	}
 
+	//添加文章分类
+	public function add_article_cat(){
+		$post = $this->input->post();
+		$tag_data['tag_name']= $post['cat_name'];
+		$tag_data['tag_parent']= $post['parent_id'];
+		$tag_data['tag_type']= 2;
+		$this->db->insert('js_tags',$tag_data);
+	}
+
+	//添加文章分类
+	public function add_article_tag(){
+		$tag_data['tag_name'] = $this->input->post('tag_name');
+		$tag_data['tag_type']= 1;
+		$this->db->insert('js_tags',$tag_data);
+	}
+
+	//文章分类和标签的修改
+	public function tags($func=''){
+		if($func == 'edit'){
+			$post = $this->input->post();
+			var_dump($post);exit;
+		}
+	}
+
 
 	//文章分类
 	public function cat($function=''){
@@ -60,23 +84,50 @@ class Article extends MY_Controller{
 	//添加文章
 	public function add($function=''){
 		if($function==''){
+			$this->load->model('tags_model');
+			$cat_tree = $this->article_model->get_cat_tree();
+			$all_tags = $this->tags_model->get_post_tags(1);
+			$article_id = 0;
 			$data = get_defined_vars();
 			$this->sm->assign($data);
 			$this->sm->view('admin/article/add.html');
 		}elseif($function == 'do'){
 			$post = $this->input->post();
-			$res = $this->article_model->add($post);
+			$posts_data['post_id'] = $post['post_id'];
+			$posts_data['title'] = $post['title'];
+			$posts_data['vicetitle'] = $post['vicetitle'];
+			$posts_data['content'] = $post['content'];
+			$posts_data['post_status'] = $post['type'];
+			$posts_data['create_time'] = time();
+			$tags = $post['tags'];
+			$res = $this->article_model->edit($posts_data,$tags);
 			if($res){
 				echojson('1','','添加成功');
 			}else{
-				echojson('1','','添加失败');
+				echojson('0','','添加失败');
+			}
+		}elseif($function=='addtitle'){
+			$res = $this->article_model->addtitle($title);
+			if($res){
+				echojson('1',$res,'添加成功');
+			}else{
+				echojson('0','','添加失败');
+			}
+		}elseif($function == 'draft'){
+			$title = $this->input->post('title');
+			$res = $this->db->insert('js_posts',array('title'=>$title));
+			if($res){
+				$post_id = $this->db->insert_id();
+				echojson('1',$post_id,'');
+			}else{
+				echojson('0','','生成草稿失败');
 			}
 		}
 	}
 
 	//文章删除
 	public function dodel($aid){
-		$res = $this->db->delete('article',array('id'=>intval($aid)));
+		$res = $this->db->delete('js_posts',array('id'=>intval($aid)));
 		if($res){
 			echojson('1','','删除成功！');
 		}else{
@@ -85,30 +136,16 @@ class Article extends MY_Controller{
 	}
 
 	//文章修改
-	public function edit($aid,$function=""){
-		$aid = intval($aid);
-		$art = $this->db->get_where('article',array('id'=>$aid))->row_array();
-		if($function=='doedit'){
-			$post = $this->input->post();
-			$res = $this->db->update('article',$post,array('id'=>$aid));
-			if($res){
-				echojson('1','','修改成功');
-			}else{
-				echojson('1','','修改失败');
-			}
-		}else{
-			$cat = $this->db->get_where('article',array('cat_id'=>0))->result_array();
-			$cat_options = array();
-			if($cat){
-				foreach($cat as $v){
-					$cat_options[$v['id']] = $v['title'];
-				}
-			}
-			$data = get_defined_vars();
-			$this->sm->assign($data);
-			$this->sm->view('admin/article/edit.html');
-		}
-
+	public function edit($article_id=0){
+		if(!$article_id) return false;
+		$this->load->model('tags_model');
+		$cat_tree = $this->article_model->get_cat_tree();
+		$all_tags = $this->tags_model->get_all_tags(1);
+		$select_tags = $this->tags_model->get_post_tags($article_id);
+		$post_data = $this->db->get_where('js_posts',array('id'=>$article_id))->row_array();
+		$data = get_defined_vars();
+		$this->sm->assign($data);
+		$this->sm->view('admin/article/add.html');
 	}
 
 	//文章列表
@@ -189,5 +226,10 @@ class Article extends MY_Controller{
 			}
 		}
 		echojson(1,$cat_tree);
+	}
+
+	//获取某文章的分类情况
+	public function json_cat($article_id=-1){
+		$cat_tree = $this->article_model->get_cat_tree();
 	}
 }

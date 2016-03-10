@@ -4,13 +4,14 @@ class Article_model extends CI_model{
 	public static $cat_tree;
 	//获取文章分类树
 	public function get_cat_tree($parent_id = 0,$level = 0){
-		$this->db->where('parent',$parent_id);
-		$cat = $this->db->get('js_post_cat')->result_array();
+		$this->db->where('tag_parent',$parent_id);
+		$this->db->where('tag_type',2);
+		$cat = $this->db->get('js_tags')->result_array();
 		if(! $cat) return false;
 		$level++;
 		foreach($cat as $v){
-			self::$cat_tree[] = array('id'=>$v['cat_id'],'name'=>$v['cat_name'],'level'=>$level,'pId'=>$v['parent']);
-			$this->get_cat_tree($v['cat_id'],$level);
+			self::$cat_tree[] = array('id'=>$v['tag_id'],'name'=>$v['tag_name'],'level'=>$level,'pId'=>$v['tag_parent']);
+			$this->get_cat_tree($v['tag_id'],$level);
 		}
 		return self::$cat_tree;
 	}
@@ -35,12 +36,32 @@ class Article_model extends CI_model{
 	}
 
 	//添加文章
-	public function add($data){
+	public function edit($data,$tags = array()){
+		$post_id = $data['post_id'];
+		if(!$post_id) return false;
+		unset($data['post_id']);
+		$this->db->trans_begin();
+		$this->db->update('js_posts',$data,array('id'=>$post_id));
+		$this->db->delete('js_post_tag',array('post_id'=>$post_id));
+		foreach($tags as $v){
+			$this->db->insert('js_post_tag',array('post_id'=>$post_id,'tag_id'=>$v));
+		}
+		if ($this->db->trans_status() === FALSE) {
+			$this->db->trans_rollback();
+			return false;
+		} else {
+			$this->db->trans_commit();
+			return true;
+		}
+	}
+
+	//添加文章
+	public function addtitle($title){
 		$res = $this->db->insert('js_posts',$data);
 		if($res){
 			$id = $this->db->insert_id();
 			$this->db->update('article',array('sort'=>$id),array('id'=>$id));
-			return true;
+			return $id;
 		}else{
 			return false;
 		}
@@ -83,16 +104,5 @@ class Article_model extends CI_model{
 		}else{
 			echojson('0','');
 		}
-		//$res = $this->db->query("select sort from article")->result_array();
-		/*
-		$data = array('id1'=>$id1,'id2'=>$id2,'sort1'=>$sort1,'sort2'=>$sort2,'type'=>$type,'sql'=>$this->db->last_query());
-		$r = array();
-		foreach($res as $v){
-			$r[] = $v['sort'];
-		}
-		$res = implode(',',$r);
-		$this->log_model->log($data);
-		$this->log_model->log($res);
-		 */
 	}
 }

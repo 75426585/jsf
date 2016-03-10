@@ -159,20 +159,13 @@ div.sdmenu div a.current:hover{background:#38A3D5 url(../img/171.png) no-repeat 
 
 .edit-span,.del-span{ cursor:pointer; }
 /*首页动画*/
-.nav_img{
-	padding:10px;
-	position: relative;
-	float: left;
-	width: 120px;
-	height: 120px;
-	margin-top: 8px;
-}
-.nav_img .close-btn{
-	position: absolute;
-	display: inline-block;
-	width: 13px;
-	height: 13px;
-	right: 2px;
-	top: 2px;
-	background: url("/static/images/admin/close-ico.png") no-repeat;
-}
+.nav_img{ padding:10px; position: relative; float: left; width: 120px; height: 120px; margin-top: 8px; }
+.nav_img .close-btn{ position: absolute; display: inline-block; width: 13px; height: 13px; right: 2px; top: 2px; background: url("/static/images/admin/close-ico.png") no-repeat; }
+
+.cat_tree_ul,.tags_ul{ list-style:none; }
+.box{margin: 10px 5px 5px 5px; background: url(/static/images/home/sidebar_box_bg_top.png) repeat-y; background-color: #FFFFFF; overflow: hidden;}
+.box h3{background: url(/static/images/home/sidebar_box_header_top.png) no-repeat left top; margin: 0px; overflow: hidden; font-size: 12px; text-transform: uppercase; padding: 3px 10px 3px 10px;line-height:30px;}
+.box .box_content {font-size: 12px; padding: 10px 10px 5px 10px; overflow: hidden; color: #666;} 
+.box .box_bottom {margin: 0px; padding: 0px; background: url(/static/images/home/sidebar_box_footer_top.png) no-repeat left bottom; height: 5px !important; height: 1px;} 
+.tags_ul li{float:left; padding:3px 12px 3px 12px;border-radius:5px;}
+.tags_ul li:hover{background-color:#bbb;color:#fff;}

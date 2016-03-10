@@ -1,37 +1,86 @@
 {extends file="../template.html"}
 {block name="main-wrap"}
 <input type="hidden" id="page" js="admin/article"/>
+<input type="hidden" id="article_id" value="{$article_id}"/>
 <link rel="stylesheet" type="text/css" href="/static/js/lib/fancybox/jquery.fancybox.css" />
 <ul class="breadcrumb">当前位置：
 	<a href="#">文章</a> <span class="divider">/</span>
-	添加文章
+	{if $article_id}修改{else}添加{/if}文章
 </ul>
 <div class="title_right">
-	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/article/add"><i class="icon-plus icon-white"></i>添加文章</a></span>
-	<strong>添加文章</strong>
+	<span class="pull-right margin-bottom-5"><a  class="btn btn-info btn-small" href="/admin/article/add"><i class="icon-plus icon-white"></i>{if $article_id}修改{else}添加{/if}文章</a></span>
+	<strong>{if $article_id}修改{else}添加{/if}文章</strong>
 </div>
-<div style="width:50%;float:left;">
-	<table class="table table-bordered table-hover table-striped">
-		<tbody>
-		<tr align="center">
-			<td width="15%"><strong>主标题</strong></td>
-			<td width="85%"><input style="width:80%;margin:3px auto;" type="text" name="title" /></td>
-		</tr>
-		<tr align="center">
-			<td width="15%"><strong>副标题</strong></td>
-			<td width="85%"><input style="width:70%;margin:3px auto;" type="text" name="vicetitle" /></td>
-		</tr>
-		<tr align="center">
-			<td width="15%"><strong>内容</strong></td>
-			<td width="85%"><input type="text" name="vicetitle" /></td>
-		</tr>
-		</tbody>
-	</table>
+<div class="title_right link_box" style="display:none;">
+	链接地址:<i></i>
 </div>
-<div style="width:50%;float:left;">
-</div>
-<!--添加弹出框-->
-<form id="add-form" style="display:none" action="/admin/article/cat/doadd">
-	<strong>分类名称：　</strong><input type="text" name="name"/>
+<form action="/admin/article/add/doadd" method="post">
+	<div style="width:840px;float:left;">
+		<table class="table table-bordered table-hover table-striped">
+			<tbody>
+			<tr align="center">
+				<td width="15%"><strong>主标题</strong></td>
+				<td width="85%"><input style="width:80%;margin:3px auto;" type="text" name="title" value="{$post_data['title']}" /></td>
+			</tr>
+			<tr align="center">
+				<td width="15%"><strong>副标题</strong></td>
+				<td width="85%"><input style="width:70%;margin:3px auto;" type="text" name="vicetitle" value="{$post_data['vicetitle']}" /></td>
+			</tr>
+			<tr align="center">
+				<td width="15%"><strong>内容</strong></td>
+				<td colspan="3" align="center"><textarea name="content" style="width:670px;height:600px;visibility:hidden;">{$post_data.content|default:''}</textarea></td>
+			</tr>
+			</tbody>
+		</table>
+		<table  class="margin-bottom-20 table  no-border" >
+			<tr>
+				<td class="text-center"><input type="button" value="保存草稿" result="1" class="btn btn-info article_sub" style="width:80px;" /></td>
+				<td class="text-center"><input type="button" value="确认发布" result="2" class="btn btn-info article_sub" style="width:80px;" /></td>
+			</tr>
+		</table>
+	</div>
 </form>
+<div class="right_content" style="width:350px;float:right;">
+	<form class="tag_form" action="/admin/article/tags/edit" method="post">
+		<div class="box">
+			<h3>分类</h3>
+			<ul class="cat_tree_ul box_content">
+				{foreach $cat_tree as $v}
+				{if $v.level == 1}
+				<li><label>|-<input type="checkbox" class="tags_box" name="cat_id[]" value="{$v.id}"/>{$v.name}</label></li>
+				{else}
+				<li><label>|-----<input type="checkbox" class="tags_box" name="cat_id[]" value="{$v.id}"/>{$v.name}</label></li>
+				{/if}
+				{/foreach}
+			</ul>
+			<div style="width:240px;margin:0 auto;line-height:30px;">
+				新增分类：
+				<input type="text" name="cat_name"/></br>
+				上级目录：
+				<select class="form-control" name="parent_id">
+					<option value="0">顶级分类</option>
+					{foreach $cat_tree as $v}
+					{if $v.level == 1}<option value="{$v.id}">{$v.name}</option>{/if}
+					{/foreach}
+				</select></br>
+				<button class="btn add_cat" style="margin-left:80px;">添加分类</button></br>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+		<div class="box">
+			<h3>tags</h3>
+			<ul class="tags_ul box_content">
+				{foreach $all_tags as $v}
+				<li><label><input type="checkbox" class="tags_box" name="tag_id[]" value="{$v.tag_id}"/>{$v.tag_name}</label></li>
+				{/foreach}
+			</ul>
+			<div style="width:260px;margin:0 auto;line-height:30px;">
+				<input type="text" name="tag_name"/>
+				<button class="btn add_tag">添加标签</button>
+			</div>
+			<div class="box_bottom"></div>
+		</div>
+	</form>
+</div>
+{include file="../../common/kindeditor.html"}
 {/block}
