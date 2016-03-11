@@ -10,6 +10,10 @@ class Home extends CI_Controller {
 		$this->db->order_by('id desc');
 		$this->db->limit($per_page,($page-1)*$per_page);
 		$articles = $this->db->get('js_posts')->result_array();
+		foreach($articles as $k => $v){
+			$res=preg_split('/<hr style="page-break-after:always;" class="ke-pagebreak"/',$v['content']);
+			$articles[$k]['content'] = $res[0];
+		}
 		$data = get_defined_vars();
 		$this->sm->assign($data);
 		$this->sm->view('home/index.html');

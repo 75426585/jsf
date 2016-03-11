@@ -2,34 +2,11 @@
 {block name="title"}首页{/block}
 {block name="content_left"}
 <!--博客内容-->
-<div class="fullbox">
-	<h3>IT人家</h3>
-	<div class="fullbox_content">
-		<h1><a href="/article">为什么静下心来阅读会是一种奢侈？</a></h1>
-		<span class="vicetitle">并非人人都有条件静阅</span>
-		<div class="post_info">
-			<div class="post_info_left">
-				<div class="nmtags" style="position: relative;">
-					<a href="" rel="nofollow">阅读</a>
-					<a href="" rel="nofollow">奢侈</a>
-				</div>
-				<span>在 2016年01月25日 那天写的</span></div>
-			<div class="post_info_right">
-				<span> 1,969 views</span>
-			</div>
-		</div>
-		<div class="post_content">
-			因为你读的时候，得有这个经济，智力的资本，世界上百分之九十的人，基本上是没有这两个条件的。而你读过以后，知识就是你轻易获取利润的雄厚资本，基本上，很多没有读书的人，也是没有这个资源的。毕竟呀，大多数人花了多少物质资源，付出多大代价，经过多少优胜劣汰，耗费多少代人的努力，才能把少数人送到那个可以让我们的视野达到极限的智慧的高塔，好多人终其一生，都只是在塔底苟延残喘，浑浑噩噩，完成了基因的传递，其生命基本就再无法实现任何价值。 
-			<p class="morelink"><a href="/article" class="more-link">阅读全文 &gt;&gt;</a></p> 
-		</div>
-		<div class="fullbox_footer"></div>
-	</div>
-</div>
 {foreach $articles as $v}
 <div class="fullbox">
 	<h3>{$v.cat_id}</h3>
 	<div class="fullbox_content">
-		<h1><a href="/article">{$v.title}</a></h1>
+		<h1><a href="/article/show/{$v.id}">{$v.title}</a></h1>
 		<span class="vicetitle">{$v.vicetitle}</span>
 		<div class="post_info">
 			<div class="post_info_left">
@@ -44,7 +21,7 @@
 		</div>
 		<div class="post_content">
 			{$v.content}
-			<p class="morelink"><a href="/article" class="more-link">阅读全文 &gt;&gt;</a></p> 
+			<p class="morelink"><a href="/article/show/{$v.id}" class="more-link">阅读全文 &gt;&gt;</a></p> 
 		</div>
 		<div class="fullbox_footer"></div>
 	</div>
