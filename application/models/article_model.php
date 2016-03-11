@@ -43,8 +43,10 @@ class Article_model extends CI_model{
 		$this->db->trans_begin();
 		$this->db->update('js_posts',$data,array('id'=>$post_id));
 		$this->db->delete('js_post_tag',array('post_id'=>$post_id));
-		foreach($tags as $v){
-			$this->db->insert('js_post_tag',array('post_id'=>$post_id,'tag_id'=>$v));
+		if($tags){
+			foreach($tags as $v){
+				$this->db->insert('js_post_tag',array('post_id'=>$post_id,'tag_id'=>$v));
+			}
 		}
 		if ($this->db->trans_status() === FALSE) {
 			$this->db->trans_rollback();
