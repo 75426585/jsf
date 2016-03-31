@@ -23,6 +23,7 @@ class QQlogin extends CI_Controller {
 			header('Location:/');
 		}else{
 			$_SESSION['userid'] = '';
+			header("Content-Type: text/html; charset=UTF-8");
 			show_error('抱歉,你不是本网站管理员，禁止登录!'.$open_id);
 		}
 	}
