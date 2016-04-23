@@ -34,7 +34,7 @@ body{border:0;height:100%;font-family: Verdana, Arial, Helvetica, sans-serif;mar
 .fullbox .post_content .morelink { display:block; line-height: 100%;text-indent: 2em; letter-spacing: 1px;width:100%;text-align:right;} 
 .fullbox .post_content .morelink a:hover{color:#f85e0b;} 
 /*文章详情页面包屑*/
-.fullbox_header{background: url(/static/images/home/post_content_header.png) no-repeat left top; margin: 0px; padding: 0px; float: left; width: 604px; height: 3px; }
+.fullbox_header{background: url(/static/images/home/post_content_h1.png) no-repeat left top; margin: 0px; padding: 0px; float: left; width: 760px; height: 3px; }
 .fullbox .breadcrumb {position: relative; border-bottom: 1px solid #EEEEEE; display: block; font-size: 12px; padding: 10px 10px 10px 10px; margin-bottom: 1em;}
 .fullbox .breadcrumb a {color: #046380; text-decoration: none; padding: 0px 5px 0px 5px;} 
 .fullbox .breadcrumb a:hover {color: #f85e0b; text-decoration: none; padding: 0px 5px 0px 5px;} 

@@ -47,7 +47,12 @@ define(function(require, exports) {
 			tags: tags
 		},
 		function(data) {
-
+			if(data.status==1){
+				alert('保存成功');
+				window.location.href='/admin/article';
+			}else{
+				alert('保存失败');
+			}
 		},
 		'json')
 	})
@@ -107,7 +112,11 @@ define(function(require, exports) {
 			article_id = 0;
 			$('.link_box').hide();
 		}
-		exports.show_tag(article_id);
+
+		//如果是修改文章，则展示模板
+		if($('.add_cat').length > 0){
+			exports.show_tag(article_id);
+		}
 	})
 })
 
