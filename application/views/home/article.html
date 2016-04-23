@@ -17,8 +17,10 @@
 		<div class="post_info">
 			<div class="post_info_left">
 				<div class="nmtags" style="position: relative;">
-					<a href="" rel="nofollow">阅读</a>
-					<a href="" rel="nofollow">奢侈</a>
+					{foreach $tags as $v}
+					<a href="/tag/show/{$v.tag_name}" rel="nofollow">{$v.tag_name}</a>
+					{foreachelse}
+					{/foreach}
 				</div>
 				<span>{if $posts.create_time}在 {$posts.create_time|date_format:'%Y年%m月%d日'} 那天写的{/if}</span></div>
 			<div class="post_info_right">

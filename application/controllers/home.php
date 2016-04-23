@@ -13,7 +13,10 @@ class Home extends CI_Controller {
 		foreach($articles as $k => $v){
 			$res=preg_split('/<hr style="page-break-after:always;" class="ke-pagebreak"/',$v['content']);
 			$articles[$k]['content'] = $res[0];
+			$posts_ids[] = $v['id'];
 		}
+		$this->load->model('tags_model');
+		$tags = $this->tags_model->get_post_tags($posts_ids);
 		$data = get_defined_vars();
 		$this->sm->assign($data);
 		$this->sm->view('home/index.html');
