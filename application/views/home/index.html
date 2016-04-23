@@ -4,7 +4,7 @@
 <!--博客内容-->
 {foreach $articles as $v}
 <div class="fullbox">
-	<h3>{$v.cat_id}</h3>
+	<h3>编程</h3>
 	<div class="fullbox_content">
 		<h1><a href="/article/show/{$v.id}">{$v.title}</a></h1>
 		<span class="vicetitle">{$v.vicetitle}</span>
@@ -14,7 +14,7 @@
 					<a href="" rel="nofollow">阅读</a>
 					<a href="" rel="nofollow">奢侈</a>
 				</div>
-				<span>在 2016年01月25日 那天写的</span></div>
+				<span>{if $v.create_time}在 {$v.create_time|date_format:'%Y年%m月%d日'} 那天写的{/if}</span></div>
 			<div class="post_info_right">
 				<span> 0 views</span>
 			</div>

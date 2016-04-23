@@ -10,19 +10,19 @@
 			<img src="http://www.nowamagic.net/librarys/application/views/veda/images/arrow.png" alt="">
 			<a href="/">IT人家</a>
 			<img src="http://www.nowamagic.net/librarys/application/views/veda/images/arrow.png" alt=""> 
-			<a href="/">为什么静下心来阅读会是一种奢侈？</a>
+			<a href="/">生活随笔</a>
 		</div>
-		<h1><a href="/">为什么静下心来阅读会是一种奢侈？</a></h1>
-		<span class="vicetitle">并非人人都有条件静阅</span>
+		<h1><a href="/">{$posts.title}</a></h1>
+		<span class="vicetitle">{$posts.vicetitle}</span>
 		<div class="post_info">
 			<div class="post_info_left">
 				<div class="nmtags" style="position: relative;">
 					<a href="" rel="nofollow">阅读</a>
 					<a href="" rel="nofollow">奢侈</a>
 				</div>
-				<span>在 2016年01月25日 那天写的</span></div>
+				<span>{if $posts.create_time}在 {$posts.create_time|date_format:'%Y年%m月%d日'} 那天写的{/if}</span></div>
 			<div class="post_info_right">
-				<span> 1,969 views</span>
+				<span>{$posts.view_count} views</span>
 			</div>
 		</div>
 		<div class="post_content">
