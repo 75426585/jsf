@@ -22,4 +22,8 @@ class Home extends CI_Controller {
 		$this->sm->view('home/index.html');
 	}
 
+	public function test(){
+		echo DB_FW_USER;
+	}
+
 }
