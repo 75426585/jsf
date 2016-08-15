@@ -28,7 +28,11 @@
 			</div>
 		</div>
 		<div class="post_content">
+			{if $posts.post_type}
+			<div class="markdown-body">{$posts.content}</div>
+			{else}
 			{$posts.content}
+			{/if}
 		</div>
 		<div class="fullbox_footer"></div>
 	</div>

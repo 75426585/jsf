@@ -33,6 +33,11 @@ body{border:0;height:100%;font-family: Verdana, Arial, Helvetica, sans-serif;mar
 .fullbox .post_content {display:block; font-size: 12px; margin: 0px;color: #333;float:left;padding:0;width:720px; padding:2px 20px 2px 20px;}
 .fullbox .post_content .morelink { display:block; line-height: 100%;text-indent: 2em; letter-spacing: 1px;width:100%;text-align:right;} 
 .fullbox .post_content .morelink a:hover{color:#f85e0b;} 
+.fullbox .title{
+	font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	border-bottom: 1px solid #eee;
+	text-align:center;
+}
 /*文章详情页面包屑*/
 .fullbox_header{background: url(/static/images/home/post_content_h1.png) no-repeat left top; margin: 0px; padding: 0px; float: left; width: 760px; height: 3px; }
 .fullbox .breadcrumb {position: relative; border-bottom: 1px solid #EEEEEE; display: block; font-size: 12px; padding: 10px 10px 10px 10px; margin-bottom: 1em;}

@@ -1,0 +1,13 @@
+.markdown-body blockquote, .markdown-body dl, .markdown-body ol, .markdown-body p, .markdown-body pre, .markdown-body table, .markdown-body ul,.markdown-body li,.markdown-body dd {
+	padding-left:20px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.markdown-body blockquote {
+	font-size:14px;
+	padding: 0 0;
+	color: #777;
+	border-left: 4px solid #ddd;
+	-webkit-margin-start: 18px;
+}

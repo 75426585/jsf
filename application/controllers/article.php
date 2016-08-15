@@ -10,6 +10,7 @@ class Article extends CI_Controller {
 			$this->load->library('MdTpl');
 			$mt = new MdTpl();
 			$mt->code_skin = 'emacs';
+			$mt->text_skin = '';
 			$mt->static_dir = '/static/js/lib';
 			$posts['content'] = $mt->display($posts['content']);
 		}
