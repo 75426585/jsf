@@ -89,9 +89,9 @@ class Article extends MY_Controller{
 		}elseif($function == 'do'){
 			$post = $this->input->post();
 			$posts_data['post_id'] = $post['post_id'];
-			$posts_data['title'] = $post['title'];
-			$posts_data['vicetitle'] = $post['vicetitle'];
-			$posts_data['content'] = $post['content'];
+			$posts_data['title'] = htmlspecialchars($post['title']);
+			$posts_data['vicetitle'] =  htmlspecialchars($post['vicetitle']);
+			$posts_data['content'] =   htmlspecialchars($post['content']);
 			$posts_data['post_status'] = $post['type'];
 			$posts_data['create_time'] = time();
 			$tags = $post['tags'];

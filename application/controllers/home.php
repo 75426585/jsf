@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 		$articles = $this->db->get('js_posts')->result_array();
 		foreach($articles as $k => $v){
 			$res=preg_split('/<hr style="page-break-after:always;" class="ke-pagebreak"/',$v['content']);
-			$articles[$k]['content'] = $res[0];
+			$articles[$k]['content'] = htmlspecialchars_decode($res[0]);
 			$posts_ids[] = $v['id'];
 		}
 		$this->load->model('tags_model');

@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 	 */
 	public function createCode(){
 		loadlib("checkcode");
-		$checkcode = new chkcode();
+		$checkcode = new chkcode(4,70,28);
 		$checkcode->create();
 	}
 

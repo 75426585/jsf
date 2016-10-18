@@ -18,6 +18,7 @@ class Article_model extends CI_model{
 
 	//添加文章分类
 	public function cat_add($name){
+		$name = htmlspecialchars($name);
 		$res = $this->db->insert('js_post_cat',array('title'=>$name));
 		if($res){
 			$id = $this->db->insert_id();
@@ -106,5 +107,10 @@ class Article_model extends CI_model{
 		}else{
 			echojson('0','');
 		}
+	}
+
+	//获取最近添加的n条文章
+	public function get_recent($limit=10){
+		return $this->db->query("select id,source_content from js_posts where post_type = 1 order by id desc limit {$limit}")->result_array();
 	}
 }

@@ -1,34 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-<title>管理登陆</title>
-<style type="text/css">
-<!--
-.STYLE1 {
-	font-size: 11pt;
-	font-weight: bold;
-}
--->
-*{
-font-family:'微软雅黑';
-}
-.submit{
-cursor:pointer;
-}
-.red{
-	color:red;
-}
-.green{
-	color:green;
-}
-#refresh{
-	cursor:pointer;
-}
-</style>
-<script src="/static/js/lib/jquery.min.js"></script>
-</head>
-<body style="background-color:#eee;margin:0 auto; width:500px;">
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>内网拍系统socket后台服务管理</title>
+	<link href="/static/js/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript">
 function toQzoneLogin()
 {
@@ -36,85 +13,62 @@ function toQzoneLogin()
 
 } 
 </script>
-{if isset($smarty.session.userid) && $smarty.session.userid }
-	用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
-{else}
-	<a href="#" onclick="toQzoneLogin()"><img src="/static/images/login/qq_login.png"></a>
-{/if}
-<div style="background-image:url(/static/images/login/admin_login.png); width:500px; height:200px; margin-top:130px;">
-<form>
-<table width="500" border="0" cellpadding="0" cellspacing="0">
-	<input type="hidden" class="postsrc" src="/common/login/ajaxpost/" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" />
-	<tr>
-	<td width="250">&nbsp;</td>
-	<td colspan="2">&nbsp;</td>
-	</tr>
-	<tr>
-	<td height="35"><div align="right" class="STYLE1">用户名：</div></td>
-	<td height="35" colspan="2"><input type="text" name="username" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" /></td>
-	</tr>
-	<tr>
-	<td height="35"><div align="right" class="STYLE1">密　码：</div></td>
-	<td height="35" colspan="2"><input type="password" name="password" class="password" style="height:25px; width:200px; font-size:15pt; font-weight:bold;" /></td>
-	</tr>
-	<tr>
-	<td height="35"><div align="right" class="STYLE1">验证码：</div></td>
-	<td width="100" height="35"><input type="text" name="checkcode" style="height:25px; width:85px; font-size:15pt; font-weight:bold;" /></td>
-	<td width="150"><img id="refresh" src="/common/login/createcode"/></td>
-	</tr>
-	<tr>
-	<td height="35">&nbsp;</td>
-	<td height="35" colspan="2"><div class="submit" style="width:130px; height:30px; background-image:url(/static/images/login/admin_login_button.png); border:0; background-color: transparent; "/><div></td>
-	</tr>
-	<tr><td></td><td colspan="2"><span class="msg"></span></td></tr>
-	</table>
-	</form>
+  </head>
+  <body>
+	<input type="hidden" id="page" js="common/login"/>
+	<div class="container-fluid" style="padding-top:150px;">
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-3">
+				<h3 class="text-center">够意思博客后台管理</h2>
+			</div>
+		</div>
+		<div class="row" style="padding-top:20px;">
+			<div class="col-xs-2 col-xs-offset-4">
+			<form class="form-horizontal" role="form" action="/manage/login.php" method="post">
+				<div class="form-group">
+					<label for="user_name" class="control-label col-sm-4">用　户：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control col-sm-9" id="user_name" name="user_name"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="passwd" class="col-xs-4 control-label">密　码：</label>
+					<div class="col-xs-8">
+						<input type="password" class="form-control" id="passwd" name="password"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="passwd" class="col-xs-4 control-label">验证码：</label>
+					<div class="col-xs-4">
+						<input type="text" class="form-control" style="font-size:20px;" name="checkcode"/>
+					</div>
+					<div class="col-xs-4">
+						<img style="padding-top:2px;" id="refresh" src="/common/login/createcode"/>
+					</div>
+				</div>
+				<div>
+					<button type="button" id="submit" class="btn btn-primary col-xs-5 col-xs-offset-4">登陆</button>
+				</div>
+				<div style="padding-top:10px;">
+					<div class="col-xs-5 col-xs-offset-4">
+						{if isset($smarty.session.userid) && $smarty.session.userid }
+							用户{$smarty.session.userid}已登录<a href="/common/login/logout">退出</a>
+						{else}
+						<a href="#" onclick="toQzoneLogin()"><img style="margin-left:-15px;padding-top:10px;" src="/static/images/login/qq_login.png"></a>
+						{/if}
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+		<div class="row" style="padding-top:20px;display:none;" id="show_box">
+			<div class="col-xs-2 col-xs-offset-4">
+				<div class="alert alert-danger" role="alert">
+					  <strong>警告：</strong><span id="error_msg"></span>
+				</div>
+			</div>
+		</div>
 	</div>
-<script>
-$(function(){
-	showMsg('','red');
-	$('.submit').click(function(){
-		var username = $("input[name='username']").val();
-		var password = $("input[name='password']").val();
-		var checkcode = $("input[name='checkcode']").val();
-		if(username.length > 20 || username.length < 4 ){
-			showMsg('用户名不正确','red');
-			return false;
-		}
-		if(password.length > 20 || password.length < 4 ){
-			showMsg('密码不正确','red');
-			return false;
-		}
-		if(checkcode.length != 4 ){
-			showMsg('验证码不正确','red');
-			return false;
-		}
-		var src = $('.postsrc').attr('src');
-		$.post(src,{
-			username:username,
-				password:password,
-				checkcode:checkcode
-		},function(data){
-			if(data.status == '1'){
-				showMsg(data.msg,'green');
-				window.location.href="/admin/";
-			}else{
-				showMsg(data.msg,'red');
-				$('#refresh').attr('src',"/common/login/createcode?"+Math.random(1000,9999));
-			}
-		},'json')
-	})
-
-	function showMsg(msg,type){
-		$('.msg').html(msg);
-		$('.msg').addClass(type);
-	}
-
-	$('#refresh').click(function(){
-		$(this).attr('src',"/common/login/createcode?"+Math.random(1000,9999))
-
-	})
-})
-</script>
-</body>
+  </body>
 </html>
+<script type="text/javascript" src="/static/js/lib/sea.js"></script>

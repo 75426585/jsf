@@ -25,16 +25,17 @@ class chkcode{
 	public $ext_rand_y= true; //Y轴随机
 	function __construct ($len=4,$im_width='',$im_height=25) {
 		// 验证码长度、图片宽度、高度是实例化类时必需的数据
-		$this->len = $len; $im_width = $len * 15;
+		$this->len = $len;
+	   //	$im_width = $len * 15;
 		$this->im_width = $im_width;
 		$this->im_height= $im_height;
 		$this->im = imagecreate($im_width,$im_height);
 		$this->ext_pixel = true; //干扰点
 		$this->ext_line = true; //干扰线
 		$this->ext_rand_y= true; //Y轴随机
-		$this->green = 238;
-		$this->red = 0;
-		$this->blue = 0;
+		$this->green = 200;
+		$this->red = 200;
+		$this->blue = 200;
 		$this->set_bgcolor();
 	}
 	// 设置图片背景颜色，默认是浅灰色背景
