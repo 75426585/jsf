@@ -10,7 +10,7 @@ class Article extends MY_Controller{
 	public function index(){
 		$get = $this->input->get();
 		$page = (int) max(1,$get['page']);
-		$this->db->order_by('create_time');
+		$this->db->order_by('create_time desc');
 		$posts = $this->db->get('js_posts')->result_array();
 		$data = get_defined_vars();
 		$this->sm->assign($data);
