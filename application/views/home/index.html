@@ -34,18 +34,11 @@
 
 <div id="post-navigator">
 	<div class="wp-pagenavi">
-		<span class="pages">1 /  138</span>
-		<span class="pages">首页</span>
-		<span class="pages">&lt; Prev</span>
-		<span class="pages current_page">1</span>
-		<a href="/" title="第2页">2</a>
-		<a href="/" title="第3页">3</a>
-		<a href="/" title="第4页">4</a>
-		<a href="/" title="第5页">5</a>
-		<a href="/" title="下一页">Next &gt;</a>
-		<a href="/" title="尾页">尾页</a>
-		页码：<input class="page_input" type="text" value="1" onkeydown="javascript: if(event.keyCode==13){ location='/'+this.value+'';return false; }" title="输入您想要到达的页码">
-		<div class="page_clear"></div>
+		<span class="pages">{$page} /  {$page_count}</span>
+		{$page_links}
+		<!--页码：<input class="page_input" type="text" value="1" onkeydown="javascript: if(event.keyCode==13){ location='/'+this.value+'';return false; }" title="输入您想要到达的页码">-->
+		<!--<div class="page_clear"></div>-->
 	</div>
 </div>
+<br/>
 {/block}
