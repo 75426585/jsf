@@ -92,6 +92,7 @@ class Article extends MY_Controller{
 			$posts_data['title'] = htmlspecialchars($post['title']);
 			$posts_data['vicetitle'] =  htmlspecialchars($post['vicetitle']);
 			$posts_data['content'] =   htmlspecialchars($post['content']);
+			$posts_data['summary_content'] =   htmlspecialchars($post['summary_content']);
 			$posts_data['post_status'] = $post['type'];
 			$posts_data['create_time'] = time();
 			$tags = $post['tags'];

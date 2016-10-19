@@ -9,10 +9,10 @@ class Home extends CI_Controller {
 		$per_page = 10;
 		$this->db->order_by('id desc');
 		$this->db->limit($per_page,($page-1)*$per_page);
+		$this->db->select('id,title,vicetitle,summary_content,create_time');
 		$articles = $this->db->get('js_posts')->result_array();
 		foreach($articles as $k => $v){
-			$res=preg_split('/<hr style="page-break-after:always;" class="ke-pagebreak"/',$v['content']);
-			$articles[$k]['content'] = htmlspecialchars_decode($res[0]);
+			$articles[$k]['summary_content'] = htmlspecialchars_decode($v['summary_content']);
 			$posts_ids[] = $v['id'];
 		}
 		$this->load->model('tags_model');

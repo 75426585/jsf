@@ -29,7 +29,9 @@ define(function(require, exports) {
 		var post_id = $('#article_id').val();
 		var title = $('input[name="title"]').val();
 		var vicetitle = $('input[name="vicetitle"]').val();
-		var content = $('textarea[name="content"]').val();
+		var content = editor.html();
+		var summary_content = editor.text();
+		var summary_content = summary_content.substring(0,200);
 		var type = $(this).attr('result');
 		var tags = new Array();
 		$('.tags_box').each(function() {
@@ -43,6 +45,7 @@ define(function(require, exports) {
 			title: title,
 			vicetitle: vicetitle,
 			content: content,
+			summary_content:summary_content,
 			type: type,
 			tags: tags
 		},
