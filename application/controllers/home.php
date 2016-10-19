@@ -9,7 +9,7 @@ class Home extends CI_Controller {
 		$per_page = 10;
 		$this->db->order_by('create_time desc');
 		$this->db->limit($per_page,($page-1)*$per_page);
-		$this->db->select('id,title,vicetitle,summary_content,create_time');
+		$this->db->select('id,title,vicetitle,summary_content,create_time,view_count');
 		$articles = $this->db->get('js_posts')->result_array();
 		foreach($articles as $k => $v){
 			$articles[$k]['summary_content'] = htmlspecialchars_decode($v['summary_content']);
