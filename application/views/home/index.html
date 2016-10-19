@@ -16,13 +16,13 @@
 					{foreachelse}
 					{/foreach}
 				</div>
-				<span>{if $v.create_time}在 {$v.create_time|date_format:'%Y年%m月%d日'} 那天修改{/if}</span></div>
+				<span>{if $v.update_time}在 {$v.update_time|date_format:'%Y年%m月%d日'} 那天修改{/if}</span></div>
 			<div class="post_info_right">
 				<span> {$v.view_count} views</span>
 			</div>
 		</div>
 		<div class="post_content">
-			{$v.summary_content}
+			{$v.summary_content}...
 			<p class="morelink"><a href="/article/show/{$v.id}" class="more-link">阅读全文 &gt;&gt;</a></p> 
 		</div>
 		<div class="fullbox_footer"></div>

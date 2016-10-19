@@ -10,7 +10,7 @@ class Article extends MY_Controller{
 	public function index(){
 		$get = $this->input->get();
 		$page = (int) max(1,$get['page']);
-		$this->db->order_by('create_time desc');
+		$this->db->order_by('update_time desc');
 		$posts = $this->db->get('js_posts')->result_array();
 		$data = get_defined_vars();
 		$this->sm->assign($data);
@@ -94,7 +94,7 @@ class Article extends MY_Controller{
 			$posts_data['content'] =   htmlspecialchars($post['content']);
 			$posts_data['summary_content'] =   htmlspecialchars($post['summary_content']);
 			$posts_data['post_status'] = $post['type'];
-			$posts_data['create_time'] = time();
+			$posts_data['update_time'] = time();
 			$tags = $post['tags'];
 			$res = $this->article_model->edit($posts_data,$tags);
 			if($res){
@@ -111,7 +111,7 @@ class Article extends MY_Controller{
 			}
 		}elseif($function == 'draft'){
 			$title = $this->input->post('title');
-			$res = $this->db->insert('js_posts',array('title'=>$title));
+			$res = $this->db->insert('js_posts',array('title'=>$title,'create_time'=>time()));
 			if($res){
 				$post_id = $this->db->insert_id();
 				echojson('1',$post_id,'');
@@ -149,7 +149,7 @@ class Article extends MY_Controller{
 		$post = $this->input->post();
 		$get = $this->input->get();
 		$aid = intval(isset($get['aid'])?$get['aid']:0);
-		$this->db->order_by('create_time desc');
+		$this->db->order_by('update_time desc');
 		$cat = $this->db->get_where('js_posts')->result_array();
 		if($function=='dodel'){
 			$res = $this->article_model->cat_del($cid);

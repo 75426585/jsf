@@ -22,7 +22,7 @@
 					{foreachelse}
 					{/foreach}
 				</div>
-				<span>{if $posts.create_time}在 {$posts.create_time|date_format:'%Y年%m月%d日'} 那天写的{/if}</span></div>
+				<span>{if $posts.update_time}在 {$posts.update_time|date_format:'%Y年%m月%d日'} 那天修改{/if}</span></div>
 			<div class="post_info_right">
 				<span>{$posts.view_count} views</span>
 			</div>

@@ -8,9 +8,9 @@ class Home extends CI_Controller {
 		$get = $this->input->get();
 		$page = (int) max($get['page'],1);
 		$per_page = 10;
-		$this->db->order_by('create_time desc');
+		$this->db->order_by('update_time desc');
 		$this->db->limit($per_page,($page-1)*$per_page);
-		$this->db->select('id,title,vicetitle,summary_content,create_time,view_count');
+		$this->db->select('id,title,vicetitle,summary_content,update_time,view_count');
 		$articles = $this->db->get('js_posts')->result_array();
 		$articles_count = $this->db->query('select count(*) as num from js_posts')->row()->num;
 		$page_count = ceil($articles_count/$per_page);
