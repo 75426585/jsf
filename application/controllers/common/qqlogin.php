@@ -20,7 +20,7 @@ class QQlogin extends CI_Controller {
 		$res = $this->db->get_where('user',array('openid'=>$open_id))->row_array();
 		if($res){
 			$_SESSION['userid'] = $res['id'];
-			header('Location:/');
+			header('Location:/admin');
 		}else{
 			$_SESSION['userid'] = '';
 			header("Content-Type: text/html; charset=UTF-8");
