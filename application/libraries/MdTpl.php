@@ -28,7 +28,7 @@ class MdTpl {
 		$str = preg_replace_callback('/\*\*(.*)\*\*/Us','self::_replace_bold',$str);
 		$str = preg_replace_callback('/\*(.*)\*/Us','self::_replace_italic',$str);
 		$str = preg_replace_callback('/\+\+(.*)\+\+/Us','self::_replace_underline',$str);
-		$str = preg_replace_callback('/```(.*) (.*)```/Us','self::_replace_code',$str);
+		$str = preg_replace_callback('/```(.*)(\n)(.*)```/Usi','self::_replace_code',$str);
 
 		return $str;
 
@@ -106,7 +106,7 @@ class MdTpl {
 			$str .= '<script type="text/javascript" src="'.$this->static_dir.'/sl/scripts/shBrush'.ucfirst($param[1]).'.js"></script>';
 			$this->has_code[$param[1]] = true;
 		}
-		return $str.'<pre class="brush:'.$param[1].'">'.$param[2].'</pre>';
+		return $str.'<pre class="brush:'.$param[1].'">'.$param[3].'</pre>';
 	}
 
 	//对主标题的替换
@@ -131,7 +131,7 @@ class MdTpl {
 		}
 		//如果需要支持普通文本皮肤，则加载
 		if($this->text_skin){
-			$str .= '<link type="text/css" rel="stylesheet" href="'.$this->static_dir.'/sl/'.$this->text_skin.'.css"/>';
+			//$str .= '<link type="text/css" rel="stylesheet" href="'.$this->static_dir.'/sl/'.$this->text_skin.'.css"/>';
 		}
 		$str = $this->_tpl($str);
 		if($view){
