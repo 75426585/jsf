@@ -1,4 +1,5 @@
 <?php
+echo DB_FW_USER;
 var_dump($_SERVER);exit;
 
 /*
