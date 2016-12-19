@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 if ($_SERVER['USER'] == 'bae'){
 	$db['default']['hostname'] = $_SERVER['HTTP_BAE_ENV_ADDR_SQL_IP'];
-	$db['default']['username'] = DB_FW_HOST;
+	$db['default']['username'] = DB_FW_USER;
 	$db['default']['password'] = DB_FW_PASS;
 	$db['default']['database'] = DB_FW_NAME;
 	$db['default']['port'] = $_SERVER['HTTP_BAE_ENV_ADDR_SQL_PORT'];
@@ -73,7 +73,6 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-var_dump($db);exit;
 
 
 /* End of file database.php */
