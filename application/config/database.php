@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 if ($_SERVER['USER'] == 'bae'){
 	$db['default']['hostname'] = $_SERVER['HTTP_BAE_ENV_ADDR_SQL_IP'];
-	$db['default']['username'] = 'f73d6d57a9b5436c8b707e9e8fe5d517';
-	$db['default']['password'] = 'cf2e3f160bed4e769659bea0642442e1';
-	$db['default']['database'] = 'daWQgOhPnFtKkhLMRrlI';
+	$db['default']['username'] = DB_FW_HOST;
+	$db['default']['password'] = DB_FW_PASS;
+	$db['default']['database'] = DB_FW_NAME;
 	$db['default']['port'] = $_SERVER['HTTP_BAE_ENV_ADDR_SQL_PORT'];
 }else{
 	$db['default']['hostname'] = $_SERVER['DB_FW_HOST'];
