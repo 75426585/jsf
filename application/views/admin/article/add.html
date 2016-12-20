@@ -27,6 +27,19 @@
 				<td width="85%"><input style="width:70%;margin:3px auto;" type="text" name="vicetitle" value="{$post_data['vicetitle']}" /></td>
 			</tr>
 			<tr align="center">
+				<td width="15%"><strong>类型</strong></td>
+				<td width="85%">
+					<div >
+						<label class="radio-inline" style="display:inline;">
+							<input type="radio" name="post_type" value="0"> 普通博文
+						</label>
+						<label class="radio-inline" style="display:inline;">
+							<input type="radio" name="post_type"  value="1"> MarkDown
+						</label>
+					</div>
+				</td>
+			</tr>
+			<tr align="center">
 				<td width="15%"><strong>内容</strong></td>
 				<td colspan="3" align="center"><textarea name="content" style="width:680px;height:600px;visibility:hidden;">{$post_data.content|default:''}</textarea></td>
 			</tr>

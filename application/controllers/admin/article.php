@@ -91,7 +91,8 @@ class Article extends MY_Controller{
 			$posts_data['post_id'] = $post['post_id'];
 			$posts_data['title'] = htmlspecialchars($post['title']);
 			$posts_data['vicetitle'] =  htmlspecialchars($post['vicetitle']);
-			$posts_data['content'] =   htmlspecialchars($post['content']);
+			$posts_data['post_type'] = $post_type = (int) $post['post_type'];
+			$posts_data['content'] =   $post_type?$post['content']:htmlspecialchars($post['content']);
 			$posts_data['summary_content'] =   htmlspecialchars($post['summary_content']);
 			$posts_data['post_status'] = $post['type'];
 			$posts_data['update_time'] = time();

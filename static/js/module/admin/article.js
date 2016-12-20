@@ -29,6 +29,7 @@ define(function(require, exports) {
 		var post_id = $('#article_id').val();
 		var title = $('input[name="title"]').val();
 		var vicetitle = $('input[name="vicetitle"]').val();
+		var post_type = $('input[name="post_type"]:checked').val();
 		var content = editor.html();
 		var summary_content = editor.text();
 		var summary_content = summary_content.substring(0,200);
@@ -44,6 +45,7 @@ define(function(require, exports) {
 			post_id:post_id,
 			title: title,
 			vicetitle: vicetitle,
+			post_type: post_type,
 			content: content,
 			summary_content:summary_content,
 			type: type,
