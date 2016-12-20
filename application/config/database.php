@@ -63,7 +63,7 @@ if ($_SERVER['USER'] == 'bae'){
 
 $db['default']['pconnect'] = FALSE;
 
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
